@@ -3,9 +3,12 @@ public class Heroi {
     // Atributos
 
     private String nome;
+
     private int vidaMax;
     private int vida;
     private int escudo;
+
+    private int buffDano;
 
     // Getters
 
@@ -54,6 +57,11 @@ public class Heroi {
             vida += valor;
         }
         return vida;
+    }
+
+    public int buffarDano(int valor) {
+        buffDano += valor;
+        return buffDano;
     }
 
     public int ganharEscudo(int valor) {
