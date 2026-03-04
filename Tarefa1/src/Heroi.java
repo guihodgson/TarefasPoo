@@ -115,6 +115,12 @@ public class Heroi {
         energia = energiaMax;
     }
 
+    public void resetRound() {
+        this.resetarBuff();
+        this.resetarEnergia();
+        this.resetarEscudo();
+    }
+
     public boolean estaVivo() {
         if (vida > 0) {
             return true;
