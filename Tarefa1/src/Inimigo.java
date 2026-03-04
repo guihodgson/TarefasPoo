@@ -1,11 +1,15 @@
-public class Heroi {
-
+public class Inimigo {
+    
     // Atributos
 
     private String nome;
+
     private int vidaMax;
     private int vida;
     private int escudo;
+
+    private int danoBase;
+    private int buffDano;
 
     // Getters
 
@@ -28,10 +32,12 @@ public class Heroi {
 
     // Constructor
 
-    public Heroi(String nome, int vida, int escudo) {
+    public Inimigo(String nome, int vida, int escudo, int danoBase) {
         this.nome = nome;
         this.vida = vidaMax = vida;
         this.escudo = escudo;
+        this.danoBase = danoBase;
+        this.buffDano = 0;
     }
 
     // Metodos
@@ -69,6 +75,16 @@ public class Heroi {
             escudo -= valor;
         }
         return escudo;
+    }
+
+    public int buffarDano(int valor) {
+        buffDano += valor;
+        return buffDano;
+    }
+
+    public int atacar(Heroi heroi) {
+        heroi.receberDano(danoBase + buffDano);
+        return danoBase + buffDano;
     }
 
     public boolean estaVivo() {
