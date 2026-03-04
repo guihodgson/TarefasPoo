@@ -5,7 +5,7 @@ Lista de coisas pra fazer no projeto:
     - Buff/Debuff ✅
     - Energia ✅
     - Fazer metodo de reset do round ✅
-    - Ver qual o melhor return pra cada metodo, se eh um boolean se deu certo ou retornar valor final da mudanca
+    - Ver qual o melhor return pra cada metodo, se eh um boolean se deu certo ou retornar valor final da mudanca    
 - Add Inimigo ✅
     - Metodos basicos ✅
     - Ver como funciona selecao de ataques inimigo
@@ -13,6 +13,14 @@ Lista de coisas pra fazer no projeto:
 - Add CartaDano
 - Add CartaEscudo
 - Add CartaBuff e CartaDebuff (se quiser)
+- Add classe pro deck do Heroi
+    - Da pra fazer logica de gasto de energia e dar dano dentro dos metodos daqui
+    - Nao sei se junto, mas fazer logica de compra e descarte de cartas
+
+
+- Fazer main com opcoes e logica do jogo, pode fazer um inputhandler se quiser
+    - Implementar logica de usar cartas
+    - Matar vilao ou personagem
 
 - Add teste de batalha no App
     - Heroi contra inimigo
