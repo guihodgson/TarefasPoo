@@ -77,7 +77,7 @@ public class Inimigo {
         return escudo;
     }
 
-    public int buffarDano(int valor) {
+    public int ganharBuffDano(int valor) {
         buffDano += valor;
         return buffDano;
     }

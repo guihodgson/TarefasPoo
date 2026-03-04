@@ -8,6 +8,9 @@ public class Heroi {
     private int vida;
     private int escudo;
 
+    private int energiaMax;
+    private int energia;
+
     private int buffDano;
 
     // Getters
@@ -28,13 +31,24 @@ public class Heroi {
         return escudo;
     }
 
+    public int getEnergia() {
+        return energia;
+    }
+
+    public int getBuffDano() {
+        return buffDano;
+    }
 
     // Constructor
 
-    public Heroi(String nome, int vida, int escudo) {
+    public Heroi(String nome, int vida, int escudo, int energia) {
         this.nome = nome;
+
         this.vida = vidaMax = vida;
         this.escudo = escudo;
+        this.energia = energiaMax = energia;
+
+        this.buffDano = 0;
     }
 
     // Metodos
@@ -59,9 +73,13 @@ public class Heroi {
         return vida;
     }
 
-    public int buffarDano(int valor) {
+    public int ganharBuffDano(int valor) {
         buffDano += valor;
         return buffDano;
+    }
+
+    public void resetarBuff() {
+        buffDano = 0;
     }
 
     public int ganharEscudo(int valor) {
@@ -77,6 +95,24 @@ public class Heroi {
             escudo -= valor;
         }
         return escudo;
+    }
+
+    public void resetarEscudo() {
+        escudo = 0;
+    }
+
+    public boolean gastarEnergia(int valor) {
+        if (valor <= energia) {
+            energia -= valor;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void resetarEnergia() {
+        energia = energiaMax;
     }
 
     public boolean estaVivo() {

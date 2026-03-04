@@ -1,0 +1,19 @@
+Lista de coisas pra fazer no projeto:
+
+- Add Heroi
+    - Metodos basicos ✅
+    - Buff/Debuff ✅
+    - Energia ✅
+    - Ver qual o melhor return pra cada metodo, se eh um boolean se deu certo ou retornar valor final da mudanca
+- Add Inimigo ✅
+    - Metodos basicos ✅
+    - Ver como funciona selecao de ataques inimigo
+    - Ver se precisa de energia
+- Add CartaDano
+- Add CartaEscudo
+- Add CartaBuff e CartaDebuff (se quiser)
+
+- Add teste de batalha no App
+    - Heroi contra inimigo
+    - Printar acoes disponiveis
+    - Usar scanner pra selecionar acao
