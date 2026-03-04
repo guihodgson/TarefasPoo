@@ -4,7 +4,7 @@ Lista de coisas pra fazer no projeto:
     - Metodos basicos ✅
     - Buff/Debuff ✅
     - Energia ✅
-    - Fazer metodo de reset do round
+    - Fazer metodo de reset do round ✅
     - Ver qual o melhor return pra cada metodo, se eh um boolean se deu certo ou retornar valor final da mudanca
 - Add Inimigo ✅
     - Metodos basicos ✅
