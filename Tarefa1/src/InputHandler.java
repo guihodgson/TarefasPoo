@@ -13,7 +13,8 @@ public class InputHandler {
         in = new Scanner(System.in);
     }
 
-    public void pularLinha() {
+    public void pressEnter() {
+        System.out.println("Pressione Enter para continuar");
         in.nextLine();
     }
 

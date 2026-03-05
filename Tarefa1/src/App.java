@@ -27,8 +27,8 @@ public class App {
                     // Colocar ataque da cartaDano
                 }
                 else {
-                    System.out.println("Energia insuficiente.");
-                    inputHandler.pularLinha();
+                    System.out.println("Energia insuficiente.\n");
+                    inputHandler.pressEnter();
                 }
                 continue;
             }
@@ -38,7 +38,8 @@ public class App {
                     // Colocar escudo da cartaEscudo
                 }
                 else {
-                    System.out.println("Energia insuficiente.");
+                    System.out.println("Energia insuficiente.\n");
+                    inputHandler.pressEnter();
                 }
                 continue;
             }
