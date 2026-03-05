@@ -31,6 +31,10 @@ public class Heroi {
         return escudo;
     }
 
+    public int getEnergiaMax() {
+        return energiaMax;
+    }
+
     public int getEnergia() {
         return energia;
     }
@@ -101,7 +105,7 @@ public class Heroi {
         escudo = 0;
     }
 
-    public boolean gastarEnergia(int valor) {
+    public boolean podeGastarEnergia(int valor) {
         if (valor <= energia) {
             energia -= valor;
             return true;
