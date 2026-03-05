@@ -28,9 +28,11 @@ public class App {
                 }
                 else {
                     System.out.println("Energia insuficiente.");
+                    inputHandler.pularLinha();
                 }
                 continue;
             }
+
             if (opcao == 2) {
                 if (heroi.podeGastarEnergia(1)) {
                     // Colocar escudo da cartaEscudo
@@ -40,6 +42,7 @@ public class App {
                 }
                 continue;
             }
+
             if (opcao == 3) {
                 loboCapanga.atacar(heroi);
                 heroi.resetRound();
