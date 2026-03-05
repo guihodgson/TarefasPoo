@@ -22,9 +22,10 @@ public class InputHandler {
         for(int i = 1; i < listaOpcoes.size(); i++) {
             System.out.println(i + ": " + listaOpcoes.get(i));
         }
-        System.out.println("----------\n");
+        System.out.println("----------\nEscolha uma opcao:");
         int resposta = in.nextInt();
         in.nextLine();  // Limpando o \n do buffer
+        System.out.println();
         return resposta;
     }
 }

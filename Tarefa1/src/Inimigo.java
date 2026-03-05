@@ -29,6 +29,10 @@ public class Inimigo {
         return escudo;
     }
 
+    public int getDanoBase() {
+        return danoBase;
+    }
+
 
     // Constructor
 
@@ -82,9 +86,8 @@ public class Inimigo {
         return buffDano;
     }
 
-    public int atacar(Heroi heroi) {
+    public void atacar(Heroi heroi) {
         heroi.receberDano(danoBase + buffDano);
-        return danoBase + buffDano;
     }
 
     public boolean estaVivo() {
