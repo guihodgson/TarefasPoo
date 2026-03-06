@@ -4,14 +4,15 @@ import java.util.ArrayList;
 public class App {
     public static void main(String[] args) throws Exception {
         Heroi heroi = new Heroi("Po, o Dragao Guerreiro", 40, 0, 4);
-        Inimigo loboCapanga = new Inimigo("Lobo Solitario", 30, 0, 6);
+        Inimigo loboCapanga = new Inimigo("Tai Lung", 30, 0, 8);
         CartaDano cartaDano = new CartaDano("CartaDano", 2, 4);
         CartaEscudo cartaEscudo = new CartaEscudo("CartaEscudo", 2, 4);
         InputHandler inputHandler = new InputHandler();
+
         ArrayList<String> opcoesCartas = new ArrayList<>();
         opcoesCartas.add("Posicao 0 invalida");
-        opcoesCartas.add("Carta Dano (" + cartaDano.getCusto() + " de energia)");
-        opcoesCartas.add("Carta Escudo (" + cartaEscudo.getCusto() + " de energia)");
+        opcoesCartas.add("Carta Dano " + cartaDano.getAtaque() + " (" + cartaDano.getCusto() + " de energia)");
+        opcoesCartas.add("Carta Escudo " + cartaEscudo.getDefesa() + " (" + cartaEscudo.getCusto() + " de energia)");
         opcoesCartas.add("Encerrar Turno");
 
         do {
@@ -29,7 +30,7 @@ public class App {
                     cartaDano.usarAtaque(loboCapanga);
                 }
                 else {
-                    System.out.println("\nEnergia insuficiente.\n");
+                    System.out.println("Energia insuficiente.\n");
                     inputHandler.pressEnter();
                 }
                 continue;
@@ -40,7 +41,7 @@ public class App {
                     cartaEscudo.usarEscudo(heroi);
                 }
                 else {
-                    System.out.println("\nEnergia insuficiente.\n");
+                    System.out.println("Energia insuficiente.\n");
                     inputHandler.pressEnter();
                 }
                 continue;
