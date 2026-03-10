@@ -63,7 +63,7 @@ public class App {
         opcoesFilme.add("Filme 2");
         opcoesFilme.add("Filme 3");
 
-        System.out.println("Selecione o filme que voce quer jogar:");
+        System.out.println("Selecione o filme que você quer jogar:");
         int filmeEscolhido = inputHandler.selecionar(opcoesFilme);
         Inimigo inimigo;
 
