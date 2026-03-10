@@ -12,8 +12,8 @@ Lista de coisas pra fazer no projeto:
         - So vai atacar por enquanto ✅ 
     - Ver se precisa de energia
         - Nao por enquanto ✅
-- Add CartaDano (Berns)
-- Add CartaEscudo (Berns)
+- Add CartaDano (Berns) ✅
+- Add CartaEscudo (Berns) ✅
 - Add CartaBuff e CartaDebuff (se quiser) (Por ultimo so se quiser muito)
 
 - Add classe pro deck do Heroi (Acho que isso so mais pra frente ignora)

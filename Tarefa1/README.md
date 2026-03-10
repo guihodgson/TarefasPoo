@@ -1,18 +1,29 @@
-## Getting Started
+## Introdução
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Dragon Warrior é um jogo inspirado na trilogia inicial da série de filmes Kung Fu Panda. Você consegue se aventurar em batalhas com os 3 principais antagonistas dos filmes, deixando o mundo mais seguro ou deixando ele cair em trevas.
 
-## Folder Structure
+## Propriedades básicas
 
-The workspace contains two folders by default, where:
+Os personagens possuem Pontos de Vida e Energia
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Pontos de Vida: O numero de dano que o ersonagem consegue receber antes de ser derrotado
+- Energia: Moeda de troca para utilizar ações no jogo, é recarregada todo round
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Ações basicas
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+O jogo consiste de 2 ações básicas que o jogador pode fazer:
 
-## Dependency Management
+- Atacar: O heroi causa dano no inimigo
+- Defender: O heroi bloqueia parte do dano que o inimigo causará no proximo round
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Compilação e execução
+
+Para compilar, rode o seguinte comando no terminal, na pasta "Tarefa 1":
+
+    javac -d bin $(find src -name "*.java")
+
+Para compilar, rode o seguinte comando no terminal, na pasta "Tarefa 1":
+
+    java -cp bin App
+
+Se divirta!

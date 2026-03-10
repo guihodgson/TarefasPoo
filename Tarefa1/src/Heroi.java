@@ -59,10 +59,13 @@ public class Heroi {
 
     public int receberDano(int dano) {
         if (dano <= escudo) {
+            escudo -= dano;
             return vida;
         }
         else {
-            vida -= (dano - escudo);
+            dano -= escudo;
+            escudo = 0;
+            vida -= dano;
             return vida;
         }
     }
