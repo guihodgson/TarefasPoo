@@ -27,6 +27,6 @@ public abstract class Carta {
 
     // Metodos
 
-    public abstract void usar(Entidade entidade);   
+    public abstract void usar(Entidade atacante, Entidade alvo);   
 
 }
