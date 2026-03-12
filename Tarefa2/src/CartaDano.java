@@ -1,20 +1,12 @@
-public class CartaDano {
+
+
+public class CartaDano extends Carta{
 
     // Atributos
 
-    private String nome;
-    private int custo;
-    private int ataque;
+    protected int ataque;
 
     // Getters
-
-    public String getNome() {
-        return nome;
-    }
-
-    public int getCusto() {
-        return custo;
-    }
 
     public int getAtaque() {
         return ataque;
@@ -22,16 +14,16 @@ public class CartaDano {
 
     // Constructor
 
-    public CartaDano(String nome, int custo, int ataque) {
-        this.nome = nome;
-        this.custo = custo;
+    public CartaDano(String nome, String descricao, int custo, int ataque) {
+        super(nome, descricao, custo);
         this.ataque = ataque;
     }
 
     // Metodos
 
-    public void usarAtaque(Inimigo inimigo) {
-        inimigo.receberDano(ataque);
+    @Override
+    public void usar(Entidade entidade) {
+        entidade.receberDano(ataque);
     }
 }
 

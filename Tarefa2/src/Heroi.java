@@ -4,6 +4,10 @@ public class Heroi extends Entidade {
 
     private int energiaMax;
     private int energia;
+    private Baralho baralho;
+    private Baralho deck;
+    private Baralho descarte;
+    
 
     // Getters
 
@@ -19,6 +23,8 @@ public class Heroi extends Entidade {
 
     public Heroi(String nome, int vida, int escudo) {
         super(nome, vida, escudo);
+        baralho = new Baralho();
+        descarte = new Baralho();
     }
 
     // Metodos

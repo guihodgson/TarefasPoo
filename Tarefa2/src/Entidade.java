@@ -8,6 +8,7 @@ public class Entidade {
     private int vida;
     private int escudo;
 
+    private int tempoBuff;
     private int buffDano;
 
     // Getters
@@ -28,6 +29,10 @@ public class Entidade {
         return escudo;
     }
 
+    public int getTempoBuff() {
+        return tempoBuff;
+    }
+
     public int getBuffDano() {
         return buffDano;
     }
@@ -46,9 +51,9 @@ public class Entidade {
 
     // Metodos
 
-    public int receberDano(int dano) {
+    public void receberDano(int dano) {
         if (dano <= escudo) {
-            return vida;
+            escudo -= dano;
         }
         else {
             vida -= (dano - escudo);
@@ -94,8 +99,9 @@ public class Entidade {
         }
     }
 
-    public int ganharBuffDano(int valor) {
+    public int ganharBuffDano(int valor, int tempo) {
         buffDano += valor;
+        tempoBuff += tempo;
         return buffDano;
     }
 
