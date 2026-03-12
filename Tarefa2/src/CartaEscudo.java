@@ -22,7 +22,7 @@ public class CartaEscudo extends Carta{
     // Metodos
 
     @Override
-    public void usar(Entidade entidade) {
+    public void usar(Entidade atacante, Entidade alvo) {
         entidade.ganharEscudo(defesa);
     }
 }
