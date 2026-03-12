@@ -57,7 +57,7 @@ public class Entidade {
         }
         else {
             vida -= (dano - escudo);
-            return vida;
+            escudo = 0;
         }
     }
 
