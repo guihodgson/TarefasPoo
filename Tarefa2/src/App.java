@@ -22,14 +22,14 @@ public class App {
         Random gerador = new Random();
 
         heroi.adicionarCartaBaralho(cartaDanoMed);
+        heroi.adicionarCartaBaralho(cartaDanoMed);
+        heroi.adicionarCartaBaralho(cartaDanoMed);
         heroi.adicionarCartaBaralho(cartaDanoPeq);
         heroi.adicionarCartaBaralho(cartaDanoPeq);
         heroi.adicionarCartaBaralho(cartaSkidoosh);
         heroi.adicionarCartaBaralho(cartaEscudoPeq);
-        heroi.adicionarCartaBaralho(cartaEscudoPeq);
         heroi.adicionarCartaBaralho(cartaEscudoMed);
         heroi.adicionarCartaBaralho(cartaEscudoMed);
-        heroi.adicionarCartaBaralho(cartaEscudoGrnd);
         heroi.adicionarCartaBaralho(cartaEscudoGrnd);
 
         heroi.deckInicial();
