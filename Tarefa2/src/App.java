@@ -21,16 +21,14 @@ public class App {
         InputHandler inputHandler = new InputHandler();
         Random gerador = new Random();
 
-        heroi.adicionarCartaBaralho(cartaDanoMed);
-        heroi.adicionarCartaBaralho(cartaDanoMed);
-        heroi.adicionarCartaBaralho(cartaDanoMed);
-        heroi.adicionarCartaBaralho(cartaDanoPeq);
-        heroi.adicionarCartaBaralho(cartaDanoPeq);
-        heroi.adicionarCartaBaralho(cartaSkidoosh);
-        heroi.adicionarCartaBaralho(cartaEscudoPeq);
-        heroi.adicionarCartaBaralho(cartaEscudoMed);
-        heroi.adicionarCartaBaralho(cartaEscudoMed);
-        heroi.adicionarCartaBaralho(cartaEscudoGrnd);
+        
+
+        heroi.adicionarCartaBaralho(cartaDanoMed, 3);  // Colocando cartas no nosso baralho
+        heroi.adicionarCartaBaralho(cartaDanoPeq, 2);
+        heroi.adicionarCartaBaralho(cartaSkidoosh, 1);
+        heroi.adicionarCartaBaralho(cartaEscudoPeq, 1);
+        heroi.adicionarCartaBaralho(cartaEscudoMed, 2);
+        heroi.adicionarCartaBaralho(cartaEscudoGrnd, 1);
 
         heroi.deckInicial();
 
@@ -83,31 +81,27 @@ public class App {
         int filmeEscolhido = inputHandler.selecionar(opcoesFilme);
         Inimigo inimigo;
 
-        if (filmeEscolhido == 1) {
+        if (filmeEscolhido == 1) {  // To colocando as cartas no baralho do inimigo escolhido
             inimigo = new Inimigo("Lord Shen", 32, 0, 1);
-            CartaDano ataqueShenPeq = new CartaDano("Investida", null, 1, 6);
-            CartaDano ataqueShenForte = new CartaDano("Canhao Dragao", null, 1, 13);
+            CartaDano ataqueShenPeq = new CartaDano("Investida", null, 1, 8);
+            CartaDano ataqueShenForte = new CartaDano("Canhao Dragao", null, 1, 14);
 
             CartaEscudo escudoShenMed = new CartaEscudo("Escudo medio", null, 1, 5);
 
-            inimigo.adicionarCarta(escudoShenMed);
-
-            inimigo.adicionarCarta(ataqueShenPeq);
-            inimigo.adicionarCarta(ataqueShenPeq);
-            inimigo.adicionarCarta(ataqueShenForte);
+            inimigo.adicionarCarta(escudoShenMed, 1);
+            inimigo.adicionarCarta(ataqueShenPeq, 4);
+            inimigo.adicionarCarta(ataqueShenForte, 3);
         }
         else if (filmeEscolhido == 2) {
             inimigo = new Inimigo("Kai", 36, 0, 1);
-            CartaDano ataqueKaiPeq = new CartaDano("Investida", null, 1, 7);
-            CartaDano ataqueKaiForte = new CartaDano("Espada Espiritual", null, 1, 15);
+            CartaDano ataqueKaiPeq = new CartaDano("Investida", null, 1, 8);
+            CartaDano ataqueKaiForte = new CartaDano("Espada Espiritual", null, 1, 16);
 
             CartaEscudo escudoKaiMed = new CartaEscudo("Escudo medio", null, 1, 6);
 
-            inimigo.adicionarCarta(escudoKaiMed);
-
-            inimigo.adicionarCarta(ataqueKaiPeq);
-            inimigo.adicionarCarta(ataqueKaiPeq);
-            inimigo.adicionarCarta(ataqueKaiForte);
+            inimigo.adicionarCarta(escudoKaiMed, 1);
+            inimigo.adicionarCarta(ataqueKaiPeq, 4);
+            inimigo.adicionarCarta(ataqueKaiForte, 3);
         }
         else {
             inimigo = new Inimigo("Tai Lung", 34, 0, 1);
@@ -116,15 +110,11 @@ public class App {
 
             CartaEscudo escudoTaiMed = new CartaEscudo("Escudo medio", null, 1, 6);
 
-            inimigo.adicionarCarta(escudoTaiMed);
-
-            inimigo.adicionarCarta(ataqueTaiPeq);
-            inimigo.adicionarCarta(ataqueTaiPeq);
-            inimigo.adicionarCarta(ataqueTaiForte);
+            inimigo.adicionarCarta(escudoTaiMed, 1);
+            inimigo.adicionarCarta(ataqueTaiPeq, 4);
+            inimigo.adicionarCarta(ataqueTaiForte, 3);
         }
         inimigo.embaralhaMao();
-
-        inputHandler.pressEnter();
 
         do {
             System.out.println(heroi.getNome() + ": (" + heroi.getVida() + "/" + heroi.getVidaMax() + " HP) (" + heroi.getEscudo() + " de escudo.)");

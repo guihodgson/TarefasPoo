@@ -17,8 +17,10 @@ public class Inimigo extends Entidade {
 
     // Metodos
 
-    public void adicionarCarta(Carta carta) {
-        baralho.adicionarCarta(carta);
+    public void adicionarCarta(Carta carta, int n) {
+        for (int i = 0; i < n; i++) {
+            baralho.adicionarCarta(carta);
+        }
     }
 
     public void embaralhaMao() {

@@ -39,8 +39,10 @@ public class Heroi extends Entidade {
 
     // Metodos
 
-    public void adicionarCartaBaralho(Carta carta) {
-        baralho.adicionarCarta(carta);
+    public void adicionarCartaBaralho(Carta carta, int n) {
+        for (int i = 0; i < n; i++) {
+            baralho.adicionarCarta(carta);
+        }
     }
 
     public int tamDeck() {
