@@ -1,3 +1,4 @@
+package Cartas;
 
 
 public class CartaDano extends Carta{

@@ -1,3 +1,5 @@
+package Cartas;
+import Entidades.Entidade;
 
 public abstract class Carta {
 

@@ -1,11 +1,16 @@
+import Cartas.Carta;
+import Cartas.CartaDano;
+import Cartas.CartaEscudo;
+import Entidades.Heroi;
+import Entidades.Inimigo;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Heroi heroi = new Heroi("Po, o Dragao Guerreiro", 40, 0);
-        CartaDano cartaDano = new CartaDano("CartaDano", 2, 4);
-        CartaEscudo cartaEscudo = new CartaEscudo("CartaEscudo", 2, 4);
+        CartaDano cartaDano = new CartaDano("CartaDano", "MuchoDano", 2, 4);
+        CartaEscudo cartaEscudo = new CartaEscudo("CartaEscudo", "Aiaiai", 2, 4);
         InputHandler inputHandler = new InputHandler();
         Random gerador = new Random();
 
@@ -86,36 +91,25 @@ public class App {
 
             System.out.println(heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
 
-            int opcao = inputHandler.selecionar(opcoesCartas);
-
-            if (opcao == 1) {
-                if (heroi.podeGastarEnergia(cartaDano.getCusto())) {
-                    cartaDano.usarAtaque(inimigo);
+            int opcao = inputHandler.selecionar(heroi.mostrarDeck());
+            Carta escolhida = heroi.getCartaNDeck(opcao);
+            if (escolhida instanceof CartaDano) {
+                if (heroi.podeGastarEnergia(escolhida.getCusto())) {
+                    heroi.usarCartaNDeck(opcao, inimigo);
                 }
                 else {
-                    System.out.println("Energia insuficiente.\n");
-                    inputHandler.pressEnter();
+                    System.out.println("Energia insuficiente.");
                 }
-                continue;
             }
-
-            if (opcao == 2) {
-                if (heroi.podeGastarEnergia(cartaEscudo.getCusto())) {
-                    cartaEscudo.usarEscudo(heroi);
+            else {
+                if (heroi.podeGastarEnergia(escolhida.getCusto())) {
+                    heroi.usarCartaNDeck(opcao, heroi);
                 }
                 else {
-                    System.out.println("Energia insuficiente.\n");
-                    inputHandler.pressEnter();
+                    System.out.println("Energia insuficiente.");
                 }
-                continue;
             }
 
-            if (opcao == 3) {
-                inimigo.atacar(heroi);
-                System.out.println(inimigo.getNome() + " atacou e causou " + (((inimigo.getDanoBase() - heroi.getEscudo()) >= 0) ? inimigo.getDanoBase() - heroi.getEscudo() : 0) + " de dano.");
-                heroi.resetRound();
-                inputHandler.pressEnter();
-            }
 
         } while (heroi.estaVivo() && inimigo.estaVivo());
 

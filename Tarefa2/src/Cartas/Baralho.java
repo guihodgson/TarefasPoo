@@ -1,3 +1,5 @@
+package Cartas;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -19,8 +21,16 @@ public class Baralho {
         return baralho.pop();
     }
 
+    public Carta retirarCartaN(int n) {
+        return baralho.remove(n);
+    }
+
     public Carta mostrarPrimeiraCarta() {
         return baralho.firstElement();
+    }
+
+    public Carta mostrarCartaN(int n) {
+        return baralho.get(n);
     }
 
     public void adicionarCarta(Carta adicionada) {
@@ -51,10 +61,12 @@ public class Baralho {
         }
     }
 
-    public void mostrarBaralho() {
+    public ArrayList<String> mostrarBaralho() {
+        ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < baralho.size(); i++) {
-            System.out.println((i + 1) + ": " + baralho.get(i).getNome() + "(Custo: " + baralho.get(i).getCusto() + ")");
+            lista.add(baralho.get(i).getNome() + "(Custo: " + baralho.get(i).getCusto() + ")");
         }
+        return lista;
     }
 
 }
