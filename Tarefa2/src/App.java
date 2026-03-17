@@ -30,6 +30,7 @@ public class App {
         heroi.adicionarCartaBaralho(cartaEscudoMed);
         heroi.adicionarCartaBaralho(cartaEscudoMed);
         heroi.adicionarCartaBaralho(cartaEscudoGrnd);
+        heroi.adicionarCartaBaralho(cartaEscudoGrnd);
 
         heroi.deckInicial();
 
@@ -91,10 +92,8 @@ public class App {
             CartaEscudo escudoShenMed = new CartaEscudo("Escudo medio", null, 1, 4);
 
             inimigo.adicionarCarta(escudoShenPeq);
-            inimigo.adicionarCarta(escudoShenPeq);
             inimigo.adicionarCarta(escudoShenMed);
-            inimigo.adicionarCarta(escudoShenMed);
-            inimigo.adicionarCarta(ataqueShenPeq);
+
             inimigo.adicionarCarta(ataqueShenPeq);
             inimigo.adicionarCarta(ataqueShenPeq);
             inimigo.adicionarCarta(ataqueShenForte);
@@ -108,10 +107,8 @@ public class App {
             CartaEscudo escudoKaiMed = new CartaEscudo("Escudo medio", null, 1, 4);
 
             inimigo.adicionarCarta(escudoKaiPeq);
-            inimigo.adicionarCarta(escudoKaiPeq);
             inimigo.adicionarCarta(escudoKaiMed);
-            inimigo.adicionarCarta(escudoKaiMed);
-            inimigo.adicionarCarta(ataqueKaiPeq);
+
             inimigo.adicionarCarta(ataqueKaiPeq);
             inimigo.adicionarCarta(ataqueKaiPeq);
             inimigo.adicionarCarta(ataqueKaiForte);
@@ -125,11 +122,8 @@ public class App {
             CartaEscudo escudoTaiMed = new CartaEscudo("Escudo medio", null, 1, 4);
 
             inimigo.adicionarCarta(escudoTaiPeq);
-            inimigo.adicionarCarta(escudoTaiPeq);
-            inimigo.adicionarCarta(escudoTaiMed);
             inimigo.adicionarCarta(escudoTaiMed);
 
-            inimigo.adicionarCarta(ataqueTaiPeq);
             inimigo.adicionarCarta(ataqueTaiPeq);
             inimigo.adicionarCarta(ataqueTaiPeq);
             inimigo.adicionarCarta(ataqueTaiForte);
