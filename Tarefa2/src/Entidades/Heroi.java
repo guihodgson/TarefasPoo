@@ -7,8 +7,6 @@ public class Heroi extends Entidade {
 
     // Atributos
 
-    private int energiaMax;
-    private int energia;
     private int nCartasDeck = 5;
     private Baralho baralho;
     private Baralho deck;
@@ -16,6 +14,10 @@ public class Heroi extends Entidade {
     
 
     // Getters
+
+    public int getNCartasDeck() {
+        return nCartasDeck;
+    }
 
     public int getEnergiaMax() {
         return energiaMax;
@@ -27,8 +29,9 @@ public class Heroi extends Entidade {
 
     // Constructor
 
-    public Heroi(String nome, int vida, int escudo) {
+    public Heroi(String nome, int vida, int escudo, int energia) {
         super(nome, vida, escudo);
+        this.energia = energiaMax = energia;
         baralho = new Baralho();
         deck = new Baralho();
         descarte = new Baralho();
@@ -36,14 +39,12 @@ public class Heroi extends Entidade {
 
     // Metodos
 
-    public boolean podeGastarEnergia(int valor) {
-        if (valor <= energia) {
-            energia -= valor;
-            return true;
-        }
-        else {
-            return false;
-        }
+    public void adicionarCartaBaralho(Carta carta) {
+        baralho.adicionarCarta(carta);
+    }
+
+    public int tamDeck() {
+        return deck.tamanho();
     }
 
     public ArrayList<String> mostrarDeck() {
@@ -60,6 +61,11 @@ public class Heroi extends Entidade {
         return deck.mostrarCartaN(n);
     }
 
+    public void deckInicial() {
+        baralho.embaralhar();
+        baralho.transferirNCartas(deck, nCartasDeck);
+    }
+
     public void resetarBaralho() {
         deck.transferirCartas(descarte);
         int cartasRestantes = baralho.cartasRestantes();
@@ -71,10 +77,6 @@ public class Heroi extends Entidade {
             baralho.embaralhar();
         }
         baralho.transferirNCartas(deck, cartasComprar);
-    }
-
-    public void resetarEnergia() {
-        energia = energiaMax;
     }
 
     public void resetarRound() {

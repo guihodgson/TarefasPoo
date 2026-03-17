@@ -17,6 +17,10 @@ public class Baralho {
 
     // Metodos
 
+    public int tamanho() {
+        return baralho.size();
+    }
+
     public Carta retirarCarta() {
         return baralho.pop();
     }
@@ -26,7 +30,7 @@ public class Baralho {
     }
 
     public Carta mostrarPrimeiraCarta() {
-        return baralho.firstElement();
+        return baralho.lastElement();
     }
 
     public Carta mostrarCartaN(int n) {
@@ -64,7 +68,7 @@ public class Baralho {
     public ArrayList<String> mostrarBaralho() {
         ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < baralho.size(); i++) {
-            lista.add(baralho.get(i).getNome() + "(Custo: " + baralho.get(i).getCusto() + ")");
+            lista.add(baralho.get(i).getNome() + " (Custo: " + baralho.get(i).getCusto() + ")");
         }
         return lista;
     }

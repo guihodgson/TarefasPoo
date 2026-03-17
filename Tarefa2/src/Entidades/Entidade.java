@@ -3,14 +3,17 @@ public class Entidade {
     
     // Atributos
 
-    private String nome;
+    protected String nome;
 
-    private int vidaMax;
-    private int vida;
-    private int escudo;
+    protected int vidaMax;
+    protected int vida;
+    protected int escudo;
 
-    private int tempoBuff;
-    private int buffDano;
+    protected int energia;
+    protected int energiaMax;
+
+    protected int tempoBuff;
+    protected int buffDano;
 
     // Getters
 
@@ -108,5 +111,19 @@ public class Entidade {
 
     public void resetarBuff() {
         buffDano = 0;
+    }
+
+    public void resetarEnergia() {
+        energia = energiaMax;
+    }
+
+    public boolean podeGastarEnergia(int valor) {
+        if (valor <= energia) {
+            energia -= valor;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

@@ -1,4 +1,5 @@
 package Cartas;
+import Entidades.Entidade;
 
 
 public class CartaDano extends Carta{

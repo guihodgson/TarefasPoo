@@ -19,9 +19,17 @@ public class InputHandler {
     }
 
     public int selecionar(ArrayList<String> listaOpcoes) {
-        for(int i = 1; i < listaOpcoes.size(); i++) {
-            System.out.println(i + ": " + listaOpcoes.get(i));
+        return selecionar(listaOpcoes, false);
+    }
+
+    public int selecionar(ArrayList<String> listaOpcoes, boolean mostrarEncerrar) {
+        for(int i = 0; i < listaOpcoes.size(); i++) {
+            System.out.println("[" + i + "]" + ": " + listaOpcoes.get(i));
         }
+        if (mostrarEncerrar) {
+            System.out.println("[" + listaOpcoes.size() + "]" + ": Encerrar Turno.");
+        }
+
         System.out.println("----------\nEscolha uma opcao:");
         int resposta = in.nextInt();
         in.nextLine();  // Limpando o \n do buffer
