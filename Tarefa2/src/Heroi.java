@@ -24,6 +24,7 @@ public class Heroi extends Entidade {
     public Heroi(String nome, int vida, int escudo) {
         super(nome, vida, escudo);
         baralho = new Baralho();
+        deck = new Baralho();
         descarte = new Baralho();
     }
 
@@ -39,6 +40,19 @@ public class Heroi extends Entidade {
         }
     }
 
+    public void mostrarDeck() {
+        deck.mostrarBaralho();
+    }
+
+    public void resetarBaralho() {
+        deck.transferirCartas(descarte);
+        if (baralho.cartasRestantes() < 5) {
+            descarte.transferirCartas(baralho);
+            baralho.embaralhar();
+        }
+        baralho.transferirNCartas(deck, 5);
+    }
+
     public void resetarEnergia() {
         energia = energiaMax;
     }
@@ -47,5 +61,6 @@ public class Heroi extends Entidade {
         this.resetarBuff();
         this.resetarEnergia();
         this.resetarEscudo();
+
     }
 }
