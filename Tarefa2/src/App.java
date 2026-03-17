@@ -91,7 +91,6 @@ public class App {
             CartaEscudo escudoShenPeq = new CartaEscudo("Escudo leve", null, 1, 2);
             CartaEscudo escudoShenMed = new CartaEscudo("Escudo medio", null, 1, 4);
 
-            inimigo.adicionarCarta(escudoShenPeq);
             inimigo.adicionarCarta(escudoShenMed);
 
             inimigo.adicionarCarta(ataqueShenPeq);
@@ -106,7 +105,6 @@ public class App {
             CartaEscudo escudoKaiPeq = new CartaEscudo("Escudo leve", null, 1, 2);
             CartaEscudo escudoKaiMed = new CartaEscudo("Escudo medio", null, 1, 4);
 
-            inimigo.adicionarCarta(escudoKaiPeq);
             inimigo.adicionarCarta(escudoKaiMed);
 
             inimigo.adicionarCarta(ataqueKaiPeq);
@@ -121,7 +119,6 @@ public class App {
             CartaEscudo escudoTaiPeq = new CartaEscudo("Escudo leve", null, 1, 2);
             CartaEscudo escudoTaiMed = new CartaEscudo("Escudo medio", null, 1, 4);
 
-            inimigo.adicionarCarta(escudoTaiPeq);
             inimigo.adicionarCarta(escudoTaiMed);
 
             inimigo.adicionarCarta(ataqueTaiPeq);
