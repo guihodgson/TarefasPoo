@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Heroi heroi = new Heroi("Po, o Dragao Guerreiro", 40, 0, 5);
+        Heroi heroi = new Heroi("Po, o Dragao Guerreiro", 32, 0, 5);
 
         CartaDano cartaSkidoosh = new CartaDano("Skidoosh (12)", "MuchoDano", 5, 12);
         CartaDano cartaDanoMed = new CartaDano("Ataque medio (5)", "MuchoDano", 2, 4);
@@ -85,11 +85,10 @@ public class App {
 
         if (filmeEscolhido == 1) {
             inimigo = new Inimigo("Lord Shen", 32, 0, 1);
-            CartaDano ataqueShenPeq = new CartaDano("Investida", null, 1, 4);
-            CartaDano ataqueShenForte = new CartaDano("Canhao Dragao", null, 1, 12);
+            CartaDano ataqueShenPeq = new CartaDano("Investida", null, 1, 6);
+            CartaDano ataqueShenForte = new CartaDano("Canhao Dragao", null, 1, 13);
 
-            CartaEscudo escudoShenPeq = new CartaEscudo("Escudo leve", null, 1, 2);
-            CartaEscudo escudoShenMed = new CartaEscudo("Escudo medio", null, 1, 4);
+            CartaEscudo escudoShenMed = new CartaEscudo("Escudo medio", null, 1, 5);
 
             inimigo.adicionarCarta(escudoShenMed);
 
@@ -99,11 +98,10 @@ public class App {
         }
         else if (filmeEscolhido == 2) {
             inimigo = new Inimigo("Kai", 36, 0, 1);
-            CartaDano ataqueKaiPeq = new CartaDano("Investida", null, 1, 4);
-            CartaDano ataqueKaiForte = new CartaDano("Espada Espiritual", null, 1, 14);
+            CartaDano ataqueKaiPeq = new CartaDano("Investida", null, 1, 7);
+            CartaDano ataqueKaiForte = new CartaDano("Espada Espiritual", null, 1, 15);
 
-            CartaEscudo escudoKaiPeq = new CartaEscudo("Escudo leve", null, 1, 2);
-            CartaEscudo escudoKaiMed = new CartaEscudo("Escudo medio", null, 1, 4);
+            CartaEscudo escudoKaiMed = new CartaEscudo("Escudo medio", null, 1, 6);
 
             inimigo.adicionarCarta(escudoKaiMed);
 
@@ -113,11 +111,10 @@ public class App {
         }
         else {
             inimigo = new Inimigo("Tai Lung", 34, 0, 1);
-            CartaDano ataqueTaiPeq = new CartaDano("Investida", null, 1, 4);
-            CartaDano ataqueTaiForte = new CartaDano("Chute da Pantera", null, 1, 13);
+            CartaDano ataqueTaiPeq = new CartaDano("Investida", null, 1, 7);
+            CartaDano ataqueTaiForte = new CartaDano("Chute da Pantera", null, 1, 14);
 
-            CartaEscudo escudoTaiPeq = new CartaEscudo("Escudo leve", null, 1, 2);
-            CartaEscudo escudoTaiMed = new CartaEscudo("Escudo medio", null, 1, 4);
+            CartaEscudo escudoTaiMed = new CartaEscudo("Escudo medio", null, 1, 6);
 
             inimigo.adicionarCarta(escudoTaiMed);
 
