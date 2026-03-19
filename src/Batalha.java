@@ -16,10 +16,12 @@ public class Batalha {
             System.out.println("=========8=========");
             System.out.println();
 
-            inputHandler.sleep(0.6);
+            inputHandler.sleep(0.5);
 
             inimigo.printarProxAcao();
             System.out.println();
+
+            inputHandler.sleep(0.5);
 
             if (heroi.getTempoBuff() > 0) {
                 System.out.println(heroi.getNome() + " possui " + heroi.getBuffDano() + " de dano extra por mais " + heroi.getTempoBuff() + " round(s)\n");

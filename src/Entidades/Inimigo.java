@@ -28,7 +28,13 @@ public class Inimigo extends Entidade {
     }
 
     public void printarProxAcao() {
-        System.out.println(nome + " vai usar " + baralho.mostrarPrimeiraCarta().getNome() + ".");
+
+        if (baralho.mostrarPrimeiraCarta() instanceof CartaDano cartadano) {
+            System.out.println(nome + " vai usar " + cartadano.getNome() + " (" + cartadano.getAtaque() + " de dano)");
+        }
+        if (baralho.mostrarPrimeiraCarta() instanceof CartaEscudo cartaescudo) {
+            System.out.println(nome + " vai usar " + cartaescudo.getNome() + " (" + cartaescudo.getDefesa() + " de escudo)");
+        }
     }
 
     public void usarCartas(Heroi heroi) {

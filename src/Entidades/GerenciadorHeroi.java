@@ -12,7 +12,7 @@ public class GerenciadorHeroi {
 
         // Baralho Po
 
-        CartaDano cartaSkidoosh = new CartaDano("Skidoosh (15)", "MuchoDano", 5, 15);
+        CartaDano cartaSkidoosh = new CartaDano("Skidoosh (15)", "", 5, 15);
         CartaDano cartaDanoMed = new CartaDano("Ataque Medio (5)", "MuchoDano", 2, 5);
         CartaDano cartaDanoPeq = new CartaDano("Ataque Leve (2)", "lala", 1, 2);
 
