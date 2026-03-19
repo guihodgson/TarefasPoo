@@ -95,22 +95,24 @@ public class Entidade {
     }
 
     public boolean estaVivo() {
-        if (vida > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return vida > 0 ? true : false;
     }
 
     public int ganharBuffDano(int valor, int tempo) {
-        buffDano += valor;
+        if (buffDano < valor) {
+            buffDano = valor;
+        }
         tempoBuff += tempo;
         return buffDano;
     }
 
     public void resetarBuff() {
-        buffDano = 0;
+        if (tempoBuff > 0) {
+            tempoBuff--;
+        }
+        if (tempoBuff == 0) {
+            buffDano = 0;
+        }
     }
 
     public void resetarEnergia() {

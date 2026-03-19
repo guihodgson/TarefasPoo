@@ -55,6 +55,16 @@ public class Inimigo extends Entidade {
                     break;
                 }
             }
+            if (acao instanceof CartaBuffDano cartaBuffDano) {
+                if (this.podeGastarEnergia(acao.getCusto())) {
+                    acao.usar(this, heroi);
+                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e ganhou " + cartaBuffDano.getBuff() + " de buff de dano.");
+                }
+                else {
+                    baralho.embaralhar();
+                    break;
+                }
+            }
         }
     }
 

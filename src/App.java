@@ -1,4 +1,5 @@
 import Cartas.Carta;
+import Cartas.CartaBuffDano;
 import Cartas.CartaDano;
 import Cartas.CartaEscudo;
 import Entidades.Heroi;
@@ -10,6 +11,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         Heroi heroi = new Heroi("Po, o Dragao Guerreiro", 32, 0, 5);
 
+        // Baralho Po
+
         CartaDano cartaSkidoosh = new CartaDano("Skidoosh (12)", "MuchoDano", 5, 12);
         CartaDano cartaDanoMed = new CartaDano("Ataque medio (5)", "MuchoDano", 2, 4);
         CartaDano cartaDanoPeq = new CartaDano("Ataque leve (2)", "lala", 1, 6);
@@ -18,19 +21,27 @@ public class App {
         CartaEscudo cartaEscudoMed = new CartaEscudo("Escudo Medio (4)", "Aiaiai", 2, 4);
         CartaEscudo cartaEscudoPeq = new CartaEscudo("Escudo Pequeno (2)", "Aiaiai", 1, 2);
 
+        CartaBuffDano cartaBuffPeq = new CartaBuffDano("Bonus de Ataque Pequeno (2 por 2 rounds)", "danodano", 1, 2, 2);
+        CartaBuffDano cartaBuffMed = new CartaBuffDano("Bonus de Ataque Medio (4 por 2 rounds)", "danodano", 2, 4, 2);
+        
+
         InputHandler inputHandler = new InputHandler();
         Random gerador = new Random();
 
-        
-
-        heroi.adicionarCartaBaralho(cartaDanoMed, 4);  // Colocando cartas no nosso baralho
+        heroi.adicionarCartaBaralho(cartaDanoMed, 4);
         heroi.adicionarCartaBaralho(cartaDanoPeq, 3);
         heroi.adicionarCartaBaralho(cartaSkidoosh, 2);
+
         heroi.adicionarCartaBaralho(cartaEscudoPeq, 2);
         heroi.adicionarCartaBaralho(cartaEscudoMed, 3);
         heroi.adicionarCartaBaralho(cartaEscudoGrnd, 2);
 
+        heroi.adicionarCartaBaralho(cartaBuffPeq, 2);
+        heroi.adicionarCartaBaralho(cartaBuffMed, 2);
+
         heroi.deckInicial();
+
+        // Titulos
 
         ArrayList<String> titulo = new ArrayList<>();
         
@@ -85,6 +96,8 @@ public class App {
         } while (filmeEscolhido > 2 || filmeEscolhido < 0);
         Inimigo inimigo;
 
+        // Baralho do inimigo
+
         switch (filmeEscolhido) {
             case 0 -> {
                 inimigo = new Inimigo("Tai Lung", 34, 0, 1);
@@ -126,6 +139,8 @@ public class App {
 
         inimigo.embaralharMao();
 
+        // Logica de batalha
+
         do {
             System.out.println(heroi.getNome() + ": (" + heroi.getVida() + "/" + heroi.getVidaMax() + " HP) (" + heroi.getEscudo() + " de escudo.)");
             System.out.println("--- VS ---");
@@ -135,38 +150,35 @@ public class App {
             inimigo.printarProxAcao();
             System.out.println();
 
+            if (heroi.getTempoBuff() > 0) {
+                System.out.println("Po possui " + heroi.getBuffDano() + " de dano extra por mais" + heroi.getTempoBuff() + "round(s)\n");
+            }
+
             System.out.println(heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
 
             int opcao = inputHandler.selecionar(heroi.mostrarDeck(), true);
 
-            if (opcao < heroi.tamDeck()) {  // Nao quer passar de turno ainda
+            if (opcao < heroi.tamDeck() && opcao >= 0) {  // Nao quer passar de turno ainda
                 Carta escolhida = heroi.getCartaNDeck(opcao);
 
-                if (escolhida instanceof CartaDano) {
-                    if (heroi.podeGastarEnergia(escolhida.getCusto())) {
-                        heroi.usarCartaNDeck(opcao, inimigo);
-                    }
-                    else {
-                        System.out.println("Energia insuficiente.");
-                        inputHandler.pressEnter();
-                    }
+                if (heroi.podeGastarEnergia(escolhida.getCusto())) {
+                    heroi.usarCartaNDeck(opcao, inimigo);
                 }
-                else if (escolhida instanceof CartaEscudo) {
-                    if (heroi.podeGastarEnergia(escolhida.getCusto())) {
-                        heroi.usarCartaNDeck(opcao, heroi);
-                    }
-                    else {
-                        System.out.println("Energia insuficiente.");
-                        inputHandler.pressEnter();
-                    }
+                else {
+                    System.out.println("Energia insuficiente.");
+                    inputHandler.pressEnter();
                 }
+
             }
-            else {
+            else if (opcao == heroi.tamDeck()){
                 inimigo.resetarRound();
                 inimigo.usarCartas(heroi);
                 inputHandler.pressEnter();
 
                 heroi.resetarRound();
+            }
+            else {
+                System.out.println("Opcao invalida, tente novamente\n");
             }
         } while (heroi.estaVivo() && inimigo.estaVivo());
 
