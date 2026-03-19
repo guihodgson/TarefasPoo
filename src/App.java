@@ -3,7 +3,6 @@ import Entidades.GerenciadorInimigo;
 import Entidades.Heroi;
 import Entidades.Inimigo;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
