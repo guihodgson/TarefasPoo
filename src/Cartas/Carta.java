@@ -15,6 +15,10 @@ public abstract class Carta {
         return nome;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
     public int getCusto() {
         return custo;
     }

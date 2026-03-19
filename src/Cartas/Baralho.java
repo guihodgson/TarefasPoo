@@ -68,7 +68,7 @@ public class Baralho {
     public ArrayList<String> mostrarBaralho() {
         ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < baralho.size(); i++) {
-            lista.add(baralho.get(i).getNome() + " (Custo: " + baralho.get(i).getCusto() + ")");
+            lista.add(baralho.get(i).getNome() + " (Custo: " + baralho.get(i).getCusto() + ") (Descrição: " + baralho.get(i).getDescricao() + ")");
         }
         return lista;
     }
