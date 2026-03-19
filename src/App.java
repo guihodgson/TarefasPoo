@@ -14,15 +14,15 @@ public class App {
         // Baralho Po
 
         CartaDano cartaSkidoosh = new CartaDano("Skidoosh (12)", "MuchoDano", 5, 12);
-        CartaDano cartaDanoMed = new CartaDano("Ataque medio (5)", "MuchoDano", 2, 4);
-        CartaDano cartaDanoPeq = new CartaDano("Ataque leve (2)", "lala", 1, 6);
+        CartaDano cartaDanoMed = new CartaDano("Ataque medio (5)", "MuchoDano", 2, 5);
+        CartaDano cartaDanoPeq = new CartaDano("Ataque leve (2)", "lala", 1, 2);
 
         CartaEscudo cartaEscudoGrnd = new CartaEscudo("Escudo Grande (9)", "Aiaiai", 4, 9);
         CartaEscudo cartaEscudoMed = new CartaEscudo("Escudo Medio (4)", "Aiaiai", 2, 4);
         CartaEscudo cartaEscudoPeq = new CartaEscudo("Escudo Pequeno (2)", "Aiaiai", 1, 2);
 
-        CartaBuffDano cartaBuffPeq = new CartaBuffDano("Bonus de Ataque Pequeno (2 por 2 rounds)", "danodano", 1, 2, 2);
-        CartaBuffDano cartaBuffMed = new CartaBuffDano("Bonus de Ataque Medio (4 por 2 rounds)", "danodano", 2, 4, 2);
+        CartaBuffDano cartaBuffPeq = new CartaBuffDano("Bonus de Ataque Pequeno (1 por 2 rounds)", "danodano", 2, 2, 2);
+        CartaBuffDano cartaBuffMed = new CartaBuffDano("Bonus de Ataque Medio (2 por 2 rounds)", "danodano", 3, 4, 2);
         
 
         InputHandler inputHandler = new InputHandler();
@@ -151,7 +151,7 @@ public class App {
             System.out.println();
 
             if (heroi.getTempoBuff() > 0) {
-                System.out.println("Po possui " + heroi.getBuffDano() + " de dano extra por mais" + heroi.getTempoBuff() + "round(s)\n");
+                System.out.println("Po possui " + heroi.getBuffDano() + " de dano extra por mais " + heroi.getTempoBuff() + " round(s)\n");
             }
 
             System.out.println(heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
