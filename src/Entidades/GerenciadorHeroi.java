@@ -12,20 +12,20 @@ public class GerenciadorHeroi {
 
         // Baralho Po
 
-        CartaDano cartaSkidoosh = new CartaDano("Skidoosh (15)", "", 5, 15);
-        CartaDano cartaDanoMed = new CartaDano("Ataque Medio (5)", "MuchoDano", 2, 5);
-        CartaDano cartaDanoPeq = new CartaDano("Ataque Leve (2)", "lala", 1, 2);
+        CartaDano cartaSkidoosh = new CartaDano("Skidoosh (15 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 5, 15);
+        CartaDano cartaDanoMed = new CartaDano("Barrigada do Panda (5 de ataque)", "Uma forte investida com a barriga do Dragão Guerreiro", 2, 5);
+        CartaDano cartaDanoPeq = new CartaDano("Soco do Panda (2 de ataque)", "Um soco levemente carinhoso do Dragão Guerreiro", 1, 2);
 
-        CartaEscudo cartaEscudoGrnd = new CartaEscudo("Escudo Grande (10)", "Aiaiai", 3, 10);
-        CartaEscudo cartaEscudoMed = new CartaEscudo("Escudo Medio (5)", "Aiaiai", 2, 5);
-        CartaEscudo cartaEscudoPeq = new CartaEscudo("Escudo Pequeno (2)", "Aiaiai", 1, 2);
+        CartaEscudo cartaEscudoGrnd = new CartaEscudo("A Fuga do Panda (10 de defesa)", "O Dragão Guerreiro sairá correndo da batalha fugindo dos danos do ataque", 3, 10);
+        CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano de Barriga (5 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 5);
+        CartaEscudo cartaEscudoPeq = new CartaEscudo("Cambalhota do Panda (2 de defesa)", "O Dragão Guerreiro dará uma cambalhota e esquivará do dano do ataque", 1, 2);
 
-        CartaBuffDano cartaBuffPeq = new CartaBuffDano("Bonus de Ataque Pequeno (1 por 2 rounds)", "danodano", 1, 1, 2);
-        CartaBuffDano cartaBuffMed = new CartaBuffDano("Bonus de Ataque Medio (2 por 3 rounds)", "danodano", 2, 2, 3);
+        CartaBuffDano cartaBuffPeq = new CartaBuffDano("Sorte no Ataque (+1 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, 1, 2);
+        CartaBuffDano cartaBuffMed = new CartaBuffDano("Canalizar o Chi no Ataque (2 por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, 2, 3);
 
-        CartaCura cartaCuraPeq = new CartaCura("Cura Pequena (3)", null, 2, 2);
-        CartaCura cartaCuraMed = new CartaCura("Cura Media (5)", null, 3, 3);
-        CartaCura cartaCuraGrnd = new CartaCura("Cura Grande (4)", null, 4, 4);
+        CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (3 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 3);
+        CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (5 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 5);
+        CartaCura cartaCuraGrnd = new CartaCura("Cura do Bao (7 de cura)", "O Pãozinho Bao do Papai Ping dará mais vida para curar-se", 4, 7);
 
         heroi.adicionarCartaBaralho(cartaDanoMed, 3);
         heroi.adicionarCartaBaralho(cartaDanoPeq, 2);
