@@ -18,6 +18,20 @@ public class InputHandler {
         in.nextLine();
     }
 
+    public void sleep(double segundos) {
+        try {
+            Thread.sleep((int)(segundos * 1000));
+        } catch (Exception e) {
+        }
+    }
+
+    public void clear() {
+        try {
+            new ProcessBuilder("clear").inheritIO().start().waitFor();
+        } catch (Exception e) {
+        }
+    }
+
     public int selecionar(ArrayList<String> listaOpcoes) {
         return selecionar(listaOpcoes, false);
     }

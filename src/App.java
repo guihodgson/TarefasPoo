@@ -3,12 +3,12 @@ import Entidades.GerenciadorInimigo;
 import Entidades.Heroi;
 import Entidades.Inimigo;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
         InputHandler inputHandler = new InputHandler();
 
+        inputHandler.clear();
         GerenciadorTitulo.criarTitulo();
 
         Heroi heroi = GerenciadorHeroi.criarHeroi();
@@ -37,6 +37,8 @@ public class App {
 
         inimigo.embaralharMao();
 
+        inputHandler.clear();
+
         if (!Batalha.batalhar(heroi, inimigo, inputHandler)) {
             System.out.println("Voce MORREU, o mundo continua em trevas.");  
             System.exit(0);
@@ -54,6 +56,7 @@ public class App {
         System.out.println("Voce curou 10 de vida.\n");
         
         inputHandler.pressEnter();
+        inputHandler.clear();
 
         inimigo = GerenciadorInimigo.criarInimigo(1);
 
@@ -69,6 +72,7 @@ public class App {
         System.out.println("Voce curou 16 de vida.\n");
         
         inputHandler.pressEnter();
+        inputHandler.clear();
 
         inimigo = GerenciadorInimigo.criarInimigo(2);
 
