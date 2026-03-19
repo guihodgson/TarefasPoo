@@ -23,7 +23,7 @@ public class Inimigo extends Entidade {
         }
     }
 
-    public void embaralhaMao() {
+    public void embaralharMao() {
         baralho.embaralhar();
     }
 

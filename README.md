@@ -1,18 +1,31 @@
-## Getting Started
+## Introdução
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Dragon Warrior é um jogo inspirado na trilogia inicial da série de filmes Kung Fu Panda. Você consegue se aventurar em batalhas com os 3 principais antagonistas dos filmes, deixando o mundo mais seguro ou deixando ele cair em trevas.
 
-## Folder Structure
+## Propriedades básicas
 
-The workspace contains two folders by default, where:
+Os personagens possuem Pontos de Vida, Energia e Escudo.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Pontos de Vida: O numero de dano que o personagem consegue receber antes de ser derrotado.
+- Energia: Moeda de troca para utilizar cartas no jogo, é recarregada todo round.
+- Escudo: É utilizado para bloquear pontos de ataque do oponente, 1 escudo bloqueia 1 de dano.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Ações basicas
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+O jogador possui um baralho de cartas de ação. A cada round, 5 cartas desse baralho são colocadas em seu deck para que possam ser utilizadas no combate.
 
-## Dependency Management
+Cada carta possui um valor de energia que precisa ser gasta para utiliza-la, assim atacando ou defendendo uma quantidade de dano especifica dependendo da carta.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Para utilizar as cartas, selecione o número da carta que voce deseja utilizar e, desde que tenha energia, utilizará essa carta.
+
+## Compilação e execução
+
+Para compilar, rode o seguinte comando no terminal, na pasta "TarefasPoo":
+
+    javac -d bin $(find src -name "*.java")
+
+Para compilar, rode o seguinte comando no terminal, na pasta "TarefasPoo":
+
+    java -cp bin App
+
+Se divirta!
