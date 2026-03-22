@@ -40,6 +40,7 @@ public class GerenciadorHeroi {
 
         heroi.adicionarCartaBaralho(cartaCuraPeq, 1);
         heroi.adicionarCartaBaralho(cartaCuraMed, 1);
+        heroi.adicionarCartaBaralho(cartaCuraGrnd, 1);
 
         heroi.deckInicial();
         return heroi;
