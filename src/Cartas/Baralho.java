@@ -68,7 +68,12 @@ public class Baralho {
     public ArrayList<String> mostrarBaralho() {
         ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < baralho.size(); i++) {
-            lista.add(baralho.get(i).getNome() + " (Custo: " + baralho.get(i).getCusto() + ") (Descrição: " + baralho.get(i).getDescricao() + ")");
+            String nome = baralho.get(i).getNome();
+            int custo = baralho.get(i).getCusto();
+            String descricao = baralho.get(i).getDescricao();
+            String linhaFormatada = String.format("%-45s | Custo: %2d | %s", nome, custo, descricao);
+
+lista.add(linhaFormatada);
         }
         return lista;
     }

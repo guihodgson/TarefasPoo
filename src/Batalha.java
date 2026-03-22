@@ -5,7 +5,7 @@ import Entidades.*;
 public class Batalha {
     public static boolean batalhar(Heroi heroi, Inimigo inimigo, InputHandler inputHandler) {
         do {
-            System.out.println("=========8=========");
+            System.out.println("====================================8====================================");
             inputHandler.sleep(0.2);
             System.out.println(heroi.getNome() + ": (" + heroi.getVida() + "/" + heroi.getVidaMax() + " HP) (" + heroi.getEscudo() + " de escudo)");
             inputHandler.sleep(0.2);
@@ -13,7 +13,7 @@ public class Batalha {
             inputHandler.sleep(0.2);
             System.out.println(inimigo.getNome() + ": (" + inimigo.getVida() + "/" + inimigo.getVidaMax() + " HP) (" + inimigo.getEscudo() + " de escudo) (" + inimigo.getBuffDano() + " de dano extra por " + inimigo.getTempoBuff() + " round(s))");
             inputHandler.sleep(0.2);
-            System.out.println("=========8=========");
+            System.out.println("====================================8====================================");
             System.out.println();
 
             inputHandler.sleep(0.5);

@@ -40,11 +40,15 @@ public class App {
         inputHandler.clear();
 
         if (!Batalha.batalhar(heroi, inimigo, inputHandler)) {
-            System.out.println("Voce MORREU, o mundo continua em trevas.");  
+            System.out.println("Você MORREU, o mundo continua em trevas.");  
+            inputHandler.sleep(0.4);
+            GerenciadorFinal.criarPoTriste();
             System.exit(0);
         }
         if (desafio == false) {
-            System.out.println("Voce GANHOU de " + inimigo.getNome() + "!!\nO mundo esta mais seguro agora.");
+            System.out.println("Você GANHOU de " + inimigo.getNome() + "!!\nO mundo está mais seguro agora.");
+            inputHandler.sleep(0.4);
+            GerenciadorFinal.criarPoFeliz();
             System.exit(0);
         }
 
@@ -53,7 +57,7 @@ public class App {
         heroi.curarVida(10);
         heroi.resetarRound();
 
-        System.out.println("Voce curou 10 de vida.\n");
+        System.out.println("Você curou 10 de vida.\n");
         
         inputHandler.pressEnter();
         inputHandler.clear();
@@ -61,7 +65,9 @@ public class App {
         inimigo = GerenciadorInimigo.criarInimigo(1);
 
         if (!Batalha.batalhar(heroi, inimigo, inputHandler)) {
-            System.out.println("Voce MORREU, o mundo continua em trevas.");  
+            System.out.println("Você MORREU, o mundo continua em trevas.");  
+            inputHandler.sleep(0.4);
+            GerenciadorFinal.criarPoTriste();
             System.exit(0);
         }
 
@@ -69,7 +75,7 @@ public class App {
 
         heroi.curarVida(16);
         heroi.resetarRound();
-        System.out.println("Voce curou 16 de vida.\n");
+        System.out.println("Você curou 16 de vida.\n");
         
         inputHandler.pressEnter();
         inputHandler.clear();
@@ -77,11 +83,16 @@ public class App {
         inimigo = GerenciadorInimigo.criarInimigo(2);
 
         if (!Batalha.batalhar(heroi, inimigo, inputHandler)) {
-            System.out.println("Voce MORREU, o mundo continua em trevas.");  
+            System.out.println("Você MORREU, o mundo continua em trevas.");  
+            inputHandler.sleep(0.4);
+            GerenciadorFinal.criarPoTriste();
             System.exit(0);
         }
 
         System.out.println("Voce VENCEU o DESAFIO SUPREMO!!!");
+        inputHandler.sleep(0.4);
         System.out.println("Agora, voce é conhecido como o Dragao Guerreiro Mestre do Chi.");
+        inputHandler.sleep(0.4);
+        GerenciadorFinal.criarPoFeliz();
     }
 }
