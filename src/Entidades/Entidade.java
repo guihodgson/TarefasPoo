@@ -1,4 +1,5 @@
 package Entidades;
+
 public class Entidade {
     
     // Atributos
@@ -99,9 +100,10 @@ public class Entidade {
     }
 
     public int ganharBuffDano(int valor, int tempo) {
-        if (buffDano < valor) {
-            buffDano = valor;
-        }
+        // if (buffDano < valor) {
+        //     buffDano = valor;
+        // }  Logica defasada
+        buffDano = valor;
         tempoBuff += tempo;
         return buffDano;
     }

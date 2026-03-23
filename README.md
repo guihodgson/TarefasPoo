@@ -18,6 +18,8 @@ Cada carta possui um valor de energia que precisa ser gasta para utiliza-la, ass
 
 Para utilizar as cartas, selecione o número da carta que voce deseja utilizar e, desde que tenha energia, utilizará essa carta.
 
+Obs: Quando buffDano é utilizado, seu tempo soma, porém se utilizar um buff mais fraco, você pode sobrescrever seu buff antigo, entao verifique se vale a pena utilizar um buff menor enquanto um maior está ativo.
+
 ## Compilação e execução
 
 Para compilar, rode o seguinte comando no terminal, na pasta "TarefasPoo":
