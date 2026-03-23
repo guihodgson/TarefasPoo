@@ -6,22 +6,18 @@ public class Batalha {
     public static boolean batalhar(Heroi heroi, Inimigo inimigo, InputHandler inputHandler) {
         do {
             System.out.println("====================================8====================================");
-            inputHandler.sleep(0.2);
             System.out.println(heroi.getNome() + ": (" + heroi.getVida() + "/" + heroi.getVidaMax() + " HP) (" + heroi.getEscudo() + " de escudo)");
-            inputHandler.sleep(0.2);
-            System.out.println("--- VS ---");
-            inputHandler.sleep(0.2);
+            System.out.println("                                --- X ---");
             System.out.println(inimigo.getNome() + ": (" + inimigo.getVida() + "/" + inimigo.getVidaMax() + " HP) (" + inimigo.getEscudo() + " de escudo) (" + inimigo.getBuffDano() + " de dano extra por " + inimigo.getTempoBuff() + " round(s))");
-            inputHandler.sleep(0.2);
             System.out.println("====================================8====================================");
             System.out.println();
 
-            inputHandler.sleep(0.5);
+            inputHandler.sleep(0.7);
 
             inimigo.printarProxAcao();
             System.out.println();
 
-            inputHandler.sleep(0.5);
+            inputHandler.sleep(0.7);
 
             if (heroi.getTempoBuff() > 0) {
                 System.out.println(heroi.getNome() + " possui " + heroi.getBuffDano() + " de dano extra por mais " + heroi.getTempoBuff() + " round(s)\n");
