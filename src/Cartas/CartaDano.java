@@ -25,12 +25,7 @@ public class CartaDano extends Carta{
 
     @Override
     public void usar(Entidade heroi, Entidade alvo) {
-        if (heroi.getTempoBuff() > 0) {
-            alvo.receberDano(ataque + heroi.getBuffDano());
-        }
-        else {
-            alvo.receberDano(ataque);
-        }
+        alvo.receberDano(ataque + heroi.calcularBonusDano());
     }
 }
 

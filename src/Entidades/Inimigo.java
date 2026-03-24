@@ -5,7 +5,7 @@ public class Inimigo extends Entidade {
 
     // Atributos
 
-    private Baralho baralho;
+    private final Baralho baralho;
 
     // Constructor
 
@@ -61,10 +61,10 @@ public class Inimigo extends Entidade {
                     break;
                 }
             }
-            if (acao instanceof CartaBuffDano cartaBuffDano) {
+            if (acao instanceof CartaBonusDano cartaBonusDano) {
                 if (this.podeGastarEnergia(acao.getCusto())) {
                     acao.usar(this, heroi);
-                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e ganhou " + cartaBuffDano.getBuff() + " de buff de dano.");
+                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e ganhou " + cartaBonusDano.getBonus() + " de bonus de dano.");
                 }
                 else {
                     baralho.embaralhar();

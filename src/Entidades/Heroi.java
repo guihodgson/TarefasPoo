@@ -7,10 +7,10 @@ public class Heroi extends Entidade {
 
     // Atributos
 
-    private int nCartasDeck = 5;
-    private Baralho baralho;
-    private Baralho deck;
-    private Baralho descarte;
+    private final int nCartasDeck = 5;
+    private final Baralho baralho;
+    private final Baralho deck;
+    private final Baralho descarte;
     
 
     // Getters
@@ -82,7 +82,6 @@ public class Heroi extends Entidade {
     }
 
     public void resetarRound() {
-        this.resetarBuff();
         this.resetarEnergia();
         this.resetarEscudo();
         this.resetarBaralho();

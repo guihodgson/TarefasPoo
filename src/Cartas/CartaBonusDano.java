@@ -2,24 +2,24 @@ package Cartas;
 
 import Entidades.Entidade;
 
-public class CartaBuffDano extends Carta {
+public class CartaBonusDano extends Carta {
 
     // Atributos
 
-    protected int buff;
+    protected int bonus;
     protected int tempo;
 
     // Getters
 
-    public int getBuff() {
-        return buff;
+    public int getBonus() {
+        return bonus;
     }
 
     // Constructor
 
-    public CartaBuffDano(String nome, String descricao, int custo, int buff, int tempo) {
+    public CartaBonusDano(String nome, String descricao, int custo, int bonus, int tempo) {
         super(nome, descricao, custo);
-        this.buff = buff;
+        this.bonus = bonus;
         this.tempo = tempo;
     }
 
@@ -27,6 +27,6 @@ public class CartaBuffDano extends Carta {
 
     @Override
     public void usar(Entidade heroi, Entidade alvo) {
-        heroi.ganharBuffDano(buff, tempo);
+        heroi.ganharBonusDano(bonus, tempo);
     }
 }

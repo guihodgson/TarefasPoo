@@ -1,5 +1,10 @@
 package Entidades;
 
+import Efeitos.Efeito;
+import Efeitos.EfeitoBonusDano;
+import Efeitos.EfeitoVeneno;
+import java.util.ArrayList;
+
 public class Entidade {
     
     // Atributos
@@ -13,8 +18,9 @@ public class Entidade {
     protected int energia;
     protected int energiaMax;
 
-    protected int tempoBuff;
     protected int buffDano;
+
+    protected ArrayList<Efeito> efeitos = new ArrayList<>();
 
     // Getters
 
@@ -34,14 +40,6 @@ public class Entidade {
         return escudo;
     }
 
-    public int getTempoBuff() {
-        return tempoBuff;
-    }
-
-    public int getBuffDano() {
-        return buffDano;
-    }
-
     // Constructor
 
     public Entidade(String nome, int vida, int escudo) {
@@ -49,8 +47,6 @@ public class Entidade {
 
         this.vida = vidaMax = vida;
         this.escudo = escudo;
-
-        this.buffDano = 0;
     }
 
 
@@ -96,25 +92,62 @@ public class Entidade {
     }
 
     public boolean estaVivo() {
-        return vida > 0 ? true : false;
+        return vida > 0;
     }
 
-    public int ganharBuffDano(int valor, int tempo) {
-        // if (buffDano < valor) {
-        //     buffDano = valor;
-        // }  Logica defasada
-        buffDano = valor;
-        tempoBuff += tempo;
-        return buffDano;
+    public void ganharVeneno(int valor, int tempo) {
+        boolean existe = false;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoVeneno e && e.getDano() == valor && e.getDuracao() > 0) {
+                e.adicionarDuracao(tempo);
+            }
+        }
+        if (existe) {
+            return;
+        }
+
+        efeitos.add(new EfeitoVeneno(valor, tempo));
     }
 
-    public void resetarBuff() {
-        if (tempoBuff > 0) {
-            tempoBuff--;
+    public void ganharBonusDano(int valor, int tempo) {
+        boolean existe = false;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoBonusDano e && e.getDano() == valor && e.getDuracao() > 0) {
+                e.adicionarDuracao(tempo);
+            }
         }
-        if (tempoBuff == 0) {
-            buffDano = 0;
+        if (existe) {
+            return;
         }
+
+        efeitos.add(new EfeitoBonusDano(valor, tempo));
+    }
+
+    public void perderEfeito(Efeito efeito) {
+        efeitos.remove(efeito);
+    }
+
+    public int calcularBonusDano() {
+        int val = 0;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoBonusDano e) {
+                if (val < e.getDano() && e.getDuracao() > 0) {
+                    val = e.getDano();
+                }
+            }
+        }
+        return val;
+    }
+
+    public int calcularTempoBonusDano(int valor) {
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoBonusDano e) {
+                if (valor == e.getDano()) {
+                    return e.getDuracao();
+                }
+            }
+        }
+        return 0;
     }
 
     public void resetarEnergia() {
@@ -129,5 +162,16 @@ public class Entidade {
         else {
             return false;
         }
+    }
+
+    public void atualizarEfeito(String evento) {
+        for(Efeito efeito : efeitos) {
+            efeito.atualizar(evento, this);
+        }
+        limparEfeitosExpirados();
+    }
+
+    public void limparEfeitosExpirados() {
+        efeitos.removeIf(efeito -> efeito.getDuracao() == 0);
     }
 }

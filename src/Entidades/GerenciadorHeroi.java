@@ -1,6 +1,6 @@
 package Entidades;
 
-import Cartas.CartaBuffDano;
+import Cartas.CartaBonusDano;
 import Cartas.CartaCura;
 import Cartas.CartaDano;
 import Cartas.CartaEscudo;
@@ -20,8 +20,8 @@ public class GerenciadorHeroi {
         CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano na Barriga (5 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 5);
         CartaEscudo cartaEscudoPeq = new CartaEscudo("Cambalhota do Panda (2 de defesa)", "O Dragão Guerreiro dará uma cambalhota e esquivará do dano do ataque", 1, 2);
 
-        CartaBuffDano cartaBuffPeq = new CartaBuffDano("Sorte no Ataque (+1 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, 1, 2);
-        CartaBuffDano cartaBuffMed = new CartaBuffDano("Canalizar o Chi (+2 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, 2, 3);
+        CartaBonusDano cartaBuffPeq = new CartaBonusDano("Sorte no Ataque (+1 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, 1, 2);
+        CartaBonusDano cartaBuffMed = new CartaBonusDano("Canalizar o Chi (+2 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, 2, 3);
 
         CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (3 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 3);
         CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (5 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 5);

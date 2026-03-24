@@ -8,7 +8,7 @@ public class Batalha {
             System.out.println("====================================8====================================");
             System.out.println(heroi.getNome() + ": (" + heroi.getVida() + "/" + heroi.getVidaMax() + " HP) (" + heroi.getEscudo() + " de escudo)");
             System.out.println("                                --- X ---");
-            System.out.println(inimigo.getNome() + ": (" + inimigo.getVida() + "/" + inimigo.getVidaMax() + " HP) (" + inimigo.getEscudo() + " de escudo) (" + inimigo.getBuffDano() + " de dano extra por " + inimigo.getTempoBuff() + " round(s))");
+            System.out.println(inimigo.getNome() + ": (" + inimigo.getVida() + "/" + inimigo.getVidaMax() + " HP) (" + inimigo.getEscudo() + " de escudo) (" + inimigo.calcularBonusDano() + " de dano extra por " + inimigo.calcularTempoBonusDano(inimigo.calcularBonusDano()) + " round(s))");
             System.out.println("====================================8====================================");
             System.out.println();
 
@@ -19,8 +19,8 @@ public class Batalha {
 
             inputHandler.sleep(0.7);
 
-            if (heroi.getTempoBuff() > 0) {
-                System.out.println(heroi.getNome() + " possui " + heroi.getBuffDano() + " de dano extra por mais " + heroi.getTempoBuff() + " round(s)\n");
+            if (heroi.calcularBonusDano() > 0) {
+                System.out.println(heroi.getNome() + " possui " + heroi.calcularBonusDano() + " de dano extra por mais " + heroi.calcularTempoBonusDano(heroi.calcularBonusDano()) + " round(s)\n");
             }
 
             System.out.println(heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
@@ -31,6 +31,7 @@ public class Batalha {
                 Carta escolhida = heroi.getCartaNDeck(opcao);
 
                 if (heroi.podeGastarEnergia(escolhida.getCusto())) {
+                    heroi.atualizarEfeito("ataque");
                     heroi.usarCartaNDeck(opcao, inimigo);
                     inputHandler.clear();
                 }
@@ -43,6 +44,7 @@ public class Batalha {
             }
             else if (opcao == heroi.tamDeck()){
                 inimigo.resetarRound();
+                heroi.atualizarEfeito("fimRound");
                 inimigo.usarCartas(heroi);
                 inputHandler.pressEnter();
                 inputHandler.clear();
@@ -56,11 +58,6 @@ public class Batalha {
             }
         } while (heroi.estaVivo() && inimigo.estaVivo());
 
-        if (heroi.estaVivo()) {
-            return true;
-        }
-        else {
-            return false; 
-        }
+        return heroi.estaVivo();
     }
 }
