@@ -3,6 +3,7 @@ package Entidades;
 import Cartas.CartaBonusDano;
 import Cartas.CartaCura;
 import Cartas.CartaDano;
+import Cartas.CartaEnfraquecido;
 import Cartas.CartaEscudo;
 import Cartas.CartaVeneno;
 import Cartas.CartaVulneravel;
@@ -26,7 +27,8 @@ public class GerenciadorHeroi {
         CartaBonusDano cartaBuffMed = new CartaBonusDano("Canalizar o Chi (+2 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, 2, 3);
 
         CartaVeneno cartaVenenoPeq = new CartaVeneno("Macarrão Envenenado (1 de veneno por 2 rounds)", "Uma comida especial que aplica veneno no inimigo", 1, 1, 2);
-        CartaVulneravel cartaVulneravelPeq = new CartaVulneravel("Ameaça do Dragão Guerreiro (+25% dano recebido por 2 rounds)", "O medo sobre o Dragão Guerreiro deixa o inimigo mais vulnerável a ataques", 1, 25, 2);
+        CartaVulneravel cartaVulneravelPeq = new CartaVulneravel("Golpe Certeiro (+25% dano recebido por 2 rounds)", "O golpe certeiro deixa o inimigo mais vulnerável a ataques", 1, 25, 1);
+        CartaEnfraquecido cartaEnfraquecidoPeq = new CartaEnfraquecido("Ameaça do Dragão Guerreiro (-25% dano causado por 2 rounds)", "O medo sobre o Dragão Guerreiro deixa o inimigo enfraquecido e ataca com menos dano", 1, 25, 2);
 
         CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (3 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 3);
         CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (5 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 5);
@@ -45,6 +47,7 @@ public class GerenciadorHeroi {
 
         heroi.adicionarCartaBaralho(cartaVenenoPeq, 2);
         heroi.adicionarCartaBaralho(cartaVulneravelPeq, 2);
+        heroi.adicionarCartaBaralho(cartaEnfraquecidoPeq, 2);
 
         heroi.adicionarCartaBaralho(cartaCuraPeq, 1);
         heroi.adicionarCartaBaralho(cartaCuraMed, 1);

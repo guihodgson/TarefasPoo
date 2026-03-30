@@ -41,6 +41,9 @@ public class Inimigo extends Entidade {
         if (baralho.mostrarPrimeiraCarta() instanceof CartaVulneravel cartaVulneravel) {
             System.out.println(">>> AVISO: " + nome + " vai usar " + cartaVulneravel.getNome() + " (+" + cartaVulneravel.getVulnerabilidade() + "% de dano recebido, " + cartaVulneravel.getDescricao() + ")");
         }
+        if (baralho.mostrarPrimeiraCarta() instanceof CartaEnfraquecido cartaEnfraquecido) {
+            System.out.println(">>> AVISO: " + nome + " vai usar " + cartaEnfraquecido.getNome() + " (-" + cartaEnfraquecido.getPorcentagem() + "% de dano causado, " + cartaEnfraquecido.getDescricao() + ")");
+        }
     }
 
     public void usarCartas(Heroi heroi) {
@@ -91,6 +94,16 @@ public class Inimigo extends Entidade {
                 if (this.podeGastarEnergia(acao.getCusto())) {
                     acao.usar(this, heroi);
                     System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou +" + cartaVulneravel.getVulnerabilidade() + "% de dano recebido.");
+                }
+                else {
+                    baralho.embaralhar();
+                    break;
+                }
+            }
+            if (acao instanceof CartaEnfraquecido cartaEnfraquecido) {
+                if (this.podeGastarEnergia(acao.getCusto())) {
+                    acao.usar(this, heroi);
+                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou -" + cartaEnfraquecido.getPorcentagem() + "% de dano causado.");
                 }
                 else {
                     baralho.embaralhar();

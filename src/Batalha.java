@@ -22,6 +22,11 @@ public class Batalha {
             status += " | Vulneravel: +" + vulneravel + "% de dano por " + entidade.calcularTempoVulneravel(vulneravel) + " round(s)";
         }
 
+        int enfraquecido = entidade.calcularEnfraquecido();
+        if (enfraquecido > 0) {
+            status += " | Enfraquecido: -" + enfraquecido + "% de dano por " + entidade.calcularTempoEnfraquecido(enfraquecido) + " round(s)";
+        }
+
         return status;
     }
 

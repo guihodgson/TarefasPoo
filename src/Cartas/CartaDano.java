@@ -26,7 +26,8 @@ public class CartaDano extends Carta{
     @Override
     public void usar(Entidade heroi, Entidade alvo) {
         int danoBase = ataque + heroi.calcularBonusDano();
-        int danoFinal = alvo.calcularDanoAtaqueRecebido(danoBase);
+        int danoCausado = heroi.calcularDanoAtaqueCausado(danoBase);
+        int danoFinal = alvo.calcularDanoAtaqueRecebido(danoCausado);
         alvo.receberDano(danoFinal);
     }
 }

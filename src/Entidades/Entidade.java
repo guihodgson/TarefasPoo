@@ -2,6 +2,7 @@ package Entidades;
 
 import Efeitos.Efeito;
 import Efeitos.EfeitoBonusDano;
+import Efeitos.EfeitoEnfraquecido;
 import Efeitos.EfeitoVulneravel;
 import Efeitos.EfeitoVeneno;
 import java.util.ArrayList;
@@ -141,6 +142,21 @@ public class Entidade {
         efeitos.add(new EfeitoVulneravel(valor, tempo));
     }
 
+    public void ganharEnfraquecido(int valor, int tempo) {
+        boolean existe = false;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoEnfraquecido e && e.getPorcentagem() == valor && e.getDuracao() > 0) {
+                e.adicionarDuracao(tempo);
+                existe = true;
+            }
+        }
+        if (existe) {
+            return;
+        }
+
+        efeitos.add(new EfeitoEnfraquecido(valor, tempo));
+    }
+
     public void perderEfeito(Efeito efeito) {
         efeitos.remove(efeito);
     }
@@ -214,9 +230,37 @@ public class Entidade {
         return 0;
     }
 
+    public int calcularEnfraquecido() {
+        int val = 0;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoEnfraquecido e) {
+                if (val < e.getPorcentagem() && e.getDuracao() > 0) {
+                    val = e.getPorcentagem();
+                }
+            }
+        }
+        return val;
+    }
+
+    public int calcularTempoEnfraquecido(int valor) {
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoEnfraquecido e) {
+                if (valor == e.getPorcentagem()) {
+                    return e.getDuracao();
+                }
+            }
+        }
+        return 0;
+    }
+
+    public int calcularDanoAtaqueCausado(int danoBase) {
+        int enfraquecido = calcularEnfraquecido();
+        return (int) Math.ceil(danoBase * (1 - (enfraquecido / 100.0)));
+    }
+
     public int calcularDanoAtaqueRecebido(int danoBase) {
         int vulneravel = calcularVulneravel();
-        return (int) Math.round(danoBase * (1 + vulneravel / 100.0));
+        return (int) Math.ceil(danoBase * (1 + (vulneravel / 100.0))); // Arredonda a porcentagem a mais para cima
     }
 
     public void resetarEnergia() {
