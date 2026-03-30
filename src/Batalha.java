@@ -3,13 +3,32 @@ import Cartas.Carta;
 import Entidades.*;
 
 public class Batalha {
+
+    private static String montarStatus(Entidade entidade) {
+        String status = "HP: " + entidade.getVida() + "/" + entidade.getVidaMax() + " | Escudo: " + entidade.getEscudo();
+
+        int bonus = entidade.calcularBonusDano();
+        if (bonus > 0) {
+            status += " | Bonus: " + bonus + " por " + entidade.calcularTempoBonusDano(bonus) + " round(s)";
+        }
+
+        int veneno = entidade.calcularVeneno();
+        if (veneno > 0) {
+            status += " | Veneno: " + veneno + " por " + entidade.calcularTempoVeneno(veneno) + " round(s)";
+        }
+
+        return status;
+    }
+
     public static boolean batalhar(Heroi heroi, Inimigo inimigo, InputHandler inputHandler) {
         do {
-            System.out.println("====================================8====================================");
-            System.out.println(heroi.getNome() + ": (" + heroi.getVida() + "/" + heroi.getVidaMax() + " HP) (" + heroi.getEscudo() + " de escudo)");
-            System.out.println("                                --- X ---");
-            System.out.println(inimigo.getNome() + ": (" + inimigo.getVida() + "/" + inimigo.getVidaMax() + " HP) (" + inimigo.getEscudo() + " de escudo) (" + inimigo.calcularBonusDano() + " de dano extra por " + inimigo.calcularTempoBonusDano(inimigo.calcularBonusDano()) + " round(s))");
-            System.out.println("====================================8====================================");
+            System.out.println("================================================================================");
+            System.out.println("HEROI: " + heroi.getNome());
+            System.out.println(montarStatus(heroi));
+            System.out.println("------------------------------------------------------------");
+            System.out.println("VILAO: " + inimigo.getNome());
+            System.out.println(montarStatus(inimigo));
+            System.out.println("================================================================================");
             System.out.println();
 
             inputHandler.sleep(0.7);
@@ -18,10 +37,6 @@ public class Batalha {
             System.out.println();
 
             inputHandler.sleep(0.7);
-
-            if (heroi.calcularBonusDano() > 0) {
-                System.out.println(heroi.getNome() + " possui " + heroi.calcularBonusDano() + " de dano extra por mais " + heroi.calcularTempoBonusDano(heroi.calcularBonusDano()) + " round(s)\n");
-            }
 
             System.out.println(heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
 
@@ -45,6 +60,12 @@ public class Batalha {
             else if (opcao == heroi.tamDeck()){
                 inimigo.resetarRound();
                 heroi.atualizarEfeito("fimRound");
+                inimigo.atualizarEfeito("fimRound");
+
+                if (!inimigo.estaVivo()) {
+                    break;
+                }
+
                 inimigo.usarCartas(heroi);
                 inputHandler.pressEnter();
                 inputHandler.clear();

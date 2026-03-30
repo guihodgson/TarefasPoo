@@ -4,6 +4,7 @@ import Cartas.CartaBonusDano;
 import Cartas.CartaCura;
 import Cartas.CartaDano;
 import Cartas.CartaEscudo;
+import Cartas.CartaVeneno;
 
 public class GerenciadorHeroi {
 
@@ -23,6 +24,8 @@ public class GerenciadorHeroi {
         CartaBonusDano cartaBuffPeq = new CartaBonusDano("Sorte no Ataque (+1 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, 1, 2);
         CartaBonusDano cartaBuffMed = new CartaBonusDano("Canalizar o Chi (+2 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, 2, 3);
 
+        CartaVeneno cartaVenenoPeq = new CartaVeneno("Macarrão Envenenado (1 de veneno por 2 rounds)", "Uma comida especial que aplica veneno no inimigo", 1, 1, 2);
+
         CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (3 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 3);
         CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (5 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 5);
         CartaCura cartaCuraGrnd = new CartaCura("Cura do Bao (7 de cura)", "O Pãozinho Bao do Papai Ping dará mais vida para curar-se", 4, 7);
@@ -37,6 +40,8 @@ public class GerenciadorHeroi {
 
         heroi.adicionarCartaBaralho(cartaBuffPeq, 2);
         heroi.adicionarCartaBaralho(cartaBuffMed, 2);
+
+        heroi.adicionarCartaBaralho(cartaVenenoPeq, 2);
 
         heroi.adicionarCartaBaralho(cartaCuraPeq, 1);
         heroi.adicionarCartaBaralho(cartaCuraMed, 1);

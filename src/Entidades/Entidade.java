@@ -100,6 +100,7 @@ public class Entidade {
         for (Efeito efeito : efeitos) {
             if (efeito instanceof EfeitoVeneno e && e.getDano() == valor && e.getDuracao() > 0) {
                 e.adicionarDuracao(tempo);
+                existe = true;
             }
         }
         if (existe) {
@@ -114,6 +115,7 @@ public class Entidade {
         for (Efeito efeito : efeitos) {
             if (efeito instanceof EfeitoBonusDano e && e.getDano() == valor && e.getDuracao() > 0) {
                 e.adicionarDuracao(tempo);
+                existe = true;
             }
         }
         if (existe) {
@@ -142,6 +144,29 @@ public class Entidade {
     public int calcularTempoBonusDano(int valor) {
         for (Efeito efeito : efeitos) {
             if (efeito instanceof EfeitoBonusDano e) {
+                if (valor == e.getDano()) {
+                    return e.getDuracao();
+                }
+            }
+        }
+        return 0;
+    }
+
+    public int calcularVeneno() {
+        int val = 0;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoVeneno e) {
+                if (val < e.getDano() && e.getDuracao() > 0) {
+                    val = e.getDano();
+                }
+            }
+        }
+        return val;
+    }
+
+    public int calcularTempoVeneno(int valor) {
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoVeneno e) {
                 if (valor == e.getDano()) {
                     return e.getDuracao();
                 }
