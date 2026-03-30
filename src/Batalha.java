@@ -17,6 +17,11 @@ public class Batalha {
             status += " | Veneno: " + veneno + " por " + entidade.calcularTempoVeneno(veneno) + " round(s)";
         }
 
+        int vulneravel = entidade.calcularVulneravel();
+        if (vulneravel > 0) {
+            status += " | Vulneravel: +" + vulneravel + "% de dano por " + entidade.calcularTempoVulneravel(vulneravel) + " round(s)";
+        }
+
         return status;
     }
 

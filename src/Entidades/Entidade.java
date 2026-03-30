@@ -2,6 +2,7 @@ package Entidades;
 
 import Efeitos.Efeito;
 import Efeitos.EfeitoBonusDano;
+import Efeitos.EfeitoVulneravel;
 import Efeitos.EfeitoVeneno;
 import java.util.ArrayList;
 
@@ -125,6 +126,21 @@ public class Entidade {
         efeitos.add(new EfeitoBonusDano(valor, tempo));
     }
 
+    public void ganharVulneravel(int valor, int tempo) {
+        boolean existe = false;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoVulneravel e && e.getPorcentagem() == valor && e.getDuracao() > 0) {
+                e.adicionarDuracao(tempo);
+                existe = true;
+            }
+        }
+        if (existe) {
+            return;
+        }
+
+        efeitos.add(new EfeitoVulneravel(valor, tempo));
+    }
+
     public void perderEfeito(Efeito efeito) {
         efeitos.remove(efeito);
     }
@@ -173,6 +189,34 @@ public class Entidade {
             }
         }
         return 0;
+    }
+
+    public int calcularVulneravel() {
+        int val = 0;
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoVulneravel e) {
+                if (val < e.getPorcentagem() && e.getDuracao() > 0) {
+                    val = e.getPorcentagem();
+                }
+            }
+        }
+        return val;
+    }
+
+    public int calcularTempoVulneravel(int valor) {
+        for (Efeito efeito : efeitos) {
+            if (efeito instanceof EfeitoVulneravel e) {
+                if (valor == e.getPorcentagem()) {
+                    return e.getDuracao();
+                }
+            }
+        }
+        return 0;
+    }
+
+    public int calcularDanoAtaqueRecebido(int danoBase) {
+        int vulneravel = calcularVulneravel();
+        return (int) Math.round(danoBase * (1 + vulneravel / 100.0));
     }
 
     public void resetarEnergia() {
