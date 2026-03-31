@@ -12,8 +12,44 @@ import Entidades.Inimigo;
 
 public class Batalha {
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+
     private static String montarStatus(Entidade entidade) {
-        String status = "HP: " + entidade.getVida() + "/" + entidade.getVidaMax() + " | Escudo: " + entidade.getEscudo();
+        double statusVida = ((double) entidade.getVida()) / ((double) entidade.getVidaMax());
+
+        String barraVida = "";
+
+        if (statusVida > 0.7) {
+            for (int i = 0; i < (int) (statusVida * 10); i++) {
+                barraVida += "█";
+            }
+            barraVida = String.format("%-10s", barraVida);
+            barraVida = ANSI_GREEN + "█" + barraVida;
+            barraVida += ANSI_RESET;
+        }
+        else if (statusVida > 0.4) {
+            for (int i = 0; i < (int) (statusVida * 10); i++) {
+                barraVida += "█";
+            }
+            barraVida = String.format("%-10s", barraVida);
+            barraVida = ANSI_YELLOW + "█" + barraVida;
+            barraVida += ANSI_RESET;
+        }
+        else {
+            for (int i = 0; i < (int) (statusVida * 10); i++) {
+                barraVida += "█";
+            }
+            barraVida = String.format("%-10s", barraVida);
+            barraVida = ANSI_RED + "█" + barraVida;
+            barraVida += ANSI_RESET;
+        }
+
+
+        String status = "HP: " + barraVida + " " + entidade.getVida() + "/" + entidade.getVidaMax() + " \nEscudo: " + entidade.getEscudo();
 
         int bonus = entidade.calcularBonusDano();
         if (bonus > 0) {
@@ -38,6 +74,13 @@ public class Batalha {
         return status;
     }
 
+    /**
+     * Cria a batalha entre um heroi e um ou mais inimigos.
+     * @param heroi Heroi que vai batalhar
+     * @param inputHandler Pega os inputs
+     * @param inimigos Lista de inimigos
+     * @return Retorna True se ganhar e False se perder
+     */
     public static boolean batalhar(Heroi heroi, InputHandler inputHandler, Inimigo... inimigos) {
         ArrayList<Inimigo> listaInimigos;
 
@@ -51,24 +94,35 @@ public class Batalha {
             ArrayList<String> listaNomeInimigos = listarInimigos(listaInimigos);
 
 
-            System.out.println("===================================8===================================");
+            System.out.println(ANSI_YELLOW + "===================================8===================================" + ANSI_RESET);
             System.out.println("HEROI: " + heroi.getNome());
             System.out.println(montarStatus(heroi));
             for (Inimigo vilao : listaInimigos) {
-                System.out.println("------------------------------------------------------------");
+                System.out.println(ANSI_YELLOW + "------------------------------------------------------------" + ANSI_RESET);
                 System.out.println("INIMIGO " + (listaInimigos.indexOf(vilao) + 1) + ": " + vilao.getNome());
                 System.out.println(montarStatus(vilao));
                 
                 inputHandler.sleep(0.6);
                 vilao.printarProxAcao();
             }
-            System.out.println("===================================8===================================");
+            System.out.println(ANSI_YELLOW + "===================================8===================================" + ANSI_RESET);
             System.out.println();
             
 
             inputHandler.sleep(0.6);
 
-            System.out.println(heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
+            double statusEnergia = ((double) heroi.getEnergia()) / ((double) heroi.getEnergiaMax());
+            if (statusEnergia >= 0.8) {
+                System.out.println(ANSI_GREEN + heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes." + ANSI_RESET );
+            }
+            else if (statusEnergia >= 0.4) {
+                System.out.println(ANSI_YELLOW + heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes." + ANSI_RESET );
+            }
+            else {
+                System.out.println(ANSI_RED + heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes." + ANSI_RESET );
+            }
+
+            System.out.println();
 
             int opcao = inputHandler.selecionar(heroi.mostrarDeck(), true);
 
@@ -113,11 +167,13 @@ public class Batalha {
                 
                 heroi.atualizarEfeito("fimRound");
                 
+                System.out.printf(ANSI_RED);
                 for (Inimigo inimigo : listaInimigos) {
                     inimigo.usarCartas(heroi);
-                    inputHandler.sleep(0.2);
-                    
+                    inputHandler.sleep(0.4);
+                    System.out.println();
                 }
+                System.out.printf(ANSI_RESET);
                 
                 inputHandler.pressEnter();
                 inputHandler.clear();

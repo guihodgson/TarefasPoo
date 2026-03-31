@@ -1,11 +1,12 @@
 package Entidades;
 
+import java.util.ArrayList;
+
 import Efeitos.Efeito;
 import Efeitos.EfeitoBonusDano;
 import Efeitos.EfeitoEnfraquecido;
 import Efeitos.EfeitoVeneno;
 import Efeitos.EfeitoVulneravel;
-import java.util.ArrayList;
 
 public class Entidade {
     
@@ -97,6 +98,11 @@ public class Entidade {
         return vida > 0;
     }
 
+    /**
+     * Aplica veneno na entidade aplicada, por um determinado valor de tempo.
+     * @param valor Quantidade de dano por round do veneno.
+     * @param tempo Quantidade de rounds que o veneno é usado.
+     */
     public void ganharVeneno(int valor, int tempo) {
         boolean existe = false;
         for (Efeito efeito : efeitos) {
@@ -112,6 +118,11 @@ public class Entidade {
         efeitos.add(new EfeitoVeneno(valor, tempo));
     }
 
+    /**
+     * Aplica um bonus de dano na entidade aplicada, por um determinado valor de tempo.
+     * @param valor Quantidade de dano extra por ataque.
+     * @param tempo Quantidade de rounds que o bonus funciona.
+     */
     public void ganharBonusDano(int valor, int tempo) {
         boolean existe = false;
         for (Efeito efeito : efeitos) {
@@ -127,31 +138,33 @@ public class Entidade {
         efeitos.add(new EfeitoBonusDano(valor, tempo));
     }
 
+    /**
+     * Aplica vulnerável na entidade aplicada, por um determinado valor de tempo.
+     * @param valor Porcentagem de vulneravel.
+     * @param tempo Quantidade de rounds que o vulnerável é usado.
+     */
     public void ganharVulneravel(int valor, int tempo) {
-        boolean existe = false;
         for (Efeito efeito : efeitos) {
             if (efeito instanceof EfeitoVulneravel e && e.getPorcentagem() == valor && e.getDuracao() > 0) {
                 e.adicionarDuracao(tempo);
-                existe = true;
+                return;
             }
-        }
-        if (existe) {
-            return;
         }
 
         efeitos.add(new EfeitoVulneravel(valor, tempo));
     }
 
+    /**
+     * Aplica vulnerável na entidade aplicada, por um determinado valor de tempo.
+     * @param valor Porcentagem de vulneravel.
+     * @param tempo Quantidade de rounds que o vulnerável é usado.
+     */
     public void ganharEnfraquecido(int valor, int tempo) {
-        boolean existe = false;
         for (Efeito efeito : efeitos) {
             if (efeito instanceof EfeitoEnfraquecido e && e.getPorcentagem() == valor && e.getDuracao() > 0) {
                 e.adicionarDuracao(tempo);
-                existe = true;
+                return;
             }
-        }
-        if (existe) {
-            return;
         }
 
         efeitos.add(new EfeitoEnfraquecido(valor, tempo));
