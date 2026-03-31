@@ -103,6 +103,8 @@ public class Batalha {
                     inimigo.atualizarEfeito("fimRound");
                 }
 
+                listaInimigos.removeIf(inimigo -> !inimigo.estaVivo());
+
                 
                 heroi.atualizarEfeito("fimRound");
                 

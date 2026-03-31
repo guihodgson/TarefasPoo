@@ -2,6 +2,8 @@
 
 Dragon Warrior é um jogo inspirado na trilogia inicial da série de filmes Kung Fu Panda. Você consegue se aventurar em batalhas com os 3 principais antagonistas dos filmes, deixando o mundo mais seguro ou deixando ele cair em trevas.
 
+OBS: Existe um modo desafio no menu!
+
 ## Propriedades básicas
 
 Os personagens possuem Pontos de Vida, Energia e Escudo.
@@ -14,11 +16,9 @@ Os personagens possuem Pontos de Vida, Energia e Escudo.
 
 O jogador possui um baralho de cartas de ação. A cada round, 5 cartas desse baralho são colocadas em seu deck para que possam ser utilizadas no combate.
 
-Cada carta possui um valor de energia que precisa ser gasta para utiliza-la, assim atacando ou defendendo uma quantidade de dano especifica dependendo da carta.
+Cada carta possui um valor de energia que precisa ser gasta para utiliza-la, assim atacando, defendendo ou aplicando algum efeito.
 
 Para utilizar as cartas, selecione o número da carta que voce deseja utilizar e, desde que tenha energia, utilizará essa carta.
-
-Obs: Quando buffDano é utilizado, seu tempo soma, porém se utilizar um buff mais fraco, você pode sobrescrever seu buff antigo, entao verifique se vale a pena utilizar um buff menor enquanto um maior está ativo.
 
 ## Compilação e execução
 
