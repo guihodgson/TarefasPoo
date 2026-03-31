@@ -70,9 +70,9 @@ public class Batalha {
                 Carta escolhida = heroi.getCartaNDeck(opcao);
 
                 if (heroi.podeGastarEnergia(escolhida.getCusto())) {
-                    int alvo = -1;
+                    int alvo = 0;
                     boolean temAlvo = false;
-                    if (escolhida instanceof CartaDano || escolhida instanceof CartaVeneno || escolhida instanceof CartaVulneravel) {
+                    if (escolhida instanceof CartaDano || escolhida instanceof CartaVeneno || escolhida instanceof CartaVulneravel || escolhida instanceof CartaEnfraquecido) {
                         System.out.println("Escolha o alvo do ataque:\n");
                         alvo = inputHandler.selecionar(listaNomeInimigos, false);
                         temAlvo = true;
@@ -81,7 +81,7 @@ public class Batalha {
                     if (!temAlvo || (alvo < listaInimigos.size() && alvo >= 0)) {  // Alvo valido
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
-                        heroi.usarCartaNDeck(opcao, listaInimigos.get(0));
+                        heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
                         inputHandler.clear();
                     }
                     else {  // Alvo invalido
