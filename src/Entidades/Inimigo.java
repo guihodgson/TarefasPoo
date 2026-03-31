@@ -52,6 +52,7 @@ public class Inimigo extends Entidade {
             baralho.adicionarCarta(acao);
             if (acao instanceof CartaDano cartaDano) {
                 if (this.podeGastarEnergia(acao.getCusto())) {
+                    this.gastarEnergia(acao.getCusto());
                     acao.usar(this, heroi);
                     System.out.println(nome + " usou o golpe " + acao.getNome() + " e causou " + cartaDano.getAtaque() + " de dano.");
                 }
@@ -62,6 +63,7 @@ public class Inimigo extends Entidade {
             }
             if (acao instanceof CartaEscudo cartaEscudo) {
                 if (this.podeGastarEnergia(acao.getCusto())) {
+                    this.gastarEnergia(acao.getCusto());
                     acao.usar(this, heroi);
                     System.out.println(nome + " usou o movimento " + acao.getNome() + " e ganhou " + cartaEscudo.getDefesa() + " de escudo.");
                 }
@@ -72,6 +74,7 @@ public class Inimigo extends Entidade {
             }
             if (acao instanceof CartaBonusDano cartaBonusDano) {
                 if (this.podeGastarEnergia(acao.getCusto())) {
+                    this.gastarEnergia(acao.getCusto());
                     acao.usar(this, heroi);
                     System.out.println(nome + " usou o movimento " + acao.getNome() + " e ganhou " + cartaBonusDano.getBonus() + " de bonus de dano.");
                 }
@@ -82,6 +85,7 @@ public class Inimigo extends Entidade {
             }
             if (acao instanceof CartaVeneno cartaVeneno) {
                 if (this.podeGastarEnergia(acao.getCusto())) {
+                    this.gastarEnergia(acao.getCusto());
                     acao.usar(this, heroi);
                     System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou " + cartaVeneno.getVeneno() + " de veneno.");
                 }
@@ -92,6 +96,7 @@ public class Inimigo extends Entidade {
             }
             if (acao instanceof CartaVulneravel cartaVulneravel) {
                 if (this.podeGastarEnergia(acao.getCusto())) {
+                    this.gastarEnergia(acao.getCusto());
                     acao.usar(this, heroi);
                     System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou +" + cartaVulneravel.getVulnerabilidade() + "% de dano recebido.");
                 }
@@ -102,6 +107,7 @@ public class Inimigo extends Entidade {
             }
             if (acao instanceof CartaEnfraquecido cartaEnfraquecido) {
                 if (this.podeGastarEnergia(acao.getCusto())) {
+                    this.gastarEnergia(acao.getCusto());
                     acao.usar(this, heroi);
                     System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou -" + cartaEnfraquecido.getPorcentagem() + "% de dano causado.");
                 }
