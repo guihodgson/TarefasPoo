@@ -56,7 +56,7 @@ public class Batalha {
             System.out.println(montarStatus(heroi));
             for (Inimigo vilao : listaInimigos) {
                 System.out.println("------------------------------------------------------------");
-                System.out.println("VILAO: " + vilao.getNome());
+                System.out.println("INIMIGO " + (listaInimigos.indexOf(vilao) + 1) + ": " + vilao.getNome());
                 System.out.println(montarStatus(vilao));
                 
                 inputHandler.sleep(0.6);
