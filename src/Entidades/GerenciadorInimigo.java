@@ -11,7 +11,7 @@ public class GerenciadorInimigo {
         Inimigo inimigo;
         switch (opcao) {
             case 0 -> {
-                inimigo = new Inimigo("Tai Lung", 1, 0, 1);
+                inimigo = new Inimigo("Tai Lung", 34, 0, 1);
                 CartaDano ataqueTaiPeq = new CartaDano("Investida da Pantera", "um soco poderoso de Tai Lung", 1, 7);
                 CartaDano ataqueTaiForte = new CartaDano("Chute da Pantera", "um chute de Kung Fu poderosíssimo de Tai Lung", 1, 14);
 
@@ -28,7 +28,7 @@ public class GerenciadorInimigo {
                 inimigo.adicionarCarta(enfraquecidoTaiPeq, 2);
             }
             case 1 -> {
-                inimigo = new Inimigo("Lord Shen", 1, 0, 1);
+                inimigo = new Inimigo("Lord Shen", 32, 0, 1);
                 CartaDano ataqueShenPeq = new CartaDano("Investida do Pavão", "um ataque de penas afiadas de Lord Shen", 1, 8);
                 CartaDano ataqueShenForte = new CartaDano("Canhão Dragão", "um bombardeio poderosíssimo do canhão de Lord Shen", 1, 14);
 
@@ -45,7 +45,7 @@ public class GerenciadorInimigo {
                 inimigo.adicionarCarta(enfraquecidoShenPeq, 2);
             }
             case 2 -> {
-                inimigo = new Inimigo("Kai", 1, 0, 1);
+                inimigo = new Inimigo("Kai", 36, 0, 1);
                 CartaDano ataqueKaiPeq = new CartaDano("Investida do Touro", "um ataque das lâminas espirituais de Kai", 1, 8);
                 CartaDano ataqueKaiForte = new CartaDano("Assalto Espiritual", "um ataque poderosíssimo de roubar as almas por Kai", 1, 16);
 
