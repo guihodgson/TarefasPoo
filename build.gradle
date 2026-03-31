@@ -1,0 +1,33 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'application'
+
+// In this section you declare where to find the source code
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    // Add any dependencies your project needs here
+    // Example: implementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+}
+
+// Configure the application
+application {
+    mainClass = 'App'
+}
+
+// Configure the run task to accept standard input
+run {
+    standardInput = System.in
+}

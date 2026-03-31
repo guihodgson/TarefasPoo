@@ -1,7 +1,14 @@
 
-import Cartas.*;
-import Entidades.*;
 import java.util.ArrayList;
+
+import Cartas.Carta;
+import Cartas.CartaDano;
+import Cartas.CartaEnfraquecido;
+import Cartas.CartaVeneno;
+import Cartas.CartaVulneravel;
+import Entidades.Entidade;
+import Entidades.Heroi;
+import Entidades.Inimigo;
 
 public class Batalha {
 
@@ -44,23 +51,22 @@ public class Batalha {
             ArrayList<String> listaNomeInimigos = listarInimigos(listaInimigos);
 
 
-            System.out.println("================================================================================");
+            System.out.println("===================================8===================================");
             System.out.println("HEROI: " + heroi.getNome());
             System.out.println(montarStatus(heroi));
             for (Inimigo vilao : listaInimigos) {
                 System.out.println("------------------------------------------------------------");
                 System.out.println("VILAO: " + vilao.getNome());
                 System.out.println(montarStatus(vilao));
-                System.out.println();
                 
-                inputHandler.sleep(0.7);
+                inputHandler.sleep(0.6);
                 vilao.printarProxAcao();
             }
-            System.out.println("================================================================================");
+            System.out.println("===================================8===================================");
             System.out.println();
             
 
-            inputHandler.sleep(0.7);
+            inputHandler.sleep(0.6);
 
             System.out.println(heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
 
@@ -104,10 +110,8 @@ public class Batalha {
                 }
 
                 listaInimigos.removeIf(inimigo -> !inimigo.estaVivo());
-
                 
                 heroi.atualizarEfeito("fimRound");
-                
                 
                 for (Inimigo inimigo : listaInimigos) {
                     inimigo.usarCartas(heroi);
