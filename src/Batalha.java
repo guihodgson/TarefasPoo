@@ -95,21 +95,24 @@ public class Batalha {
 
 
             System.out.println(ANSI_YELLOW + "===================================8===================================" + ANSI_RESET);
+            inputHandler.sleep(0.4);
             System.out.println("HEROI: " + heroi.getNome());
             System.out.println(montarStatus(heroi));
+            inputHandler.sleep(0.4);
             for (Inimigo vilao : listaInimigos) {
                 System.out.println(ANSI_YELLOW + "------------------------------------------------------------" + ANSI_RESET);
+                inputHandler.sleep(0.4);
                 System.out.println("INIMIGO " + (listaInimigos.indexOf(vilao) + 1) + ": " + vilao.getNome());
                 System.out.println(montarStatus(vilao));
                 
-                inputHandler.sleep(0.6);
                 vilao.printarProxAcao();
+                inputHandler.sleep(0.4);
             }
             System.out.println(ANSI_YELLOW + "===================================8===================================" + ANSI_RESET);
             System.out.println();
             
 
-            inputHandler.sleep(0.6);
+            inputHandler.sleep(0.4);
 
             double statusEnergia = ((double) heroi.getEnergia()) / ((double) heroi.getEnergiaMax());
             if (statusEnergia >= 0.8) {
