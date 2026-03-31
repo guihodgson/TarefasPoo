@@ -39,50 +39,25 @@ public class App {
 
         inputHandler.clear();
 
-        if (!Batalha.batalhar(heroi, inimigo, inputHandler)) {
-            System.out.println("Você MORREU, o mundo continua em trevas.");  
-            inputHandler.sleep(0.4);
-            GerenciadorFinal.criarPoTriste();
-            System.exit(0);
-        }
-        if (desafio == false) {
-            System.out.println("Você GANHOU de " + inimigo.getNome() + "!!\nO mundo está mais seguro agora.");
-            inputHandler.sleep(0.4);
-            GerenciadorFinal.criarPoFeliz();
-            System.exit(0);
-        }
-
-        System.out.println("\nBATALHA 2");
-
-        heroi.curarVida(10);
-        heroi.resetarRound();
-
-        System.out.println("Você curou 10 de vida.\n");
-        
-        inputHandler.pressEnter();
-        inputHandler.clear();
-
-        inimigo = GerenciadorInimigo.criarInimigo(1);
-
-        if (!Batalha.batalhar(heroi, inimigo, inputHandler)) {
-            System.out.println("Você MORREU, o mundo continua em trevas.");  
-            inputHandler.sleep(0.4);
-            GerenciadorFinal.criarPoTriste();
-            System.exit(0);
+        if (!desafio) {
+            if (!Batalha.batalhar(heroi, inputHandler, inimigo)) {
+                System.out.println("Você MORREU, o mundo continua em trevas.");  
+                inputHandler.sleep(0.4);
+                GerenciadorFinal.criarPoTriste();
+                System.exit(0);
+            }
+            if (desafio == false) {
+                System.out.println("Você GANHOU de " + inimigo.getNome() + "!!\nO mundo está mais seguro agora.");
+                inputHandler.sleep(0.4);
+                GerenciadorFinal.criarPoFeliz();
+                System.exit(0);
+            }
         }
 
-        System.out.println("\nBATALHA 3");
+        Inimigo inimigo2 = GerenciadorInimigo.criarInimigo(1);
+        Inimigo inimigo3 = GerenciadorInimigo.criarInimigo(2);
 
-        heroi.curarVida(16);
-        heroi.resetarRound();
-        System.out.println("Você curou 16 de vida.\n");
-        
-        inputHandler.pressEnter();
-        inputHandler.clear();
-
-        inimigo = GerenciadorInimigo.criarInimigo(2);
-
-        if (!Batalha.batalhar(heroi, inimigo, inputHandler)) {
+        if (!Batalha.batalhar(heroi, inputHandler, inimigo, inimigo2, inimigo3)) {
             System.out.println("Você MORREU, o mundo continua em trevas.");  
             inputHandler.sleep(0.4);
             GerenciadorFinal.criarPoTriste();

@@ -1,6 +1,7 @@
 
-import Cartas.Carta;
+import Cartas.*;
 import Entidades.*;
+import java.util.ArrayList;
 
 public class Batalha {
 
@@ -30,21 +31,34 @@ public class Batalha {
         return status;
     }
 
-    public static boolean batalhar(Heroi heroi, Inimigo inimigo, InputHandler inputHandler) {
+    public static boolean batalhar(Heroi heroi, InputHandler inputHandler, Inimigo... inimigos) {
+        ArrayList<Inimigo> listaInimigos;
+
         do {
+            listaInimigos = new ArrayList<>();
+            for (Inimigo inimigo : inimigos) {
+                if (inimigo.estaVivo()) {
+                    listaInimigos.add(inimigo);
+                }
+            }
+            ArrayList<String> listaNomeInimigos = listarInimigos(listaInimigos);
+
+
             System.out.println("================================================================================");
             System.out.println("HEROI: " + heroi.getNome());
             System.out.println(montarStatus(heroi));
-            System.out.println("------------------------------------------------------------");
-            System.out.println("VILAO: " + inimigo.getNome());
-            System.out.println(montarStatus(inimigo));
+            for (Inimigo vilao : listaInimigos) {
+                System.out.println("------------------------------------------------------------");
+                System.out.println("VILAO: " + vilao.getNome());
+                System.out.println(montarStatus(vilao));
+                System.out.println();
+                
+                inputHandler.sleep(0.7);
+                vilao.printarProxAcao();
+            }
             System.out.println("================================================================================");
             System.out.println();
-
-            inputHandler.sleep(0.7);
-
-            inimigo.printarProxAcao();
-            System.out.println();
+            
 
             inputHandler.sleep(0.7);
 
@@ -56,9 +70,25 @@ public class Batalha {
                 Carta escolhida = heroi.getCartaNDeck(opcao);
 
                 if (heroi.podeGastarEnergia(escolhida.getCusto())) {
-                    heroi.atualizarEfeito("ataque");
-                    heroi.usarCartaNDeck(opcao, inimigo);
-                    inputHandler.clear();
+                    int alvo = -1;
+                    boolean temAlvo = false;
+                    if (escolhida instanceof CartaDano || escolhida instanceof CartaVeneno || escolhida instanceof CartaVulneravel) {
+                        System.out.println("Escolha o alvo do ataque:\n");
+                        alvo = inputHandler.selecionar(listaNomeInimigos, false);
+                        temAlvo = true;
+                    }
+
+                    if (!temAlvo || (alvo < listaInimigos.size() && alvo >= 0)) {  // Alvo valido
+                        heroi.gastarEnergia(escolhida.getCusto());
+                        heroi.atualizarEfeito("ataque");
+                        heroi.usarCartaNDeck(opcao, listaInimigos.get(0));
+                        inputHandler.clear();
+                    }
+                    else {  // Alvo invalido
+                        System.out.println("Opcao invalida, tente novamente\n");
+                        inputHandler.pressEnter();
+                        inputHandler.clear();
+                    }
                 }
                 else {
                     System.out.println("Energia insuficiente.");
@@ -68,18 +98,24 @@ public class Batalha {
 
             }
             else if (opcao == heroi.tamDeck()){
-                inimigo.resetarRound();
-                heroi.atualizarEfeito("fimRound");
-                inimigo.atualizarEfeito("fimRound");
-
-                if (!inimigo.estaVivo()) {
-                    break;
+                for (Inimigo inimigo : listaInimigos) {
+                    inimigo.resetarRound();
+                    inimigo.atualizarEfeito("fimRound");
                 }
 
-                inimigo.usarCartas(heroi);
+                
+                heroi.atualizarEfeito("fimRound");
+                
+                
+                for (Inimigo inimigo : listaInimigos) {
+                    inimigo.usarCartas(heroi);
+                    inputHandler.sleep(0.2);
+                    
+                }
+                
                 inputHandler.pressEnter();
                 inputHandler.clear();
-
+                
                 heroi.resetarRound();
             }
             else {
@@ -87,8 +123,17 @@ public class Batalha {
                 inputHandler.pressEnter();
                 inputHandler.clear();
             }
-        } while (heroi.estaVivo() && inimigo.estaVivo());
+            listaInimigos.removeIf(inimigo -> !inimigo.estaVivo());
+        } while (heroi.estaVivo() && !listaInimigos.isEmpty());
 
         return heroi.estaVivo();
+    }
+
+    private static ArrayList<String> listarInimigos(ArrayList<Inimigo> inimigos) {
+        ArrayList<String> listaInimigos = new ArrayList<>();
+        for (Inimigo vilao : inimigos) {
+            listaInimigos.add(vilao.getNome());
+        }
+        return listaInimigos;
     }
 }

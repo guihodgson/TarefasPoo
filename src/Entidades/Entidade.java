@@ -3,8 +3,8 @@ package Entidades;
 import Efeitos.Efeito;
 import Efeitos.EfeitoBonusDano;
 import Efeitos.EfeitoEnfraquecido;
-import Efeitos.EfeitoVulneravel;
 import Efeitos.EfeitoVeneno;
+import Efeitos.EfeitoVulneravel;
 import java.util.ArrayList;
 
 public class Entidade {
@@ -268,13 +268,11 @@ public class Entidade {
     }
 
     public boolean podeGastarEnergia(int valor) {
-        if (valor <= energia) {
-            energia -= valor;
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (valor <= energia);
+    }
+
+    public void gastarEnergia(int valor) {
+        energia -= valor;
     }
 
     public void atualizarEfeito(String evento) {
