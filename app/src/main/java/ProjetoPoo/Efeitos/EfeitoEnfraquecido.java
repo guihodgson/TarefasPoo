@@ -1,6 +1,6 @@
 package ProjetoPoo.Efeitos;
 
-public class EfeitoEnfraquecido implements Efeito {
+public class EfeitoEnfraquecido extends Efeito {
 
     // Atributos
 
@@ -20,9 +20,10 @@ public class EfeitoEnfraquecido implements Efeito {
 
     // Constructor
 
-    public EfeitoEnfraquecido(int porcentagem, int duracao) {
+    public EfeitoEnfraquecido(int porcentagem, int duracao, TipoEfeito tipo) {
         this.porcentagem = porcentagem;
         this.duracao = duracao;
+        this.tipo = tipo;
     }
 
     // Metodo

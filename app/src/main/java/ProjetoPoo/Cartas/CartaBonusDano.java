@@ -1,5 +1,7 @@
 package ProjetoPoo.Cartas;
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Efeitos.EfeitoBonusDano;
+import ProjetoPoo.Efeitos.TipoEfeito;
 
 public class CartaBonusDano extends CartaEfeito {
 
@@ -26,6 +28,6 @@ public class CartaBonusDano extends CartaEfeito {
 
     @Override
     public void usar(Entidade heroi, Entidade alvo) {
-        heroi.ganharBonusDano(bonus, tempo);
+        heroi.ganharEfeito(new EfeitoBonusDano(bonus, tempo, TipoEfeito.BONUS_DANO), bonus, tempo);
     }
 }

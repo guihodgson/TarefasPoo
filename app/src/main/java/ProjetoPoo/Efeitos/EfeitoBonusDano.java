@@ -1,6 +1,6 @@
 package ProjetoPoo.Efeitos;
 
-public class EfeitoBonusDano implements Efeito{
+public class EfeitoBonusDano extends Efeito{
 
     // Atributos
 
@@ -20,9 +20,10 @@ public class EfeitoBonusDano implements Efeito{
 
     // Constructor
 
-    public EfeitoBonusDano(int dano, int duracao) {
+    public EfeitoBonusDano(int dano, int duracao, TipoEfeito tipo) {
         this.dano = dano;
         this.duracao = duracao;
+        this.tipo = tipo;
     }
 
     // Metodo

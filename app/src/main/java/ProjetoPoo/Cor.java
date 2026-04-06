@@ -34,7 +34,6 @@ public enum Cor {
         this.codigoAnsi = codigoAnsi;
     }
 
-    // Método para recuperar o código no Gerenciador
     public String getCodigo() {
         return codigoAnsi;
     }
@@ -46,6 +45,4 @@ public enum Cor {
     public static void imprimeAnsi(Cor cor, String texto) {
         System.out.println(cor.codigoAnsi + texto + RESET.codigoAnsi);
     }
-
-    
 }

@@ -2,7 +2,7 @@ package ProjetoPoo.Efeitos;
 
 import ProjetoPoo.Entidades.Entidade;
 
-public class EfeitoVeneno implements Efeito{
+public class EfeitoVeneno extends Efeito{
 
     // Atributos
 
@@ -22,9 +22,10 @@ public class EfeitoVeneno implements Efeito{
 
     // Constructor
 
-    public EfeitoVeneno(int dano, int duracao) {
+    public EfeitoVeneno(int dano, int duracao, TipoEfeito tipo) {
         this.dano = dano;
         this.duracao = duracao;
+        this.tipo = tipo;
     }
 
     // Metodo

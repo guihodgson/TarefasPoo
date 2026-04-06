@@ -1,5 +1,8 @@
 package ProjetoPoo.Cartas;
+
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Efeitos.TipoEfeito;
+import ProjetoPoo.Efeitos.EfeitoVulneravel;
 
 public class CartaVulneravel extends CartaEfeito {
 
@@ -26,6 +29,6 @@ public class CartaVulneravel extends CartaEfeito {
 
 	@Override
 	public void usar(Entidade heroi, Entidade alvo) {
-		alvo.ganharVulneravel(vulnerabilidade, tempo);
+		alvo.ganharEfeito(new EfeitoVulneravel(vulnerabilidade, tempo, TipoEfeito.VULNERAVEL), vulnerabilidade, tempo);
 	}
 }

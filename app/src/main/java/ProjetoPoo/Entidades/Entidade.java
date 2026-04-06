@@ -8,6 +8,8 @@ import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
 
+import ProjetoPoo.Efeitos.TipoEfeito;
+
 public class Entidade {
     
     // Atributos
@@ -98,16 +100,11 @@ public class Entidade {
         return vida > 0;
     }
 
-    /**
-     * Aplica veneno na entidade aplicada, por um determinado valor de tempo.
-     * @param valor Quantidade de dano por round do veneno.
-     * @param tempo Quantidade de rounds que o veneno é usado.
-     */
-    public void ganharVeneno(int valor, int tempo) {
+    public void ganharEfeito(Efeito efeito, int valor, int tempo) {
         boolean existe = false;
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoVeneno e && e.getDano() == valor && e.getDuracao() > 0) {
-                e.adicionarDuracao(tempo);
+        for (Efeito atual : efeitos) {
+            if (atual.getTipo() == efeito.getTipo() && atual.getValor() == valor && atual.getDuracao() > 0) {
+                atual.adicionarDuracao(tempo);
                 existe = true;
             }
         }
@@ -115,59 +112,20 @@ public class Entidade {
             return;
         }
 
-        efeitos.add(new EfeitoVeneno(valor, tempo));
-    }
-
-    /**
-     * Aplica um bonus de dano na entidade aplicada, por um determinado valor de tempo.
-     * @param valor Quantidade de dano extra por ataque.
-     * @param tempo Quantidade de rounds que o bonus funciona.
-     */
-    public void ganharBonusDano(int valor, int tempo) {
-        boolean existe = false;
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoBonusDano e && e.getDano() == valor && e.getDuracao() > 0) {
-                e.adicionarDuracao(tempo);
-                existe = true;
+        switch (efeito.getTipo()) {
+            case TipoEfeito.VENENO -> {
+                this.efeitos.add(new EfeitoVeneno(valor, tempo, TipoEfeito.VENENO));
             }
-        }
-        if (existe) {
-            return;
-        }
-
-        efeitos.add(new EfeitoBonusDano(valor, tempo));
-    }
-
-    /**
-     * Aplica vulnerável na entidade aplicada, por um determinado valor de tempo.
-     * @param valor Porcentagem de vulneravel.
-     * @param tempo Quantidade de rounds que o vulnerável é usado.
-     */
-    public void ganharVulneravel(int valor, int tempo) {
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoVulneravel e && e.getPorcentagem() == valor && e.getDuracao() > 0) {
-                e.adicionarDuracao(tempo);
-                return;
+            case TipoEfeito.BONUS_DANO -> {
+                this.efeitos.add(new EfeitoBonusDano(valor, tempo, TipoEfeito.BONUS_DANO));
             }
-        }
-
-        efeitos.add(new EfeitoVulneravel(valor, tempo));
-    }
-
-    /**
-     * Aplica vulnerável na entidade aplicada, por um determinado valor de tempo.
-     * @param valor Porcentagem de vulneravel.
-     * @param tempo Quantidade de rounds que o vulnerável é usado.
-     */
-    public void ganharEnfraquecido(int valor, int tempo) {
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoEnfraquecido e && e.getPorcentagem() == valor && e.getDuracao() > 0) {
-                e.adicionarDuracao(tempo);
-                return;
+            case TipoEfeito.VULNERAVEL -> {
+                this.efeitos.add(new EfeitoVulneravel(valor, tempo, TipoEfeito.VULNERAVEL));
             }
-        }
-
-        efeitos.add(new EfeitoEnfraquecido(valor, tempo));
+            case TipoEfeito.ENFRAQUECIDO -> {
+                this.efeitos.add(new EfeitoEnfraquecido(valor, tempo, TipoEfeito.ENFRAQUECIDO));
+            }
+        };
     }
 
     public void perderEfeito(Efeito efeito) {

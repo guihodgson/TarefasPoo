@@ -1,6 +1,6 @@
 package ProjetoPoo.Efeitos;
 
-public class EfeitoVulneravel implements Efeito {
+public class EfeitoVulneravel extends Efeito {
 
     // Atributos
 
@@ -20,9 +20,10 @@ public class EfeitoVulneravel implements Efeito {
 
     // Constructor
 
-    public EfeitoVulneravel(int porcentagem, int duracao) {
+    public EfeitoVulneravel(int porcentagem, int duracao, TipoEfeito tipo) {
         this.porcentagem = porcentagem;
         this.duracao = duracao;
+        this.tipo = tipo;
     }
 
     // Metodo

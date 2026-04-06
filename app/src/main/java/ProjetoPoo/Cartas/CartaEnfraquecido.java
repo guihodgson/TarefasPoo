@@ -1,5 +1,7 @@
 package ProjetoPoo.Cartas;
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Efeitos.TipoEfeito;
+import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 
 public class CartaEnfraquecido extends CartaEfeito {
 
@@ -26,6 +28,6 @@ public class CartaEnfraquecido extends CartaEfeito {
 
     @Override
     public void usar(Entidade heroi, Entidade alvo) {
-        alvo.ganharEnfraquecido(porcentagem, tempo);
+        alvo.ganharEfeito(new EfeitoEnfraquecido(porcentagem, tempo, TipoEfeito.ENFRAQUECIDO), porcentagem, tempo);
     }
 }

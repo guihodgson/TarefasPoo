@@ -1,6 +1,8 @@
 package ProjetoPoo.Cartas;
 
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Efeitos.TipoEfeito;
+import ProjetoPoo.Efeitos.EfeitoVeneno;
 
 public class CartaVeneno extends CartaEfeito {
 
@@ -27,6 +29,6 @@ public class CartaVeneno extends CartaEfeito {
 
     @Override
     public void usar(Entidade heroi, Entidade alvo) {
-        alvo.ganharVeneno(veneno, tempo);
+        alvo.ganharEfeito(new EfeitoVeneno(veneno, tempo, TipoEfeito.VENENO), veneno, tempo);
     }
 }
