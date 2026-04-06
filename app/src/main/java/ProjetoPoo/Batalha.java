@@ -38,26 +38,26 @@ public class Batalha {
         }
 
 
-        String status = "HP: " + barraVida + " " + entidade.getVida() + "/" + entidade.getVidaMax() + " \nEscudo: " + entidade.getEscudo();
+        String status = "HP: " + barraVida + " " + entidade.getVida() + "/" + entidade.getVidaMax() + Cor.formataCor(Cor.AZUL, " \nEscudo: ") + entidade.getEscudo();
 
         int bonus = entidade.calcularBonusDano();
         if (bonus > 0) {
-            status += " | Bonus: " + bonus + " por " + entidade.calcularTempoBonusDano(bonus) + " round(s)";
+            status += " |" + Cor.formataCor(Cor.AMARELO, " Bonus: ") + bonus + " por " + entidade.calcularTempoBonusDano(bonus) + " round(s)";
         }
 
         int veneno = entidade.calcularVeneno();
         if (veneno > 0) {
-            status += " | Veneno: " + veneno + " por " + entidade.calcularTempoVeneno(veneno) + " round(s)";
+            status += " |" + Cor.formataCor(Cor.VERDE, " Veneno: ") + veneno + " por " + entidade.calcularTempoVeneno(veneno) + " round(s)";
         }
 
         int vulneravel = entidade.calcularVulneravel();
         if (vulneravel > 0) {
-            status += " | Vulneravel: +" + vulneravel + "% de dano por " + entidade.calcularTempoVulneravel(vulneravel) + " round(s)";
+            status += " |" + Cor.formataCor(Cor.AMARELO, " Vulneravel: ") + "+" + vulneravel + "% de dano por " + entidade.calcularTempoVulneravel(vulneravel) + " round(s)";
         }
 
         int enfraquecido = entidade.calcularEnfraquecido();
         if (enfraquecido > 0) {
-            status += " | Enfraquecido: -" + enfraquecido + "% de dano por " + entidade.calcularTempoEnfraquecido(enfraquecido) + " round(s)";
+            status += " |" + Cor.formataCor(Cor.AMARELO, " Enfraquecido: ") + "-" + enfraquecido + "% de dano por " + entidade.calcularTempoEnfraquecido(enfraquecido) + " round(s)";
         }
 
         return status;
@@ -84,24 +84,26 @@ public class Batalha {
 
 
             Cor.imprimeAnsi(Cor.AMARELO, "===================================8===================================");
-            inputHandler.sleep(0.4);
+            inputHandler.sleep(0.25);
             System.out.println("HEROI: " + Cor.formataCor(Cor.AMARELO, heroi.getNome()));
+            inputHandler.sleep(0.1);
             System.out.println(montarStatus(heroi));
-            inputHandler.sleep(0.4);
+            inputHandler.sleep(0.25);
             for (Inimigo vilao : listaInimigos) {
                 Cor.imprimeAnsi(Cor.AMARELO, "------------------------------------------------------------");
-                inputHandler.sleep(0.4);
+                inputHandler.sleep(0.25);
                 System.out.println("INIMIGO " + (listaInimigos.indexOf(vilao) + 1) + ": " + Cor.formataCor(Cor.VERMELHO, vilao.getNome()));
+                inputHandler.sleep(0.1);
                 System.out.println(montarStatus(vilao));
-                
+                inputHandler.sleep(0.1);
                 vilao.printarProxAcao();
-                inputHandler.sleep(0.4);
+                inputHandler.sleep(0.25);
             }
             Cor.imprimeAnsi(Cor.AMARELO, "===================================8===================================");
             System.out.println();
             
 
-            inputHandler.sleep(0.4);
+            inputHandler.sleep(0.25);
 
             double statusEnergia = ((double) heroi.getEnergia()) / ((double) heroi.getEnergiaMax());
             if (statusEnergia >= 0.8) {

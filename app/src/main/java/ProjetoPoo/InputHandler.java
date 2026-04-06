@@ -40,12 +40,17 @@ public class InputHandler {
     public int selecionar(ArrayList<String> listaOpcoes, boolean mostrarEncerrar) {
         for(int i = 0; i < listaOpcoes.size(); i++) {
             System.out.println(Cor.AMARELO.getCodigo() + "[" + (i + 1) + "]" + Cor.RESET.getCodigo() + ": " + listaOpcoes.get(i));
+            sleep(0.1);
         }
         if (mostrarEncerrar) {
             System.out.println(Cor.AMARELO.getCodigo() + "[" + (listaOpcoes.size() + 1) + "]" + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": Encerrar Turno." + Cor.RESET.getCodigo());
         }
+        sleep(0.1);
 
-        System.out.println("----------\nEscolha uma opcao:");
+        System.out.println("----------");
+        sleep(0.1);
+
+        System.out.println("Escolha uma opcao:");
         int resposta;
 
         try {

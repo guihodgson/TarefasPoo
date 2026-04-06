@@ -84,6 +84,9 @@ public class Baralho {
             else if (baralho.get(i) instanceof CartaEfeito) {
                 nome = Cor.formataCor(Cor.AMARELO_CLARO, nome);
             }
+            else if (baralho.get(i) instanceof CartaCura) {
+                nome = Cor.formataCor(Cor.VERDE_CLARO, nome);
+            }
 
             int custo = baralho.get(i).getCusto();
             String descricao = baralho.get(i).getDescricao();
