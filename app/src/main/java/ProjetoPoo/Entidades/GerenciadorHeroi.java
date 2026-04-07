@@ -27,10 +27,10 @@ public class GerenciadorHeroi {
 
         // Baralho Po
 
-        CartaDano cartaSkidoosh = new CartaDano("Skidoosh (15 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 5, 15, AlvoCarta.UM_ALVO);
+        CartaDano cartaSkidoosh = new CartaDano("Skidoosh (18 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 5, 18, AlvoCarta.UM_ALVO);
         CartaDano cartaDanoMed = new CartaDano("Barrigada do Panda (5 de ataque)", "Uma forte investida com a barriga do Dragão Guerreiro", 2, 5, AlvoCarta.UM_ALVO);
         CartaDano cartaDanoPeq = new CartaDano("Soco do Panda (2 de ataque)", "Um soco levemente carinhoso do Dragão Guerreiro", 1, 2, AlvoCarta.UM_ALVO);
-        CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (3 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 3, AlvoCarta.GLOBAL);
+        CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (8 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 8, AlvoCarta.GLOBAL);
 
         CartaEscudo cartaEscudoGrnd = new CartaEscudo("A Fuga do Panda (10 de defesa)", "O Dragão Guerreiro sairá correndo da batalha fugindo dos danos do ataque", 3, 10, AlvoCarta.USO_PROPRIO);
         CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano na Barriga (5 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 5, AlvoCarta.USO_PROPRIO);
