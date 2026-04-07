@@ -44,6 +44,17 @@ public class Batalha {
                         alvo = inputHandler.selecionar(listaNomeInimigos, 0.8, false);
                     }
 
+                    if (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo < listaInimigos.size() && alvo >= 0) {
+                        heroi.gastarEnergia(escolhida.getCusto());
+                        heroi.atualizarEfeito("ataque");
+                        heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
+                        inputHandler.clear();
+                    }
+
+                    else if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {  // Alvo invalido
+                        BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
+                    }
+
                     if (escolhida.getTipo() == AlvoCarta.GLOBAL) {
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
@@ -51,16 +62,14 @@ public class Batalha {
                         inputHandler.clear();
                     }
 
-                    else if (escolhida.getTipo() == AlvoCarta.USO_PROPRIO || (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo < listaInimigos.size() && alvo >= 0)) {  // Alvo valido
+                    if (escolhida.getTipo() == AlvoCarta.USO_PROPRIO) {
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
-                        heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
+                        heroi.usarCartaNDeck(opcao, heroi);
                         inputHandler.clear();
                     }
 
-                    else {  // Alvo invalido
-                        BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
-                    }
+
                 }
                 else {
                     BatalhaVisual.exibirErro("Energia insuficiente.", inputHandler);

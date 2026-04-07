@@ -31,16 +31,9 @@ public class CartaEfeito extends Carta {
 
     @Override
     public void usar(Entidade heroi, Entidade... alvos) {
-        if (tipo == AlvoCarta.USO_PROPRIO) {
-            heroi.ganharEfeito(efeito.copiaEfeito());
-            return;
-        }
-
-        else {
-            for (Entidade alvo : alvos) {
-                if (alvo != null) {
-                    alvo.ganharEfeito(efeito.copiaEfeito());
-                }
+        for (Entidade alvo : alvos) {
+            if (alvo != null) {
+                alvo.ganharEfeito(efeito.copiaEfeito());
             }
         }
     }
