@@ -1,6 +1,9 @@
 package ProjetoPoo.Entidades;
 import ProjetoPoo.Cor;
 import ProjetoPoo.Cartas.*;
+import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
+import ProjetoPoo.Efeitos.EfeitoVeneno;
+import ProjetoPoo.Efeitos.EfeitoVulneravel;
 
 public class Inimigo extends Entidade {
 
@@ -36,14 +39,16 @@ public class Inimigo extends Entidade {
         if (baralho.mostrarPrimeiraCarta() instanceof CartaEscudo cartaescudo) {
             System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaescudo.getNome() + " (" + cartaescudo.getDefesa() + " de escudo, " + cartaescudo.getDescricao() + ")");
         }
-        if (baralho.mostrarPrimeiraCarta() instanceof CartaVeneno cartaVeneno) {
-            System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaVeneno.getNome() + " (" + cartaVeneno.getVeneno() + " de veneno, " + cartaVeneno.getDescricao() + ")");
-        }
-        if (baralho.mostrarPrimeiraCarta() instanceof CartaVulneravel cartaVulneravel) {
-            System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaVulneravel.getNome() + " (+" + cartaVulneravel.getVulnerabilidade() + "% de dano recebido, " + cartaVulneravel.getDescricao() + ")");
-        }
-        if (baralho.mostrarPrimeiraCarta() instanceof CartaEnfraquecido cartaEnfraquecido) {
-            System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEnfraquecido.getNome() + " (-" + cartaEnfraquecido.getPorcentagem() + "% de dano causado, " + cartaEnfraquecido.getDescricao() + ")");
+        if (baralho.mostrarPrimeiraCarta() instanceof CartaEfeito cartaEfeito) {
+            if (cartaEfeito.getEfeito() instanceof EfeitoVeneno EfeitoVeneno) {
+                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (" + EfeitoVeneno.getValor() + " de veneno, " + cartaEfeito.getDescricao() + ")");
+            }
+            if (cartaEfeito.getEfeito() instanceof EfeitoVulneravel EfeitoVulneravel) {
+                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (+" + EfeitoVulneravel.getValor() + "% de dano recebido, " + cartaEfeito.getDescricao() + ")");
+            }
+            if (cartaEfeito.getEfeito() instanceof EfeitoEnfraquecido EfeitoEnfraquecido) {
+                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (-" + EfeitoEnfraquecido.getValor() + "% de dano causado, " + cartaEfeito.getDescricao() + ")");
+            }
         }
     }
 
@@ -73,48 +78,40 @@ public class Inimigo extends Entidade {
                     break;
                 }
             }
-            if (acao instanceof CartaBonusDano cartaBonusDano) {
-                if (this.podeGastarEnergia(acao.getCusto())) {
-                    this.gastarEnergia(acao.getCusto());
-                    acao.usar(this, heroi);
-                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e ganhou " + cartaBonusDano.getBonus() + " de bonus de dano.");
+
+            if (acao instanceof CartaEfeito cartaEfeito) {
+                if (cartaEfeito.getEfeito() instanceof EfeitoVeneno cartaVeneno) {
+                    if (this.podeGastarEnergia(acao.getCusto())) {
+                        this.gastarEnergia(acao.getCusto());
+                        acao.usar(this, heroi);
+                        System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou " + cartaVeneno.getValor() + " de veneno.");
+                    }
+                    else {
+                        baralho.embaralhar();
+                        break;
+                    }
                 }
-                else {
-                    baralho.embaralhar();
-                    break;
+                if (cartaEfeito.getEfeito() instanceof EfeitoVulneravel cartaVulneravel) {
+                    if (this.podeGastarEnergia(acao.getCusto())) {
+                        this.gastarEnergia(acao.getCusto());
+                        acao.usar(this, heroi);
+                        System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou +" + cartaVulneravel.getValor() + "% de dano recebido.");
+                    }
+                    else {
+                        baralho.embaralhar();
+                        break;
+                    }
                 }
-            }
-            if (acao instanceof CartaVeneno cartaVeneno) {
-                if (this.podeGastarEnergia(acao.getCusto())) {
-                    this.gastarEnergia(acao.getCusto());
-                    acao.usar(this, heroi);
-                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou " + cartaVeneno.getVeneno() + " de veneno.");
-                }
-                else {
-                    baralho.embaralhar();
-                    break;
-                }
-            }
-            if (acao instanceof CartaVulneravel cartaVulneravel) {
-                if (this.podeGastarEnergia(acao.getCusto())) {
-                    this.gastarEnergia(acao.getCusto());
-                    acao.usar(this, heroi);
-                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou +" + cartaVulneravel.getVulnerabilidade() + "% de dano recebido.");
-                }
-                else {
-                    baralho.embaralhar();
-                    break;
-                }
-            }
-            if (acao instanceof CartaEnfraquecido cartaEnfraquecido) {
-                if (this.podeGastarEnergia(acao.getCusto())) {
-                    this.gastarEnergia(acao.getCusto());
-                    acao.usar(this, heroi);
-                    System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou -" + cartaEnfraquecido.getPorcentagem() + "% de dano causado.");
-                }
-                else {
-                    baralho.embaralhar();
-                    break;
+                if (cartaEfeito.getEfeito() instanceof EfeitoEnfraquecido cartaEnfraquecido) {
+                    if (this.podeGastarEnergia(acao.getCusto())) {
+                        this.gastarEnergia(acao.getCusto());
+                        acao.usar(this, heroi);
+                        System.out.println(nome + " usou o movimento " + acao.getNome() + " e aplicou -" + cartaEnfraquecido.getValor() + "% de dano causado.");
+                    }
+                    else {
+                        baralho.embaralhar();
+                        break;
+                    }
                 }
             }
         }

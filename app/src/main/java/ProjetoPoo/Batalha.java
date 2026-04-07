@@ -3,10 +3,7 @@ package ProjetoPoo;
 import java.util.ArrayList;
 
 import ProjetoPoo.Cartas.Carta;
-import ProjetoPoo.Cartas.CartaDano;
-import ProjetoPoo.Cartas.CartaEnfraquecido;
-import ProjetoPoo.Cartas.CartaVeneno;
-import ProjetoPoo.Cartas.CartaVulneravel;
+import ProjetoPoo.Cartas.AlvoCarta;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
 
@@ -42,19 +39,25 @@ public class Batalha {
 
                 if (heroi.podeGastarEnergia(escolhida.getCusto())) {
                     int alvo = 0;
-                    boolean temAlvo = false;
-                    if (escolhida instanceof CartaDano || escolhida instanceof CartaVeneno || escolhida instanceof CartaVulneravel || escolhida instanceof CartaEnfraquecido) {
+                    if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {
                         System.out.println("Escolha o alvo do ataque:\n");
                         alvo = inputHandler.selecionar(listaNomeInimigos, 0.8, false);
-                        temAlvo = true;
                     }
 
-                    if (!temAlvo || (alvo < listaInimigos.size() && alvo >= 0)) {  // Alvo valido
+                    if (escolhida.getTipo() == AlvoCarta.GLOBAL) {
+                        heroi.gastarEnergia(escolhida.getCusto());
+                        heroi.atualizarEfeito("ataque");
+                        heroi.usarCartaNDeck(opcao, inimigos);
+                        inputHandler.clear();
+                    }
+
+                    else if (escolhida.getTipo() == AlvoCarta.USO_PROPRIO || (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo < listaInimigos.size() && alvo >= 0)) {  // Alvo valido
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
                         inputHandler.clear();
                     }
+
                     else {  // Alvo invalido
                         BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
                     }

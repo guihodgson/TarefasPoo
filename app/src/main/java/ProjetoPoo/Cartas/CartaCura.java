@@ -16,16 +16,26 @@ public class CartaCura extends Carta{
 
     // Constructor
 
-    public CartaCura(String nome, String descricao, int custo, int cura) {
-        super(nome, descricao, custo);
+    public CartaCura(String nome, String descricao, int custo, int cura, AlvoCarta tipo) {
+        super(nome, descricao, custo, tipo);
         this.cura = cura;
+    }
+
+    public CartaCura(CartaCura copia) {
+        super(copia);
+        this.cura = copia.cura;
     }
 
     // Metodos
 
     @Override
-    public void usar(Entidade heroi, Entidade alvo) {
+    public void usar(Entidade heroi, Entidade... alvo) {
         heroi.curarVida(cura);
+    }
+
+    @Override
+    public Carta copiaCarta() {
+        return new CartaCura(this);
     }
 }
 

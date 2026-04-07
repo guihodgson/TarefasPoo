@@ -41,7 +41,7 @@ public class Heroi extends Entidade {
 
     public void adicionarCartaBaralho(Carta carta, int n) {
         for (int i = 0; i < n; i++) {
-            baralho.adicionarCarta(carta);
+            baralho.adicionarCarta(carta.copiaCarta());  
         }
     }
 
@@ -53,9 +53,9 @@ public class Heroi extends Entidade {
         return deck.mostrarBaralho();
     }
 
-    public void usarCartaNDeck(int n, Entidade alvo) {
+    public void usarCartaNDeck(int n, Entidade... alvos) {
         Carta atual = deck.retirarCartaN(n);
-        atual.usar(this, alvo);
+        atual.usar(this, alvos);
         descarte.adicionarCarta(atual);
     }
 

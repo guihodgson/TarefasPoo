@@ -98,8 +98,8 @@ public class Entidade {
         return vida > 0;
     }
 
-    public void ganharEfeito(Efeito efeito, int valor, int tempo) {
-        gerenciadorEfeitos.ganharEfeito(efeito, valor, tempo);
+    public void ganharEfeito(Efeito efeito) {
+        gerenciadorEfeitos.ganharEfeito(efeito);
     }
 
     public void perderEfeito(Efeito efeito) {

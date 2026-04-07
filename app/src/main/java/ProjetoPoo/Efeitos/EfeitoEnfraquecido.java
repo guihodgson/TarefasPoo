@@ -5,9 +5,11 @@ public class EfeitoEnfraquecido extends Efeito {
     // Constructor
 
     public EfeitoEnfraquecido(int valor, int duracao, TipoEfeito tipo) {
-        this.tipo = tipo;
-        this.valor = valor;
-        this.duracao = duracao;
+        super(tipo, valor, duracao);
+    }
+
+    public EfeitoEnfraquecido(EfeitoEnfraquecido copia) {
+        super(copia);
     }
 
     // Metodo
@@ -19,5 +21,10 @@ public class EfeitoEnfraquecido extends Efeito {
                 duracao--;
             }
         }
+    }
+
+    @Override
+    public Efeito copiaEfeito() {
+        return new EfeitoEnfraquecido(this);
     }
 }

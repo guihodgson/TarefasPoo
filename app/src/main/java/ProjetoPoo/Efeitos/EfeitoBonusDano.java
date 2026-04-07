@@ -5,9 +5,11 @@ public class EfeitoBonusDano extends Efeito{
     // Constructor
 
     public EfeitoBonusDano(int valor, int duracao, TipoEfeito tipo) {
-        this.tipo = tipo;
-        this.valor = valor;
-        this.duracao = duracao;
+        super(tipo, valor, duracao);
+    }
+
+    public EfeitoBonusDano(EfeitoBonusDano copia) {
+        super(copia);
     }
 
     // Metodo
@@ -19,5 +21,10 @@ public class EfeitoBonusDano extends Efeito{
                 duracao--;
             }
         }
+    }
+
+    @Override
+    public Efeito copiaEfeito() {
+        return new EfeitoBonusDano(this);
     }
 }

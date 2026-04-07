@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Stack;
 
 import ProjetoPoo.Cor;
+import ProjetoPoo.Efeitos.EfeitoVeneno;
 
 public class Baralho {
 
@@ -72,13 +73,14 @@ public class Baralho {
         for (int i = 0; i < baralho.size(); i++) {
             String nome = baralho.get(i).getNome();
             nome = String.format("%-45s", nome);
+
             if (baralho.get(i) instanceof CartaDano) {
                 nome = Cor.formataCor(Cor.VERMELHO_CLARO, nome);
             }
             else if (baralho.get(i) instanceof CartaEscudo) {
                 nome = Cor.formataCor(Cor.AZUL_CLARO, nome);
             }
-            else if (baralho.get(i) instanceof CartaVeneno) {
+            else if (baralho.get(i) instanceof CartaEfeito cartaEfeito && cartaEfeito.getEfeito() instanceof EfeitoVeneno) {
                 nome = Cor.formataCor(Cor.VERDE_CLARO, nome);
             }
             else if (baralho.get(i) instanceof CartaEfeito) {
@@ -92,9 +94,8 @@ public class Baralho {
             String descricao = baralho.get(i).getDescricao();
             String linhaFormatada = String.format("%s | Custo: %2d | %s", nome, custo, descricao);
 
-lista.add(linhaFormatada);
+            lista.add(linhaFormatada);
         }
         return lista;
     }
-
 }

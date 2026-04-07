@@ -7,9 +7,11 @@ public class EfeitoVeneno extends Efeito{
     // Constructor
 
     public EfeitoVeneno(int valor, int duracao, TipoEfeito tipo) {
-        this.tipo = tipo;
-        this.valor = valor;
-        this.duracao = duracao;
+        super(tipo, valor, duracao);
+    }
+
+    public EfeitoVeneno(EfeitoVeneno copia) {
+        super(copia);
     }
 
     // Metodo
@@ -25,5 +27,10 @@ public class EfeitoVeneno extends Efeito{
                 }
             }
         }
+    }
+
+    @Override
+    public Efeito copiaEfeito() {
+        return new EfeitoVeneno(this);
     }
 }

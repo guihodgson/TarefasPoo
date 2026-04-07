@@ -8,11 +8,11 @@ public class GerenciadorEfeitos {
 
     private final ArrayList<Efeito> efeitos = new ArrayList<>();
 
-    public void ganharEfeito(Efeito efeito, int valor, int tempo) {
+    public void ganharEfeito(Efeito efeito) {
         boolean existe = false;
         for (Efeito atual : efeitos) {
-            if (atual.getTipo() == efeito.getTipo() && atual.getValor() == valor && atual.getDuracao() > 0) {
-                atual.adicionarDuracao(tempo);
+            if (atual.getTipo() == efeito.getTipo() && atual.getValor() == efeito.getValor() && atual.getDuracao() > 0) {
+                atual.adicionarDuracao(efeito.getDuracao());
                 existe = true;
             }
         }
@@ -20,12 +20,7 @@ public class GerenciadorEfeitos {
             return;
         }
 
-        switch (efeito.getTipo()) {
-            case TipoEfeito.VENENO -> efeitos.add(new EfeitoVeneno(valor, tempo, TipoEfeito.VENENO));
-            case TipoEfeito.BONUS_DANO -> efeitos.add(new EfeitoBonusDano(valor, tempo, TipoEfeito.BONUS_DANO));
-            case TipoEfeito.VULNERAVEL -> efeitos.add(new EfeitoVulneravel(valor, tempo, TipoEfeito.VULNERAVEL));
-            case TipoEfeito.ENFRAQUECIDO -> efeitos.add(new EfeitoEnfraquecido(valor, tempo, TipoEfeito.ENFRAQUECIDO));
-        }
+        efeitos.add(efeito);
     }
 
     public void perderEfeito(Efeito efeito) {

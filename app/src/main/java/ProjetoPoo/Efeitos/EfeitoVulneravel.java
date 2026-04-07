@@ -5,9 +5,11 @@ public class EfeitoVulneravel extends Efeito {
     // Constructor
 
     public EfeitoVulneravel(int valor, int duracao, TipoEfeito tipo) {
-        this.tipo = tipo;
-        this.valor = valor;
-        this.duracao = duracao;
+        super(tipo, valor, duracao);
+    }
+
+    public EfeitoVulneravel(EfeitoVulneravel copia) {
+        super(copia);
     }
 
     // Metodo
@@ -19,5 +21,10 @@ public class EfeitoVulneravel extends Efeito {
                 duracao--;
             }
         }
+    }
+
+    @Override
+    public Efeito copiaEfeito() {
+        return new EfeitoVulneravel(this);
     }
 }
