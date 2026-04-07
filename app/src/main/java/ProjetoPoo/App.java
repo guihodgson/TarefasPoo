@@ -1,10 +1,11 @@
 package ProjetoPoo;
 
+import java.util.ArrayList;
+
 import ProjetoPoo.Entidades.GerenciadorHeroi;
 import ProjetoPoo.Entidades.GerenciadorInimigo;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
-import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -25,7 +26,7 @@ public class App {
 
         do {
             System.out.println("Selecione o filme que você quer jogar:");
-            filmeEscolhido = inputHandler.selecionar(opcoesFilme);
+            filmeEscolhido = inputHandler.selecionar(opcoesFilme, 0.8);
         } while (filmeEscolhido > 3 || filmeEscolhido < 0);
 
         Boolean desafio = false;

@@ -18,7 +18,9 @@ public abstract class Efeito {
         return duracao;
     }
 
-    public abstract void adicionarDuracao(int tempo);
+    public void adicionarDuracao(int tempo) {
+        duracao += tempo;
+    }
 
     public abstract void atualizar(String evento, Object objeto);
 }

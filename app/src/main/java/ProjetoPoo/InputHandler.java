@@ -33,22 +33,24 @@ public class InputHandler {
         }
     }
 
-    public int selecionar(ArrayList<String> listaOpcoes) {
-        return selecionar(listaOpcoes, false);
+    public int selecionar(ArrayList<String> listaOpcoes, double tempo) {
+        return selecionar(listaOpcoes, tempo, false);
     }
 
-    public int selecionar(ArrayList<String> listaOpcoes, boolean mostrarEncerrar) {
+    public int selecionar(ArrayList<String> listaOpcoes, double tempo, boolean mostrarEncerrar) {
+        double tempoOpcao = tempo / listaOpcoes.size();
+
         for(int i = 0; i < listaOpcoes.size(); i++) {
             System.out.println(Cor.AMARELO.getCodigo() + "[" + (i + 1) + "]" + Cor.RESET.getCodigo() + ": " + listaOpcoes.get(i));
-            sleep(0.1);
+            sleep(tempoOpcao);
         }
         if (mostrarEncerrar) {
             System.out.println(Cor.AMARELO.getCodigo() + "[" + (listaOpcoes.size() + 1) + "]" + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": Encerrar Turno." + Cor.RESET.getCodigo());
         }
-        sleep(0.1);
+        sleep(tempoOpcao);
 
         System.out.println("----------");
-        sleep(0.1);
+        sleep(tempoOpcao);
 
         System.out.println("Escolha uma opcao:");
         int resposta;

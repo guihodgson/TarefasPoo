@@ -2,28 +2,12 @@ package ProjetoPoo.Efeitos;
 
 public class EfeitoVulneravel extends Efeito {
 
-    // Atributos
-
-    protected int porcentagem;
-    protected int duracao;
-
-    // Getters
-
-    public int getPorcentagem() {
-        return porcentagem;
-    }
-
-    @Override
-    public int getDuracao() {
-        return duracao;
-    }
-
     // Constructor
 
-    public EfeitoVulneravel(int porcentagem, int duracao, TipoEfeito tipo) {
-        this.porcentagem = porcentagem;
-        this.duracao = duracao;
+    public EfeitoVulneravel(int valor, int duracao, TipoEfeito tipo) {
         this.tipo = tipo;
+        this.valor = valor;
+        this.duracao = duracao;
     }
 
     // Metodo
@@ -35,9 +19,5 @@ public class EfeitoVulneravel extends Efeito {
                 duracao--;
             }
         }
-    }
-
-    public void adicionarDuracao(int valor) {
-        duracao += valor;
     }
 }
