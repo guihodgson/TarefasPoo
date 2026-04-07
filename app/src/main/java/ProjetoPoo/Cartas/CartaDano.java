@@ -17,19 +17,29 @@ public class CartaDano extends Carta{
 
     // Constructor
 
-    public CartaDano(String nome, String descricao, int custo, int ataque) {
-        super(nome, descricao, custo);
+    public CartaDano(String nome, String descricao, int custo, int ataque, AlvoCarta tipo) {
+        super(nome, descricao, custo, tipo);
         this.ataque = ataque;
+    }
+
+    public CartaDano(CartaDano copia) {
+        super(copia);
+        this.ataque = copia.ataque;
     }
 
     // Metodos
 
     @Override
-    public void usar(Entidade heroi, Entidade alvo) {
-        int danoBase = ataque + heroi.calcularBonusDano();
-        int danoCausado = heroi.calcularDanoAtaqueCausado(danoBase);
-        int danoFinal = alvo.calcularDanoAtaqueRecebido(danoCausado);
-        alvo.receberDano(danoFinal);
+    public void usar(Entidade heroi, Entidade... alvos) {
+        for (Entidade alvo : alvos) {
+            int danoFinal = heroi.calcularDanoFinalAtaque(ataque, alvo);
+            alvo.receberDano(danoFinal);
+        }
+    }
+
+    @Override
+    public Carta copiaCarta() {
+        return new CartaDano(this);
     }
 }
 

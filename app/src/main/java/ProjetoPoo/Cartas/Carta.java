@@ -9,6 +9,7 @@ public abstract class Carta {
     protected String nome;
     protected String descricao;
     protected int custo;
+    protected AlvoCarta tipo;
 
     // Getters
 
@@ -24,16 +25,30 @@ public abstract class Carta {
         return custo;
     }
 
+    public AlvoCarta getTipo() {
+        return tipo;
+    }
+
     // Constructor
 
-    public Carta(String nome, String descricao, int custo) {
+    public Carta(String nome, String descricao, int custo, AlvoCarta tipo) {
         this.nome = nome;
         this.descricao = descricao;
         this.custo = custo;
+        this.tipo = tipo;
+    }
+
+    public Carta(Carta copia) {
+        this.nome = copia.nome;
+        this.descricao = copia.descricao;
+        this.custo = copia.custo;
+        this.tipo = copia.tipo;
     }
 
     // Metodos
 
-    public abstract void usar(Entidade atacante, Entidade alvo);   
+    public abstract void usar(Entidade atacante, Entidade... alvos);
+
+    public abstract Carta copiaCarta();
 
 }

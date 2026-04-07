@@ -1,13 +1,7 @@
 package ProjetoPoo.Entidades;
 
-import java.util.ArrayList;
-
 import ProjetoPoo.Efeitos.Efeito;
-import ProjetoPoo.Efeitos.EfeitoBonusDano;
-import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
-import ProjetoPoo.Efeitos.EfeitoVeneno;
-import ProjetoPoo.Efeitos.EfeitoVulneravel;
-
+import ProjetoPoo.Efeitos.GerenciadorEfeitos;
 import ProjetoPoo.Efeitos.TipoEfeito;
 
 public class Entidade {
@@ -25,7 +19,7 @@ public class Entidade {
 
     protected int buffDano;
 
-    protected ArrayList<Efeito> efeitos = new ArrayList<>();
+    protected GerenciadorEfeitos gerenciadorEfeitos = new GerenciadorEfeitos();
 
     // Getters
 
@@ -43,6 +37,10 @@ public class Entidade {
 
     public int getEscudo() {
         return escudo;
+    }
+
+    public GerenciadorEfeitos getGerenciadorEfeitos() {
+        return gerenciadorEfeitos;
     }
 
     // Constructor
@@ -100,138 +98,24 @@ public class Entidade {
         return vida > 0;
     }
 
-    public void ganharEfeito(Efeito efeito, int valor, int tempo) {
-        boolean existe = false;
-        for (Efeito atual : efeitos) {
-            if (atual.getTipo() == efeito.getTipo() && atual.getValor() == valor && atual.getDuracao() > 0) {
-                atual.adicionarDuracao(tempo);
-                existe = true;
-            }
-        }
-        if (existe) {
-            return;
-        }
-
-        switch (efeito.getTipo()) {
-            case TipoEfeito.VENENO -> {
-                this.efeitos.add(new EfeitoVeneno(valor, tempo, TipoEfeito.VENENO));
-            }
-            case TipoEfeito.BONUS_DANO -> {
-                this.efeitos.add(new EfeitoBonusDano(valor, tempo, TipoEfeito.BONUS_DANO));
-            }
-            case TipoEfeito.VULNERAVEL -> {
-                this.efeitos.add(new EfeitoVulneravel(valor, tempo, TipoEfeito.VULNERAVEL));
-            }
-            case TipoEfeito.ENFRAQUECIDO -> {
-                this.efeitos.add(new EfeitoEnfraquecido(valor, tempo, TipoEfeito.ENFRAQUECIDO));
-            }
-        };
+    public void ganharEfeito(Efeito efeito) {
+        gerenciadorEfeitos.ganharEfeito(efeito);
     }
 
     public void perderEfeito(Efeito efeito) {
-        efeitos.remove(efeito);
+        gerenciadorEfeitos.perderEfeito(efeito);
     }
 
-    public int calcularBonusDano() {
-        int val = 0;
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoBonusDano e) {
-                if (val < e.getDano() && e.getDuracao() > 0) {
-                    val = e.getDano();
-                }
-            }
-        }
-        return val;
+    public int getValorEfeito(TipoEfeito tipo) {
+        return gerenciadorEfeitos.getValorEfeito(tipo);
     }
 
-    public int calcularTempoBonusDano(int valor) {
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoBonusDano e) {
-                if (valor == e.getDano()) {
-                    return e.getDuracao();
-                }
-            }
-        }
-        return 0;
+    public int getTempoEfeito(TipoEfeito tipo) {
+        return gerenciadorEfeitos.getTempoEfeito(tipo);
     }
 
-    public int calcularVeneno() {
-        int val = 0;
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoVeneno e) {
-                if (val < e.getDano() && e.getDuracao() > 0) {
-                    val = e.getDano();
-                }
-            }
-        }
-        return val;
-    }
-
-    public int calcularTempoVeneno(int valor) {
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoVeneno e) {
-                if (valor == e.getDano()) {
-                    return e.getDuracao();
-                }
-            }
-        }
-        return 0;
-    }
-
-    public int calcularVulneravel() {
-        int val = 0;
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoVulneravel e) {
-                if (val < e.getPorcentagem() && e.getDuracao() > 0) {
-                    val = e.getPorcentagem();
-                }
-            }
-        }
-        return val;
-    }
-
-    public int calcularTempoVulneravel(int valor) {
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoVulneravel e) {
-                if (valor == e.getPorcentagem()) {
-                    return e.getDuracao();
-                }
-            }
-        }
-        return 0;
-    }
-
-    public int calcularEnfraquecido() {
-        int val = 0;
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoEnfraquecido e) {
-                if (val < e.getPorcentagem() && e.getDuracao() > 0) {
-                    val = e.getPorcentagem();
-                }
-            }
-        }
-        return val;
-    }
-
-    public int calcularTempoEnfraquecido(int valor) {
-        for (Efeito efeito : efeitos) {
-            if (efeito instanceof EfeitoEnfraquecido e) {
-                if (valor == e.getPorcentagem()) {
-                    return e.getDuracao();
-                }
-            }
-        }
-        return 0;
-    }
-
-    public int calcularDanoAtaqueCausado(int danoBase) {
-        int enfraquecido = calcularEnfraquecido();
-        return (int) Math.ceil(danoBase * (1 - (enfraquecido / 100.0)));
-    }
-
-    public int calcularDanoAtaqueRecebido(int danoBase) {
-        int vulneravel = calcularVulneravel();
-        return (int) Math.ceil(danoBase * (1 + (vulneravel / 100.0))); // Arredonda a porcentagem a mais para cima
+    public int calcularDanoFinalAtaque(int danoBase, Entidade alvo) {
+        return gerenciadorEfeitos.calcularDanoFinalAtaque(danoBase, this, alvo);
     }
 
     public void resetarEnergia() {
@@ -247,13 +131,10 @@ public class Entidade {
     }
 
     public void atualizarEfeito(String evento) {
-        for(Efeito efeito : efeitos) {
-            efeito.atualizar(evento, this);
-        }
-        limparEfeitosExpirados();
+        gerenciadorEfeitos.atualizarEfeito(evento, this);
     }
 
     public void limparEfeitosExpirados() {
-        efeitos.removeIf(efeito -> efeito.getDuracao() == 0);
+        gerenciadorEfeitos.limparEfeitosExpirados();
     }
 }

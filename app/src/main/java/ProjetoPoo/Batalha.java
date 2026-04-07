@@ -2,66 +2,12 @@ package ProjetoPoo;
 
 import java.util.ArrayList;
 
-import ProjetoPoo.Cartas.*;
-import ProjetoPoo.Entidades.*;
+import ProjetoPoo.Cartas.Carta;
+import ProjetoPoo.Cartas.AlvoCarta;
+import ProjetoPoo.Entidades.Heroi;
+import ProjetoPoo.Entidades.Inimigo;
 
 public class Batalha {
-
-    private static String montarStatus(Entidade entidade) {
-        double statusVida = ((double) entidade.getVida()) / ((double) entidade.getVidaMax());
-
-        String barraVida = "█";
-        String barraSemVida = "";
-
-        for (int i = 0; i < (int) (statusVida * 10); i++) {
-            barraVida += "█";
-        }
-
-        for (int i = 0; i < 10 - (int) (statusVida * 10); i++) {
-            barraSemVida += "█";
-        }
-
-        if (statusVida > 0.7) {
-            barraVida = Cor.formataCor(Cor.VERDE, barraVida);
-            barraSemVida = Cor.formataCor(Cor.VERDE_ESCURO, barraSemVida);
-            barraVida += barraSemVida;
-        }
-        else if (statusVida > 0.4) {
-            barraVida = Cor.formataCor(Cor.AMARELO, barraVida);
-            barraSemVida = Cor.formataCor(Cor.AMARELO_ESCURO, barraSemVida);
-            barraVida += barraSemVida;
-        }
-        else {
-            barraVida = Cor.formataCor(Cor.VERMELHO, barraVida);
-            barraSemVida = Cor.formataCor(Cor.VERMELHO_ESCURO, barraSemVida);
-            barraVida += barraSemVida;
-        }
-
-
-        String status = "HP: " + barraVida + " " + entidade.getVida() + "/" + entidade.getVidaMax() + Cor.formataCor(Cor.AZUL, " \nEscudo: ") + entidade.getEscudo();
-
-        int bonus = entidade.calcularBonusDano();
-        if (bonus > 0) {
-            status += " |" + Cor.formataCor(Cor.AMARELO, " Bonus: ") + bonus + " por " + entidade.calcularTempoBonusDano(bonus) + " round(s)";
-        }
-
-        int veneno = entidade.calcularVeneno();
-        if (veneno > 0) {
-            status += " |" + Cor.formataCor(Cor.VERDE, " Veneno: ") + veneno + " por " + entidade.calcularTempoVeneno(veneno) + " round(s)";
-        }
-
-        int vulneravel = entidade.calcularVulneravel();
-        if (vulneravel > 0) {
-            status += " |" + Cor.formataCor(Cor.AMARELO, " Vulneravel: ") + "+" + vulneravel + "% de dano por " + entidade.calcularTempoVulneravel(vulneravel) + " round(s)";
-        }
-
-        int enfraquecido = entidade.calcularEnfraquecido();
-        if (enfraquecido > 0) {
-            status += " |" + Cor.formataCor(Cor.AMARELO, " Enfraquecido: ") + "-" + enfraquecido + "% de dano por " + entidade.calcularTempoEnfraquecido(enfraquecido) + " round(s)";
-        }
-
-        return status;
-    }
 
     /**
      * Cria a batalha entre um heroi e um ou mais inimigos.
@@ -82,72 +28,42 @@ public class Batalha {
             }
             ArrayList<String> listaNomeInimigos = listarInimigos(listaInimigos);
 
-
-            Cor.imprimeAnsi(Cor.AMARELO, "===================================8===================================");
+            BatalhaVisual.exibirPainelBatalha(heroi, listaInimigos, inputHandler, 1);
             inputHandler.sleep(0.25);
-            System.out.println("HEROI: " + Cor.formataCor(Cor.AMARELO, heroi.getNome()));
-            inputHandler.sleep(0.1);
-            System.out.println(montarStatus(heroi));
-            inputHandler.sleep(0.25);
-            for (Inimigo vilao : listaInimigos) {
-                Cor.imprimeAnsi(Cor.AMARELO, "------------------------------------------------------------");
-                inputHandler.sleep(0.25);
-                System.out.println("INIMIGO " + (listaInimigos.indexOf(vilao) + 1) + ": " + Cor.formataCor(Cor.VERMELHO, vilao.getNome()));
-                inputHandler.sleep(0.1);
-                System.out.println(montarStatus(vilao));
-                inputHandler.sleep(0.1);
-                vilao.printarProxAcao();
-                inputHandler.sleep(0.25);
-            }
-            Cor.imprimeAnsi(Cor.AMARELO, "===================================8===================================");
-            System.out.println();
-            
+            BatalhaVisual.exibirEnergiaHeroi(heroi, inputHandler);
 
-            inputHandler.sleep(0.25);
-
-            double statusEnergia = ((double) heroi.getEnergia()) / ((double) heroi.getEnergiaMax());
-            if (statusEnergia >= 0.8) {
-                Cor.imprimeAnsi(Cor.VERDE, heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
-            }
-            else if (statusEnergia >= 0.4) {
-                Cor.imprimeAnsi(Cor.AMARELO, heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
-            }
-            else {
-                Cor.imprimeAnsi(Cor.VERMELHO, heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.");
-            }
-
-            System.out.println();
-
-            int opcao = inputHandler.selecionar(heroi.mostrarDeck(), true);
+            int opcao = inputHandler.selecionar(heroi.mostrarDeck(), 0.8, true);
 
             if (opcao < heroi.tamDeck() && opcao >= 0) {  // Nao quer passar de turno ainda
                 Carta escolhida = heroi.getCartaNDeck(opcao);
 
                 if (heroi.podeGastarEnergia(escolhida.getCusto())) {
                     int alvo = 0;
-                    boolean temAlvo = false;
-                    if (escolhida instanceof CartaDano || escolhida instanceof CartaVeneno || escolhida instanceof CartaVulneravel || escolhida instanceof CartaEnfraquecido) {
+                    if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {
                         System.out.println("Escolha o alvo do ataque:\n");
-                        alvo = inputHandler.selecionar(listaNomeInimigos, false);
-                        temAlvo = true;
+                        alvo = inputHandler.selecionar(listaNomeInimigos, 0.8, false);
                     }
 
-                    if (!temAlvo || (alvo < listaInimigos.size() && alvo >= 0)) {  // Alvo valido
+                    if (escolhida.getTipo() == AlvoCarta.GLOBAL) {
+                        heroi.gastarEnergia(escolhida.getCusto());
+                        heroi.atualizarEfeito("ataque");
+                        heroi.usarCartaNDeck(opcao, inimigos);
+                        inputHandler.clear();
+                    }
+
+                    else if (escolhida.getTipo() == AlvoCarta.USO_PROPRIO || (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo < listaInimigos.size() && alvo >= 0)) {  // Alvo valido
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
                         inputHandler.clear();
                     }
+
                     else {  // Alvo invalido
-                        System.out.println("Opcao invalida, tente novamente\n");
-                        inputHandler.pressEnter();
-                        inputHandler.clear();
+                        BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
                     }
                 }
                 else {
-                    System.out.println("Energia insuficiente.");
-                    inputHandler.pressEnter();
-                    inputHandler.clear();
+                    BatalhaVisual.exibirErro("Energia insuficiente.", inputHandler);
                 }
 
             }
@@ -176,9 +92,7 @@ public class Batalha {
                 heroi.resetarRound();
             }
             else {
-                System.out.println("Opcao invalida, tente novamente\n");
-                inputHandler.pressEnter();
-                inputHandler.clear();
+                BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
             }
             listaInimigos.removeIf(inimigo -> !inimigo.estaVivo());
         } while (heroi.estaVivo() && !listaInimigos.isEmpty());

@@ -2,28 +2,14 @@ package ProjetoPoo.Efeitos;
 
 public class EfeitoEnfraquecido extends Efeito {
 
-    // Atributos
-
-    protected int porcentagem;
-    protected int duracao;
-
-    // Getters
-
-    public int getPorcentagem() {
-        return porcentagem;
-    }
-
-    @Override
-    public int getDuracao() {
-        return duracao;
-    }
-
     // Constructor
 
-    public EfeitoEnfraquecido(int porcentagem, int duracao, TipoEfeito tipo) {
-        this.porcentagem = porcentagem;
-        this.duracao = duracao;
-        this.tipo = tipo;
+    public EfeitoEnfraquecido(int valor, int duracao, TipoEfeito tipo) {
+        super(tipo, valor, duracao);
+    }
+
+    public EfeitoEnfraquecido(EfeitoEnfraquecido copia) {
+        super(copia);
     }
 
     // Metodo
@@ -37,7 +23,8 @@ public class EfeitoEnfraquecido extends Efeito {
         }
     }
 
-    public void adicionarDuracao(int valor) {
-        duracao += valor;
+    @Override
+    public Efeito copiaEfeito() {
+        return new EfeitoEnfraquecido(this);
     }
 }

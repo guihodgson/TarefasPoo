@@ -1,8 +1,12 @@
 {
   "java.project.sourcePaths": [
     "app/src/main/java",
-    "app/src/test/java"
+    "app/src/test/java",
+    "app\\src",
+    "app\\src\\main\\java\\ProjetoPoo",
+    "app"
   ],
-  "java.project.outputPath": "app/bin/main",
-  "java.configuration.updateBuildConfiguration": "automatic"
+  "java.project.outputPath": "app\\bin",
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.project.referencedLibraries": []
 }
