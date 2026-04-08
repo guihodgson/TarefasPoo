@@ -1,13 +1,14 @@
 package ProjetoPoo.Entidades;
+import java.util.ArrayList;
+
 import ProjetoPoo.Cartas.Baralho;
 import ProjetoPoo.Cartas.Carta;
-import java.util.ArrayList;
 
 public class Heroi extends Entidade {
 
     // Atributos
 
-    private final int nCartasDeck = 5;
+    private final int nCartasDeck;
     private final Baralho baralho;
     private final Baralho deck;
     private final Baralho descarte;
@@ -29,9 +30,10 @@ public class Heroi extends Entidade {
 
     // Constructor
 
-    public Heroi(String nome, int vida, int escudo, int energia) {
+    public Heroi(String nome, int vida, int escudo, int energia, int nCartasDeck) {
         super(nome, vida, escudo);
         this.energia = energiaMax = energia;
+        this.nCartasDeck = nCartasDeck;
         baralho = new Baralho();
         deck = new Baralho();
         descarte = new Baralho();

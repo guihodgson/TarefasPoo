@@ -6,7 +6,7 @@ public class InputHandler {
 
     // Atributos
 
-    private Scanner in;
+    private final Scanner in;
 
     // Constructor
 

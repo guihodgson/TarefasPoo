@@ -38,58 +38,58 @@ public class Batalha {
                 Carta escolhida = heroi.getCartaNDeck(opcao);
 
                 if (heroi.podeGastarEnergia(escolhida.getCusto())) {
-                    int alvo = 0;
-                    if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {
+
+                    if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {  // Caso de um alvo
+                        int alvo;
                         System.out.println("Escolha o alvo do ataque:\n");
                         alvo = inputHandler.selecionar(listaNomeInimigos, 0.2, true, "Voltar");
+
+                        if (alvo < listaInimigos.size() && alvo >= 0) {  // Inimigo valido
+                            heroi.gastarEnergia(escolhida.getCusto());
+                            heroi.atualizarEfeito("ataque");
+                            heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
+                            inputHandler.clear();
+                        }
+
+                        else if (alvo == listaInimigos.size()) {  // Voltar
+                            inputHandler.clear();
+                        }
+
+                        else {
+                            BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
+                        }
                     }
 
-                    if (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo < listaInimigos.size() && alvo >= 0) {
-                        heroi.gastarEnergia(escolhida.getCusto());
-                        heroi.atualizarEfeito("ataque");
-                        heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
-                        inputHandler.clear();
-                    }
-
-                    else if (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo == listaInimigos.size()) {  // Voltar;
-                        inputHandler.clear();
-                    }
-
-                    else if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {
-                        BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
-                    }
-
-                    if (escolhida.getTipo() == AlvoCarta.GLOBAL) {
+                    if (escolhida.getTipo() == AlvoCarta.GLOBAL) {  // Caso de global
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, inimigos);
                         inputHandler.clear();
                     }
 
-                    if (escolhida.getTipo() == AlvoCarta.USO_PROPRIO) {
+                    if (escolhida.getTipo() == AlvoCarta.USO_PROPRIO) {  // Caso de uso próprio
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, heroi);
                         inputHandler.clear();
                     }
-
-
                 }
+
                 else {
                     BatalhaVisual.exibirErro("Energia insuficiente.", inputHandler);
                 }
-
             }
-            else if (opcao == heroi.tamDeck()){
+
+            else if (opcao == heroi.tamDeck()){  // Passar de turno
                 for (Inimigo inimigo : listaInimigos) {
                     inimigo.resetarRound();
                     inimigo.atualizarEfeito("fimRound");
                 }
 
                 listaInimigos.removeIf(inimigo -> !inimigo.estaVivo());
-                
+
                 heroi.atualizarEfeito("fimRound");
-                
+
                 for (Inimigo inimigo : listaInimigos) {
                     System.out.printf(Cor.VERMELHO.getCodigo());
                     inimigo.usarCartas(heroi);
@@ -98,10 +98,10 @@ public class Batalha {
                     inputHandler.sleep(0.4);
                     System.out.println();
                 }
-                
+
                 inputHandler.pressEnter();
                 inputHandler.clear();
-                
+
                 heroi.resetarRound();
             }
             else {

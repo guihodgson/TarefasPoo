@@ -1,6 +1,10 @@
 package ProjetoPoo.Entidades;
+import ProjetoPoo.Cartas.Baralho;
+import ProjetoPoo.Cartas.Carta;
+import ProjetoPoo.Cartas.CartaDano;
+import ProjetoPoo.Cartas.CartaEfeito;
+import ProjetoPoo.Cartas.CartaEscudo;
 import ProjetoPoo.Cor;
-import ProjetoPoo.Cartas.*;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
@@ -41,7 +45,7 @@ public class Inimigo extends Entidade {
         }
         if (baralho.mostrarPrimeiraCarta() instanceof CartaEfeito cartaEfeito) {
             if (cartaEfeito.getEfeito() instanceof EfeitoVeneno EfeitoVeneno) {
-                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (" + EfeitoVeneno.getValor() + " de veneno, " + cartaEfeito.getDescricao() + ")");
+                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (" + EfeitoVeneno.getDuracao() + " de veneno, " + cartaEfeito.getDescricao() + ")");
             }
             if (cartaEfeito.getEfeito() instanceof EfeitoVulneravel EfeitoVulneravel) {
                 System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (+" + EfeitoVulneravel.getValor() + "% de dano recebido, " + cartaEfeito.getDescricao() + ")");

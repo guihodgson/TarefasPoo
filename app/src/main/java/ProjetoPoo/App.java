@@ -14,35 +14,35 @@ public class App {
         inputHandler.clear();
         GerenciadorTitulo.criarTitulo();
 
-        Heroi heroi = GerenciadorHeroi.criarHeroi();
-
+        
         ArrayList<String> opcoesFilme = new ArrayList<>();
         opcoesFilme.add("Filme 1");
         opcoesFilme.add("Filme 2");
         opcoesFilme.add("Filme 3");
         opcoesFilme.add("DESAFIO");
-
+        
         int filmeEscolhido;
-
+        
         do {
             System.out.println("Selecione o filme que você quer jogar:");
             filmeEscolhido = inputHandler.selecionar(opcoesFilme, 0.8);
         } while (filmeEscolhido > 3 || filmeEscolhido < 0);
-
+        
         Boolean desafio = false;
-
+        
         if (filmeEscolhido == 3) {
             desafio = true;
             filmeEscolhido = 0;
         }
-
+        
         Inimigo inimigo = GerenciadorInimigo.criarInimigo(filmeEscolhido);
-
+        
         inimigo.embaralharMao();
-
+        
         inputHandler.clear();
-
+        
         if (!desafio) {
+            Heroi heroi = GerenciadorHeroi.criarHeroi(34, 5, 0);
             if (!Batalha.batalhar(heroi, inputHandler, inimigo)) {
                 System.out.println("Você MORREU, o mundo continua em trevas.");  
                 inputHandler.sleep(0.4);
@@ -59,6 +59,7 @@ public class App {
 
         Inimigo inimigo2 = GerenciadorInimigo.criarInimigo(1);
         Inimigo inimigo3 = GerenciadorInimigo.criarInimigo(2);
+        Heroi heroi = GerenciadorHeroi.criarHeroi(50, 8, 1);
 
         if (!Batalha.batalhar(heroi, inputHandler, inimigo, inimigo2, inimigo3)) {
             System.out.println("Você MORREU, o mundo continua em trevas.");  
