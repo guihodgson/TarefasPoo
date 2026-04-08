@@ -1,20 +1,20 @@
 package ProjetoPoo.Entidades;
 
-import ProjetoPoo.Cor;
+import ProjetoPoo.Cartas.AlvoCarta;
 import ProjetoPoo.Cartas.CartaDano;
 import ProjetoPoo.Cartas.CartaEfeito;
 import ProjetoPoo.Cartas.CartaEscudo;
+import ProjetoPoo.Cor;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
 import ProjetoPoo.Efeitos.TipoEfeito;
-import ProjetoPoo.Cartas.AlvoCarta;
 
 public class GerenciadorInimigo {
     public static Inimigo criarInimigo(int opcao) {
         Inimigo inimigo;
 
-        EfeitoVeneno efeitoVeneno3 = new EfeitoVeneno(3, 2, TipoEfeito.VENENO);
+        EfeitoVeneno efeitoVeneno3 = new EfeitoVeneno(2, TipoEfeito.VENENO);
         EfeitoVulneravel efeitoVulneravel25 = new EfeitoVulneravel(25, 2, TipoEfeito.VULNERAVEL);
         EfeitoEnfraquecido efeitoEnfraquecido25 = new EfeitoEnfraquecido(25, 2, TipoEfeito.ENFRAQUECIDO);
 

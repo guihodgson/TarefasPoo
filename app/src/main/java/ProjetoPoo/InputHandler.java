@@ -34,18 +34,25 @@ public class InputHandler {
     }
 
     public int selecionar(ArrayList<String> listaOpcoes, double tempo) {
-        return selecionar(listaOpcoes, tempo, false);
+        return selecionar(listaOpcoes, tempo, false, "");
     }
 
-    public int selecionar(ArrayList<String> listaOpcoes, double tempo, boolean mostrarEncerrar) {
-        double tempoOpcao = tempo / listaOpcoes.size();
+    public int selecionar(ArrayList<String> listaOpcoes, double tempo, boolean opcaoVoltar, String textoVoltar) {
+        double tempoOpcao;
+
+        if (listaOpcoes.isEmpty()) {
+            tempoOpcao = tempo;
+        }
+        else {
+            tempoOpcao = tempo / listaOpcoes.size();
+        }
 
         for(int i = 0; i < listaOpcoes.size(); i++) {
             System.out.println(Cor.AMARELO.getCodigo() + "[" + (i + 1) + "]" + Cor.RESET.getCodigo() + ": " + listaOpcoes.get(i));
             sleep(tempoOpcao);
         }
-        if (mostrarEncerrar) {
-            System.out.println(Cor.AMARELO.getCodigo() + "[" + (listaOpcoes.size() + 1) + "]" + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": Encerrar Turno." + Cor.RESET.getCodigo());
+        if (opcaoVoltar) {
+            System.out.println(Cor.AMARELO.getCodigo() + "[" + (listaOpcoes.size() + 1) + "]" + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": " + textoVoltar + Cor.RESET.getCodigo());
         }
         sleep(tempoOpcao);
 

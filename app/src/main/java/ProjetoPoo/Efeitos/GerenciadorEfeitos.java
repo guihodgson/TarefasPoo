@@ -38,13 +38,8 @@ public class GerenciadorEfeitos {
     }
 
     public int getTempoEfeito(TipoEfeito tipo) {
-        int maiorValor = getValorEfeito(tipo);
-        if (maiorValor == 0) {
-            return 0;
-        }
-
         for (Efeito efeito : efeitos) {
-            if (efeito.getTipo() == tipo && efeito.getDuracao() > 0 && efeito.getValor() == maiorValor) {
+            if (efeito.getTipo() == tipo && efeito.getDuracao() > 0) {
                 return efeito.getDuracao();
             }
         }
@@ -75,6 +70,6 @@ public class GerenciadorEfeitos {
     }
 
     public void limparEfeitosExpirados() {
-        efeitos.removeIf(efeito -> efeito.getDuracao() == 0);
+        efeitos.removeIf(efeito -> efeito.getDuracao() <= 0);
     }
 }

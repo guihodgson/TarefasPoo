@@ -1,5 +1,6 @@
 package ProjetoPoo.Entidades;
 
+import ProjetoPoo.Cartas.AlvoCarta;
 import ProjetoPoo.Cartas.CartaCura;
 import ProjetoPoo.Cartas.CartaDano;
 import ProjetoPoo.Cartas.CartaEfeito;
@@ -9,7 +10,6 @@ import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
 import ProjetoPoo.Efeitos.TipoEfeito;
-import ProjetoPoo.Cartas.AlvoCarta;
 
 public class GerenciadorHeroi {
 
@@ -21,7 +21,7 @@ public class GerenciadorHeroi {
         EfeitoBonusDano efeitoBonusDano1 = new EfeitoBonusDano(1, 2, TipoEfeito.BONUS_DANO);
         EfeitoBonusDano efeitoBonusDano2 = new EfeitoBonusDano(2, 3, TipoEfeito.BONUS_DANO);
 
-        EfeitoVeneno efeitoVeneno3 = new EfeitoVeneno(3, 2, TipoEfeito.VENENO);
+        EfeitoVeneno efeitoVeneno3 = new EfeitoVeneno(2, TipoEfeito.VENENO);
         EfeitoVulneravel efeitoVulneravel25 = new EfeitoVulneravel(25, 2, TipoEfeito.VULNERAVEL);
         EfeitoEnfraquecido efeitoEnfraquecido25 = new EfeitoEnfraquecido(25, 2, TipoEfeito.ENFRAQUECIDO);
 
@@ -39,7 +39,7 @@ public class GerenciadorHeroi {
         CartaEfeito cartaBuffPeq = new CartaEfeito("Sorte no Ataque (+1 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, AlvoCarta.USO_PROPRIO , efeitoBonusDano1);
         CartaEfeito cartaBuffMed = new CartaEfeito("Canalizar o Chi (+2 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, AlvoCarta.USO_PROPRIO , efeitoBonusDano2);
 
-        CartaEfeito cartaVenenoPeq = new CartaEfeito("Macarrão Envenenado (3 de veneno por 2 rounds)", "Uma comida special que aplica veneno no inimigo", 1, AlvoCarta.UM_ALVO, efeitoVeneno3);
+        CartaEfeito cartaVenenoPeq = new CartaEfeito("Macarrão Envenenado (Veneno por +2 rounds)", "Uma comida special que aplica veneno no inimigo", 1, AlvoCarta.UM_ALVO, efeitoVeneno3);
         CartaEfeito cartaVulneravelPeq = new CartaEfeito("Golpe Certeiro (+25% dano recebido por 2 rounds)", "O golpe certeiro deixa o inimigo mais vulnerável a ataques", 1, AlvoCarta.UM_ALVO, efeitoVulneravel25);
         CartaEfeito cartaEnfraquecidoPeq = new CartaEfeito("Ameaça do Dragão Guerreiro (-25% dano causado por 2 rounds)", "O medo sobre o Dragão Guerreiro deixa o inimigo enfraquecido e ataca com menos dano", 1, AlvoCarta.UM_ALVO, efeitoEnfraquecido25);
 
@@ -59,7 +59,7 @@ public class GerenciadorHeroi {
         heroi.adicionarCartaBaralho(cartaBuffPeq, 2);
         heroi.adicionarCartaBaralho(cartaBuffMed, 2);
 
-        heroi.adicionarCartaBaralho(cartaVenenoPeq, 2);
+        heroi.adicionarCartaBaralho(cartaVenenoPeq, 200);
         heroi.adicionarCartaBaralho(cartaVulneravelPeq, 2);
         heroi.adicionarCartaBaralho(cartaEnfraquecidoPeq, 2);
 

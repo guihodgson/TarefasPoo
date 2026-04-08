@@ -6,8 +6,8 @@ public class EfeitoVeneno extends Efeito{
 
     // Constructor
 
-    public EfeitoVeneno(int valor, int duracao, TipoEfeito tipo) {
-        super(tipo, valor, duracao);
+    public EfeitoVeneno(int duracao, TipoEfeito tipo) {
+        super(tipo, 0, duracao);
     }
 
     public EfeitoVeneno(EfeitoVeneno copia) {
@@ -21,8 +21,8 @@ public class EfeitoVeneno extends Efeito{
         if(objeto instanceof Entidade alvo) {
             if (evento.equals("fimRound")) {
                 if (duracao > 0) {
-                    alvo.receberDano(valor);
-                    System.out.println(alvo.getNome() + " tomou " + valor + " de dano de Veneno.");
+                    alvo.receberDano(duracao);
+                    System.out.println(alvo.getNome() + " tomou " + duracao + " de dano de Veneno.");
                     duracao--;
                 }
             }

@@ -2,8 +2,8 @@ package ProjetoPoo;
 
 import java.util.ArrayList;
 
-import ProjetoPoo.Cartas.Carta;
 import ProjetoPoo.Cartas.AlvoCarta;
+import ProjetoPoo.Cartas.Carta;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
 
@@ -28,11 +28,11 @@ public class Batalha {
             }
             ArrayList<String> listaNomeInimigos = listarInimigos(listaInimigos);
 
-            BatalhaVisual.exibirPainelBatalha(heroi, listaInimigos, inputHandler, 1);
+            BatalhaVisual.exibirPainelBatalha(heroi, listaInimigos, inputHandler, 0.5);
             inputHandler.sleep(0.25);
             BatalhaVisual.exibirEnergiaHeroi(heroi, inputHandler);
 
-            int opcao = inputHandler.selecionar(heroi.mostrarDeck(), 0.8, true);
+            int opcao = inputHandler.selecionar(heroi.mostrarDeck(), 0.4, true, "Encerrar Turno");
 
             if (opcao < heroi.tamDeck() && opcao >= 0) {  // Nao quer passar de turno ainda
                 Carta escolhida = heroi.getCartaNDeck(opcao);
@@ -41,7 +41,7 @@ public class Batalha {
                     int alvo = 0;
                     if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {
                         System.out.println("Escolha o alvo do ataque:\n");
-                        alvo = inputHandler.selecionar(listaNomeInimigos, 0.8, false);
+                        alvo = inputHandler.selecionar(listaNomeInimigos, 0.2, true, "Voltar");
                     }
 
                     if (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo < listaInimigos.size() && alvo >= 0) {
@@ -51,7 +51,11 @@ public class Batalha {
                         inputHandler.clear();
                     }
 
-                    else if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {  // Alvo invalido
+                    else if (escolhida.getTipo() == AlvoCarta.UM_ALVO && alvo == listaInimigos.size()) {  // Voltar;
+                        inputHandler.clear();
+                    }
+
+                    else if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {
                         BatalhaVisual.exibirErro("Opcao invalida, tente novamente", inputHandler);
                     }
 

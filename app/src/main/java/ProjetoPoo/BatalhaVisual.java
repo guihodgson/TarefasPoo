@@ -13,9 +13,6 @@ public final class BatalhaVisual {
     private static final String SEPARADOR_INIMIGO = "------------------------------------------------------------";
     private static final int TAMANHO_BARRA = 10;
 
-    private BatalhaVisual() {
-    }
-
     public static void exibirPainelBatalha(Heroi heroi, ArrayList<Inimigo> inimigos, InputHandler inputHandler, double tempo) {
         double tempoOpcao = tempo / (inimigos.size() + 1);
         
@@ -74,25 +71,30 @@ public final class BatalhaVisual {
 
         String status = "HP: " + barraVida + " " + entidade.getVida() + "/" + entidade.getVidaMax() + Cor.formataCor(Cor.AZUL, " \nEscudo: ") + entidade.getEscudo();
 
-        status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.BONUS_DANO, Cor.AMARELO, " Bonus: ", "");
-        status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.VENENO, Cor.VERDE, " Veneno: ", "");
+        status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.BONUS_DANO, Cor.AMARELO, " Bonus: ");
+        status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.VENENO, Cor.VERDE, " Veneno: ");
         status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.VULNERAVEL, Cor.AMARELO, " Vulneravel: ", "+", "% de dano");
         status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.ENFRAQUECIDO, Cor.AMARELO, " Enfraquecido: ", "-", "% de dano");
 
         return status;
     }
 
-    private static String adicionarEfeitoComDuracao(String status, Entidade entidade, TipoEfeito tipo, Cor cor, String titulo, String prefixoValor) {
-        return adicionarEfeitoComDuracao(status, entidade, tipo, cor, titulo, prefixoValor, "");
+    private static String adicionarEfeitoComDuracao(String status, Entidade entidade, TipoEfeito tipo, Cor cor, String titulo) {
+        return adicionarEfeitoComDuracao(status, entidade, tipo, cor, titulo, "", "");
     }
 
     private static String adicionarEfeitoComDuracao(String status, Entidade entidade, TipoEfeito tipo, Cor cor, String titulo, String prefixoValor, String sufixoValor) {
         int valor = entidade.getValorEfeito(tipo);
-        if (valor <= 0) {
+        int tempo = entidade.getTempoEfeito(tipo);
+
+        if (tempo <= 0) {
             return status;
         }
 
-        return status + " |" + Cor.formataCor(cor, titulo) + prefixoValor + valor + sufixoValor + " por " + entidade.getTempoEfeito(tipo) + " round(s)";
+        if (tipo == TipoEfeito.VENENO) {
+            valor = tempo;
+        }
+        return status + " |" + Cor.formataCor(cor, titulo) + prefixoValor + valor + sufixoValor + " por " + tempo + " round(s)";
     }
 
     private static String montarBarraVida(int vidaAtual, int vidaMaxima) {
