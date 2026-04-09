@@ -19,6 +19,10 @@ public class InputHandler {
         in.nextLine();
     }
 
+    /**
+     * Faz o terminal esperar n segundos para a proxima ação.
+     * @param segundos
+     */
     public void sleep(double segundos) {
         try {
             Thread.sleep((int)(segundos * 1000));
@@ -26,6 +30,9 @@ public class InputHandler {
         }
     }
 
+    /**
+     * Limpa o terminal.
+     */
     public void clear() {
         try {
             new ProcessBuilder("clear").inheritIO().start().waitFor();
@@ -37,6 +44,14 @@ public class InputHandler {
         return selecionar(listaOpcoes, tempo, false, "");
     }
 
+    /**
+     * Monta uma tela de seleção para uma arryalist e retorna o indice escolhido.
+     * @param listaOpcoes
+     * @param tempo
+     * @param opcaoVoltar
+     * @param textoVoltar
+     * @return
+     */
     public int selecionar(ArrayList<String> listaOpcoes, double tempo, boolean opcaoVoltar, String textoVoltar) {
         double tempoOpcao;
 
