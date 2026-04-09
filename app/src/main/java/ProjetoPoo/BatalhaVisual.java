@@ -13,6 +13,14 @@ public final class BatalhaVisual {
     private static final String SEPARADOR_INIMIGO = "------------------------------------------------------------";
     private static final int TAMANHO_BARRA = 10;
 
+
+    /**
+     * Exibe o painel de batalha, mostrando o status do heroi e dos inimigos, e a proxima acao de cada inimigo.
+     * @param heroi Heroi que esta batalhando.
+     * @param inimigos Lista de inimigos da batalha.
+     * @param inputHandler Lica com inputs.
+     * @param tempo Quanto tempo dura a animação.
+     */
     public static void exibirPainelBatalha(Heroi heroi, ArrayList<Inimigo> inimigos, InputHandler inputHandler, double tempo) {
         double tempoOpcao = tempo / (inimigos.size() + 1);
         
@@ -42,6 +50,12 @@ public final class BatalhaVisual {
         System.out.println();
     }
 
+
+    /**
+     * Mostra a energia com a cor correta dependendo de quanto que ainda resta.
+     * @param heroi
+     * @param inputHandler
+     */
     public static void exibirEnergiaHeroi(Heroi heroi, InputHandler inputHandler) {
         double statusEnergia = calcularStatus(heroi.getEnergia(), heroi.getEnergiaMax());
         String energiaTexto = heroi.getEnergia() + "/" + heroi.getEnergiaMax() + " de Energia restantes.";
@@ -66,6 +80,11 @@ public final class BatalhaVisual {
         inputHandler.clear();
     }
 
+    /**
+     * Monta os Status de efeitos para a entidade e retorna uma string.
+     * @param entidade
+     * @return
+     */
     private static String montarStatus(Entidade entidade) {
         String barraVida = montarBarraVida(entidade.getVida(), entidade.getVidaMax());
 
