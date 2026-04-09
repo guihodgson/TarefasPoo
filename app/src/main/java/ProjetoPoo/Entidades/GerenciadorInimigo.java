@@ -12,6 +12,11 @@ import ProjetoPoo.Efeitos.EfeitoVulneravel;
 import ProjetoPoo.Efeitos.TipoEfeito;
 
 public class GerenciadorInimigo {
+    /**
+     * Cria um inimigo com seu baralho de cartas.
+     *
+     * @param opcao identificador do inimigo (0 = Tai Lung, 1 = Lord Shen, 2 = Kai)
+     */
     public static Inimigo criarInimigo(int opcao) {
         Inimigo inimigo;
 
