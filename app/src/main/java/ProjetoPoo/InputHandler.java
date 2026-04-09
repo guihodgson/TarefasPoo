@@ -29,7 +29,7 @@ public class InputHandler {
      * Faz o terminal esperar n segundos para a proxima ação.
      * @param segundos
      */
-    public void sleep(double segundos) {
+    public static void sleep(double segundos) {
         try {
             Thread.sleep((int)(segundos * 1000));
         } catch (Exception e) {
@@ -93,5 +93,24 @@ public class InputHandler {
         in.nextLine();  // Limpando o \n do buffer
         System.out.println();
         return resposta - 1;
+    }
+
+        public static void imprimirBonito(String texto, double tempo) {
+        String[] linhas = texto.split("\n");
+
+        int tam = 0;
+        for (String linha : linhas) {
+            tam++;
+        }
+
+        for (String linha : linhas) {
+            for (int i = 0; i < linha.length(); i++) {                
+                System.out.print(linha.charAt(i)); 
+                InputHandler.sleep(tempo/(linha.length() * tam)); 
+            }
+            
+            System.out.println();
+            InputHandler.sleep(tempo/tam);
+        }
     }
 }

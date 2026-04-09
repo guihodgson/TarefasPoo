@@ -18,6 +18,7 @@ public class Batalha {
      */
     public static boolean batalhar(Heroi heroi, InputHandler inputHandler, Inimigo... inimigos) {
         ArrayList<Inimigo> listaInimigos;
+        boolean primeiraAcao = true;
 
         do {
             listaInimigos = new ArrayList<>();
@@ -28,11 +29,21 @@ public class Batalha {
             }
             ArrayList<String> listaNomeInimigos = listarInimigos(listaInimigos);
 
-            BatalhaVisual.exibirPainelBatalha(heroi, listaInimigos, inputHandler, 0.5);
-            inputHandler.sleep(0.25);
+            double tempo;
+            if (primeiraAcao) {
+                tempo = 0.5;
+            }
+            else {
+                tempo = 0;
+            }
+
+            primeiraAcao = false;
+
+            BatalhaVisual.exibirPainelBatalha(heroi, listaInimigos, inputHandler, tempo);
+            InputHandler.sleep(0.25);
             BatalhaVisual.exibirEnergiaHeroi(heroi, inputHandler);
 
-            int opcao = inputHandler.selecionar(heroi.mostrarDeck(), 0.4, true, "Encerrar Turno");
+            int opcao = inputHandler.selecionar(heroi.mostrarDeck(), tempo * 0.7, true, "Encerrar Turno");
 
             if (opcao < heroi.tamDeck() && opcao >= 0) {  // Nao quer passar de turno ainda
                 Carta escolhida = heroi.getCartaNDeck(opcao);
@@ -49,7 +60,7 @@ public class Batalha {
                             heroi.atualizarEfeito("ataque");
                             heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
                             inputHandler.clear();
-                            escolhida.imprimirArte();
+                            escolhida.getArte().imprimirBonito(0.2);
                             inputHandler.pressEnter();
                             inputHandler.clear();
                         }
@@ -68,7 +79,7 @@ public class Batalha {
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, inimigos);
                         inputHandler.clear();
-                        escolhida.imprimirArte();
+                        escolhida.getArte().imprimirBonito(0.2);
                         inputHandler.pressEnter();
                         inputHandler.clear();
                     }
@@ -78,7 +89,7 @@ public class Batalha {
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, heroi);
                         inputHandler.clear();
-                        escolhida.imprimirArte();
+                        escolhida.getArte().imprimirBonito(0.2);
                         inputHandler.pressEnter();
                         inputHandler.clear();
                     }
@@ -93,6 +104,7 @@ public class Batalha {
                 for (Inimigo inimigo : listaInimigos) {
                     inimigo.resetarRound();
                     inimigo.atualizarEfeito("fimRound");
+                    primeiraAcao = true;
                 }
 
                 listaInimigos.removeIf(inimigo -> !inimigo.estaVivo());
@@ -104,7 +116,7 @@ public class Batalha {
                     inimigo.usarCartas(heroi);
                     System.out.printf(Cor.RESET.getCodigo());
 
-                    inputHandler.sleep(0.4);
+                    InputHandler.sleep(0.4);
                     System.out.println();
                 }
 
