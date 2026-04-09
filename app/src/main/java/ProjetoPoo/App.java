@@ -12,6 +12,7 @@ public class App {
         InputHandler inputHandler = new InputHandler();
 
         inputHandler.clear();
+        inputHandler.pressEnter();
         GerenciadorTitulo.criarTitulo();
 
         
@@ -45,13 +46,13 @@ public class App {
             Heroi heroi = GerenciadorHeroi.criarHeroi(34, 5, 0);
             if (!Batalha.batalhar(heroi, inputHandler, inimigo)) {
                 System.out.println("Você MORREU, o mundo continua em trevas.");  
-                inputHandler.sleep(0.4);
+                InputHandler.sleep(0.4);
                 GerenciadorFinal.criarPoTriste();
                 System.exit(0);
             }
             if (desafio == false) {
                 System.out.println("Você GANHOU de " + inimigo.getNome() + "!!\nO mundo está mais seguro agora.");
-                inputHandler.sleep(0.4);
+                InputHandler.sleep(0.4);
                 GerenciadorFinal.criarPoFeliz();
                 System.exit(0);
             }
@@ -63,15 +64,15 @@ public class App {
 
         if (!Batalha.batalhar(heroi, inputHandler, inimigo, inimigo2, inimigo3)) {
             System.out.println("Você MORREU, o mundo continua em trevas.");  
-            inputHandler.sleep(0.4);
+            InputHandler.sleep(0.4);
             GerenciadorFinal.criarPoTriste();
             System.exit(0);
         }
 
         System.out.println("Voce VENCEU o DESAFIO SUPREMO!!!");
-        inputHandler.sleep(0.4);
+        InputHandler.sleep(0.4);
         System.out.println("Agora, voce é conhecido como o Dragao Guerreiro Mestre do Chi.");
-        inputHandler.sleep(0.4);
+        InputHandler.sleep(0.4);
         GerenciadorFinal.criarPoFeliz();
     }
 }
