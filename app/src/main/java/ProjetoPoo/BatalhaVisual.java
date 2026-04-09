@@ -25,25 +25,25 @@ public final class BatalhaVisual {
         double tempoOpcao = tempo / (inimigos.size() + 1);
         
         Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_BATALHA);
-        inputHandler.sleep(tempoOpcao);
+        InputHandler.sleep(tempoOpcao);
 
         System.out.println("HEROI: " + Cor.formataCor(Cor.AMARELO, heroi.getNome()));
-        inputHandler.sleep(tempoOpcao / 2);
+        InputHandler.sleep(tempoOpcao / 2);
         System.out.println(montarStatus(heroi));
-        inputHandler.sleep(tempoOpcao);
+        InputHandler.sleep(tempoOpcao);
 
         for (int i = 0; i < inimigos.size(); i++) {
             Inimigo inimigo = inimigos.get(i);
 
             Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_INIMIGO);
-            inputHandler.sleep(tempoOpcao);
+            InputHandler.sleep(tempoOpcao);
 
             System.out.println("INIMIGO " + (i + 1) + ": " + Cor.formataCor(Cor.VERMELHO, inimigo.getNome()));
-            inputHandler.sleep(tempoOpcao / 2);
+            InputHandler.sleep(tempoOpcao / 2);
             System.out.println(montarStatus(inimigo));
-            inputHandler.sleep(tempoOpcao / 2);
+            InputHandler.sleep(tempoOpcao / 2);
             inimigo.printarProxAcao();
-            inputHandler.sleep(tempoOpcao);
+            InputHandler.sleep(tempoOpcao);
         }
 
         Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_BATALHA);
@@ -69,7 +69,7 @@ public final class BatalhaVisual {
             Cor.imprimeAnsi(Cor.VERMELHO, energiaTexto);
         }
 
-        inputHandler.sleep(0.1);
+        InputHandler.sleep(0.1);
         System.out.println();
     }
 
