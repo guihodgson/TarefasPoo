@@ -9,6 +9,12 @@ import ProjetoPoo.Entidades.Heroi;
 
 public class GerenciadorDeck {
     
+
+    /**
+     * Cria um deck para o heroi e adiciona nele.
+     * @param heroi
+     * @param opcao
+     */
     public static void criarDeckHeroi(Heroi heroi,int opcao) {
 
         switch (opcao) {

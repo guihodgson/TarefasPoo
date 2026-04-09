@@ -68,6 +68,10 @@ public class Baralho {
         }
     }
 
+    /**
+     * Retorna um arraylist na forma de Nome | Custo | Descricao.
+     * @return
+     */
     public ArrayList<String> mostrarBaralho() {
         ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < baralho.size(); i++) {

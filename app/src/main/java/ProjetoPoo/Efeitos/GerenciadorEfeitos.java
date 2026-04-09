@@ -8,6 +8,10 @@ public class GerenciadorEfeitos {
 
     private final ArrayList<Efeito> efeitos = new ArrayList<>();
 
+    /**
+     * Verifica se o efeito já está no ArrayList efeitos, se estiver, aumenta o tempo, senao cria um novo.
+     * @param efeito
+     */
     public void ganharEfeito(Efeito efeito) {
         boolean existe = false;
         for (Efeito atual : efeitos) {
@@ -27,6 +31,11 @@ public class GerenciadorEfeitos {
         efeitos.remove(efeito);
     }
 
+    /**
+     * Retorna o maior valor de efeito na Lista de efeitos.
+     * @param tipo
+     * @return
+     */
     public int getValorEfeito(TipoEfeito tipo) {
         int val = 0;
         for (Efeito efeito : efeitos) {
@@ -37,6 +46,11 @@ public class GerenciadorEfeitos {
         return val;
     }
 
+    /**
+     * Retorna o tempo do maior efeito que tem na lista.
+     * @param tipo
+     * @return
+     */
     public int getTempoEfeito(TipoEfeito tipo) {
         int maiorValor = getValorEfeito(tipo);
 
@@ -58,6 +72,13 @@ public class GerenciadorEfeitos {
         return (int) Math.ceil(danoBase * (1 + (vulneravel / 100.0)));
     }
 
+    /**
+     * Calcula o dano que um ataque tem que causar com os buffs e debuffs.
+     * @param danoBase
+     * @param atacante
+     * @param alvo
+     * @return
+     */
     public int calcularDanoFinalAtaque(int danoBase, Entidade atacante, Entidade alvo) {
         int danoComBonus = danoBase + atacante.getGerenciadorEfeitos().getValorEfeito(TipoEfeito.BONUS_DANO);
         int danoCausado = atacante.getGerenciadorEfeitos().calcularDanoAtaqueCausado(danoComBonus);
