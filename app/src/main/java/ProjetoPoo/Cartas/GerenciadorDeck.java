@@ -1,5 +1,6 @@
 package ProjetoPoo.Cartas;
 
+import ProjetoPoo.Artes;
 import ProjetoPoo.Efeitos.EfeitoBonusDano;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
@@ -30,25 +31,25 @@ public class GerenciadorDeck {
             
                 // Baralho Po 1
             
-                CartaDano cartaSkidoosh = new CartaDano("Skidoosh (18 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 5, 18, AlvoCarta.UM_ALVO);
-                CartaDano cartaDanoMed = new CartaDano("Barrigada do Panda (5 de ataque)", "Uma forte investida com a barriga do Dragão Guerreiro", 2, 5, AlvoCarta.UM_ALVO);
-                CartaDano cartaDanoPeq = new CartaDano("Soco do Panda (2 de ataque)", "Um soco levemente carinhoso do Dragão Guerreiro", 1, 2, AlvoCarta.UM_ALVO);
-                CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (8 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 8, AlvoCarta.GLOBAL);
+                CartaDano cartaSkidoosh = new CartaDano("Skidoosh (18 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 5, 18, AlvoCarta.UM_ALVO, Artes.SKIDOOSH);
+                CartaDano cartaDanoMed = new CartaDano("Barrigada do Panda (5 de ataque)", "Uma forte investida com a barriga do Dragão Guerreiro", 2, 5, AlvoCarta.UM_ALVO, Artes.BANG1);
+                CartaDano cartaDanoPeq = new CartaDano("Soco do Panda (2 de ataque)", "Um soco levemente carinhoso do Dragão Guerreiro", 1, 2, AlvoCarta.UM_ALVO, Artes.BANG1);
+                CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (8 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 8, AlvoCarta.GLOBAL, Artes.BANG1);
             
-                CartaEscudo cartaEscudoGrnd = new CartaEscudo("A Fuga do Panda (10 de defesa)", "O Dragão Guerreiro sairá correndo da batalha fugindo dos danos do ataque", 3, 10, AlvoCarta.USO_PROPRIO);
-                CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano na Barriga (5 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 5, AlvoCarta.USO_PROPRIO);
-                CartaEscudo cartaEscudoPeq = new CartaEscudo("Cambalhota do Panda (2 de defesa)", "O Dragão Guerreiro dará uma cambalhota e esquivará do dano do ataque", 1, 2, AlvoCarta.USO_PROPRIO);
+                CartaEscudo cartaEscudoGrnd = new CartaEscudo("A Fuga do Panda (10 de defesa)", "O Dragão Guerreiro sairá correndo da batalha fugindo dos danos do ataque", 3, 10, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
+                CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano na Barriga (5 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 5, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
+                CartaEscudo cartaEscudoPeq = new CartaEscudo("Cambalhota do Panda (2 de defesa)", "O Dragão Guerreiro dará uma cambalhota e esquivará do dano do ataque", 1, 2, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
             
-                CartaEfeito cartaBuffPeq = new CartaEfeito("Sorte no Ataque (+1 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, AlvoCarta.USO_PROPRIO , efeitoBonusDano1);
-                CartaEfeito cartaBuffMed = new CartaEfeito("Canalizar o Chi (+2 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, AlvoCarta.USO_PROPRIO , efeitoBonusDano2);
+                CartaEfeito cartaBuffPeq = new CartaEfeito("Sorte no Ataque (+1 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, AlvoCarta.USO_PROPRIO, Artes.BONUS, efeitoBonusDano1);
+                CartaEfeito cartaBuffMed = new CartaEfeito("Canalizar o Chi (+2 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, AlvoCarta.USO_PROPRIO, Artes.BONUS, efeitoBonusDano2);
             
-                CartaEfeito cartaVenenoPeq = new CartaEfeito("Macarrão Envenenado (Veneno por +3 rounds)", "Uma comida special que aplica veneno no inimigo", 1, AlvoCarta.UM_ALVO, efeitoVeneno3);
-                CartaEfeito cartaVulneravelPeq = new CartaEfeito("Golpe Certeiro (+25% dano recebido por 2 rounds)", "O golpe certeiro deixa o inimigo mais vulnerável a ataques", 1, AlvoCarta.UM_ALVO, efeitoVulneravel25);
-                CartaEfeito cartaEnfraquecidoPeq = new CartaEfeito("Ameaça do Dragão Guerreiro (-25% dano causado por 2 rounds)", "O medo sobre o Dragão Guerreiro deixa o inimigo enfraquecido e ataca com menos dano", 1, AlvoCarta.UM_ALVO, efeitoEnfraquecido25);
+                CartaEfeito cartaVenenoPeq = new CartaEfeito("Macarrão Envenenado (Veneno por +3 rounds)", "Uma comida special que aplica veneno no inimigo", 1, AlvoCarta.UM_ALVO, Artes.VENENO, efeitoVeneno3);
+                CartaEfeito cartaVulneravelPeq = new CartaEfeito("Golpe Certeiro (+25% dano recebido por 2 rounds)", "O golpe certeiro deixa o inimigo mais vulnerável a ataques", 1, AlvoCarta.UM_ALVO, Artes.BONUS, efeitoVulneravel25);
+                CartaEfeito cartaEnfraquecidoPeq = new CartaEfeito("Ameaça do Dragão Guerreiro (-25% dano causado por 2 rounds)", "O medo sobre o Dragão Guerreiro deixa o inimigo enfraquecido e ataca com menos dano", 1, AlvoCarta.UM_ALVO, Artes.BONUS, efeitoEnfraquecido25);
             
-                CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (3 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 3, AlvoCarta.USO_PROPRIO);
-                CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (5 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 5, AlvoCarta.USO_PROPRIO);
-                CartaCura cartaCuraGrnd = new CartaCura("Cura do Bao (7 de cura)", "O Pãozinho Bao do Papai Ping dará mais vida para curar-se", 4, 7, AlvoCarta.USO_PROPRIO);
+                CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (3 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 3, AlvoCarta.USO_PROPRIO, Artes.CURA);
+                CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (5 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 5, AlvoCarta.USO_PROPRIO, Artes.CURA);
+                CartaCura cartaCuraGrnd = new CartaCura("Cura do Bao (7 de cura)", "O Pãozinho Bao do Papai Ping dará mais vida para curar-se", 4, 7, AlvoCarta.USO_PROPRIO, Artes.CURA);
 
                 // Adicionando as cartas ao baralho do herói
 
@@ -85,25 +86,25 @@ public class GerenciadorDeck {
             
                 // Baralho Po 1
             
-                CartaDano cartaSkidoosh = new CartaDano("Skidoosh (20 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 4, 20, AlvoCarta.UM_ALVO);
-                CartaDano cartaDanoMed = new CartaDano("Barrigada do Panda (8 de ataque)", "Uma forte investida com a barriga do Dragão Guerreiro", 2, 8, AlvoCarta.UM_ALVO);
-                CartaDano cartaDanoPeq = new CartaDano("Soco do Panda (4 de ataque)", "Um soco levemente carinhoso do Dragão Guerreiro", 1, 4, AlvoCarta.UM_ALVO);
-                CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (8 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 8, AlvoCarta.GLOBAL);
+                CartaDano cartaSkidoosh = new CartaDano("Skidoosh (20 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 4, 20, AlvoCarta.UM_ALVO, Artes.SKIDOOSH);
+                CartaDano cartaDanoMed = new CartaDano("Barrigada do Panda (8 de ataque)", "Uma forte investida com a barriga do Dragão Guerreiro", 2, 8, AlvoCarta.UM_ALVO, Artes.BANG1);
+                CartaDano cartaDanoPeq = new CartaDano("Soco do Panda (4 de ataque)", "Um soco levemente carinhoso do Dragão Guerreiro", 1, 4, AlvoCarta.UM_ALVO, Artes.BANG1);
+                CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (8 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 8, AlvoCarta.GLOBAL, Artes.BANG1);
             
-                CartaEscudo cartaEscudoGrnd = new CartaEscudo("A Fuga do Panda (16 de defesa)", "O Dragão Guerreiro sairá correndo da batalha fugindo dos danos do ataque", 3, 16, AlvoCarta.USO_PROPRIO);
-                CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano na Barriga (10 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 10, AlvoCarta.USO_PROPRIO);
-                CartaEscudo cartaEscudoPeq = new CartaEscudo("Cambalhota do Panda (5 de defesa)", "O Dragão Guerreiro dará uma cambalhota e esquivará do dano do ataque", 1, 5, AlvoCarta.USO_PROPRIO);
+                CartaEscudo cartaEscudoGrnd = new CartaEscudo("A Fuga do Panda (16 de defesa)", "O Dragão Guerreiro sairá correndo da batalha fugindo dos danos do ataque", 3, 16, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
+                CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano na Barriga (10 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 10, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
+                CartaEscudo cartaEscudoPeq = new CartaEscudo("Cambalhota do Panda (5 de defesa)", "O Dragão Guerreiro dará uma cambalhota e esquivará do dano do ataque", 1, 5, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
             
-                CartaEfeito cartaBuffPeq = new CartaEfeito("Sorte no Ataque (+2 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, AlvoCarta.USO_PROPRIO , efeitoBonusDano1);
-                CartaEfeito cartaBuffMed = new CartaEfeito("Canalizar o Chi (+4 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, AlvoCarta.USO_PROPRIO , efeitoBonusDano2);
+                CartaEfeito cartaBuffPeq = new CartaEfeito("Sorte no Ataque (+2 de ataque por 2 rounds)", "A sorte do Dragão Guerreiro aumentará o ataque do Dragão Guerreiro por 2 rounds", 1, AlvoCarta.USO_PROPRIO, Artes.BONUS, efeitoBonusDano1);
+                CartaEfeito cartaBuffMed = new CartaEfeito("Canalizar o Chi (+4 de ataque por 3 rounds)", "O uso do Chi no ataque do Dragão Guerreiro aumentará o ataque por 3 rounds", 2, AlvoCarta.USO_PROPRIO, Artes.BONUS, efeitoBonusDano2);
             
-                CartaEfeito cartaVenenoPeq = new CartaEfeito("Macarrão Envenenado (Veneno por +4 rounds)", "Uma comida special que aplica veneno no inimigo", 1, AlvoCarta.UM_ALVO, efeitoVeneno3);
-                CartaEfeito cartaVulneravelPeq = new CartaEfeito("Golpe Certeiro (+25% dano recebido por 2 rounds)", "O golpe certeiro deixa o inimigo mais vulnerável a ataques", 1, AlvoCarta.UM_ALVO, efeitoVulneravel25);
-                CartaEfeito cartaEnfraquecidoPeq = new CartaEfeito("Ameaça do Dragão Guerreiro (-25% dano causado por 2 rounds)", "O medo sobre o Dragão Guerreiro deixa o inimigo enfraquecido e ataca com menos dano", 1, AlvoCarta.UM_ALVO, efeitoEnfraquecido25);
+                CartaEfeito cartaVenenoPeq = new CartaEfeito("Macarrão Envenenado (Veneno por +4 rounds)", "Uma comida special que aplica veneno no inimigo", 1, AlvoCarta.UM_ALVO, Artes.VENENO, efeitoVeneno3);
+                CartaEfeito cartaVulneravelPeq = new CartaEfeito("Golpe Certeiro (+25% dano recebido por 2 rounds)", "O golpe certeiro deixa o inimigo mais vulnerável a ataques", 1, AlvoCarta.UM_ALVO, Artes.BONUS, efeitoVulneravel25);
+                CartaEfeito cartaEnfraquecidoPeq = new CartaEfeito("Ameaça do Dragão Guerreiro (-25% dano causado por 2 rounds)", "O medo sobre o Dragão Guerreiro deixa o inimigo enfraquecido e ataca com menos dano", 1, AlvoCarta.UM_ALVO, Artes.BONUS, efeitoEnfraquecido25);
             
-                CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (5 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 5, AlvoCarta.USO_PROPRIO);
-                CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (8 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 8, AlvoCarta.USO_PROPRIO);
-                CartaCura cartaCuraGrnd = new CartaCura("Cura do Bao (12 de cura)", "O Pãozinho Bao do Papai Ping dará mais vida para curar-se", 4, 12, AlvoCarta.USO_PROPRIO);
+                CartaCura cartaCuraPeq = new CartaCura("Cura do Biscoito Chinês (5 de cura)", "O Biscoito Chinês dará mais vida para curar-se", 2, 5, AlvoCarta.USO_PROPRIO, Artes.CURA);
+                CartaCura cartaCuraMed = new CartaCura("Cura do Lámen (8 de cura)", "O Lámen do Papai Ping dará mais vida para curar-se", 3, 8, AlvoCarta.USO_PROPRIO, Artes.CURA);
+                CartaCura cartaCuraGrnd = new CartaCura("Cura do Bao (12 de cura)", "O Pãozinho Bao do Papai Ping dará mais vida para curar-se", 4, 12, AlvoCarta.USO_PROPRIO, Artes.CURA);
 
                 // Adicionando as cartas ao baralho do herói
 

@@ -50,7 +50,6 @@ public final class BatalhaVisual {
         System.out.println();
     }
 
-
     /**
      * Mostra a energia com a cor correta dependendo de quanto que ainda resta.
      * @param heroi

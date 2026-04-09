@@ -39,7 +39,7 @@ public class Batalha {
 
                 if (heroi.podeGastarEnergia(escolhida.getCusto())) {
 
-                    if (escolhida.getTipo() == AlvoCarta.UM_ALVO) {  // Caso de um alvo
+                    if (escolhida.getAlvo() == AlvoCarta.UM_ALVO) {  // Caso de um alvo
                         int alvo;
                         System.out.println("Escolha o alvo do ataque:\n");
                         alvo = inputHandler.selecionar(listaNomeInimigos, 0.2, true, "Voltar");
@@ -48,6 +48,9 @@ public class Batalha {
                             heroi.gastarEnergia(escolhida.getCusto());
                             heroi.atualizarEfeito("ataque");
                             heroi.usarCartaNDeck(opcao, listaInimigos.get(alvo));
+                            inputHandler.clear();
+                            escolhida.imprimirArte();
+                            inputHandler.pressEnter();
                             inputHandler.clear();
                         }
 
@@ -60,17 +63,23 @@ public class Batalha {
                         }
                     }
 
-                    if (escolhida.getTipo() == AlvoCarta.GLOBAL) {  // Caso de global
+                    if (escolhida.getAlvo() == AlvoCarta.GLOBAL) {  // Caso de global
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, inimigos);
                         inputHandler.clear();
+                        escolhida.imprimirArte();
+                        inputHandler.pressEnter();
+                        inputHandler.clear();
                     }
 
-                    if (escolhida.getTipo() == AlvoCarta.USO_PROPRIO) {  // Caso de uso próprio
+                    if (escolhida.getAlvo() == AlvoCarta.USO_PROPRIO) {  // Caso de uso próprio
                         heroi.gastarEnergia(escolhida.getCusto());
                         heroi.atualizarEfeito("ataque");
                         heroi.usarCartaNDeck(opcao, heroi);
+                        inputHandler.clear();
+                        escolhida.imprimirArte();
+                        inputHandler.pressEnter();
                         inputHandler.clear();
                     }
                 }

@@ -1,5 +1,6 @@
 package ProjetoPoo.Cartas;
 
+import ProjetoPoo.Artes;
 import ProjetoPoo.Efeitos.Efeito;
 import ProjetoPoo.Entidades.Entidade;
 
@@ -17,8 +18,8 @@ public class CartaEfeito extends Carta {
 
     // Constructor
 
-    public CartaEfeito(String nome, String descricao, int custo, AlvoCarta tipo, Efeito efeito) {
-        super(nome, descricao, custo, tipo);
+    public CartaEfeito(String nome, String descricao, int custo, AlvoCarta alvo, Artes arte, Efeito efeito) {
+        super(nome, descricao, custo, alvo, arte);
         this.efeito = efeito;
     }
 

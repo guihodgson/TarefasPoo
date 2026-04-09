@@ -15,7 +15,13 @@ public class InputHandler {
     }
 
     public void pressEnter() {
-        System.out.println("Pressione Enter para continuar");
+        pressEnter(true);
+    }
+
+    public void pressEnter(boolean temTexto) {
+        if (temTexto) {
+            System.out.println("Pressione Enter para continuar");
+        }
         in.nextLine();
     }
 

@@ -1,4 +1,5 @@
 package ProjetoPoo.Cartas;
+import ProjetoPoo.Artes;
 import ProjetoPoo.Entidades.Entidade;
 
 
@@ -16,8 +17,8 @@ public class CartaCura extends Carta{
 
     // Constructor
 
-    public CartaCura(String nome, String descricao, int custo, int cura, AlvoCarta tipo) {
-        super(nome, descricao, custo, tipo);
+    public CartaCura(String nome, String descricao, int custo, int cura, AlvoCarta alvo, Artes arte) {
+        super(nome, descricao, custo, alvo, arte);
         this.cura = cura;
     }
 
