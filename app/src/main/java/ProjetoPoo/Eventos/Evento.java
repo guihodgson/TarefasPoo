@@ -1,4 +1,4 @@
-package ProjetoPoo.Batalhas;
+package ProjetoPoo.Eventos;
 
 import ProjetoPoo.InputHandler;
 

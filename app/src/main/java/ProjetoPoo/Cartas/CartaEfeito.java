@@ -2,10 +2,10 @@ package ProjetoPoo.Cartas;
 
 import java.util.ArrayList;
 
-import ProjetoPoo.Batalhas.Artes;
 import ProjetoPoo.Efeitos.Efeito;
 import ProjetoPoo.Entidades.Entidade;
 import ProjetoPoo.Entidades.Inimigo;
+import ProjetoPoo.Eventos.Artes;
 
 public class CartaEfeito extends Carta {
 

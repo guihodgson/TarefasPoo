@@ -2,12 +2,12 @@ package ProjetoPoo;
 
 import java.util.ArrayList;
 
-import ProjetoPoo.Batalhas.Batalha;
-import ProjetoPoo.Batalhas.ContextoHeroi;
 import ProjetoPoo.Entidades.GerenciadorHeroi;
 import ProjetoPoo.Entidades.GerenciadorInimigo;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
+import ProjetoPoo.Eventos.Batalha;
+import ProjetoPoo.Eventos.ContextoHeroi;
 
 /**
  * Classe de entrada da aplicação.

@@ -5,11 +5,11 @@ import ProjetoPoo.Cartas.CartaDano;
 import ProjetoPoo.Cartas.CartaEfeito;
 import ProjetoPoo.Cartas.CartaEscudo;
 import ProjetoPoo.Cor;
-import ProjetoPoo.Batalhas.Artes;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
 import ProjetoPoo.Efeitos.TipoEfeito;
+import ProjetoPoo.Eventos.Artes;
 
 public class GerenciadorInimigo {
     /**
