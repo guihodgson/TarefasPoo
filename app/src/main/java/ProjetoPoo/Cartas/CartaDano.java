@@ -1,7 +1,10 @@
 package ProjetoPoo.Cartas;
 
+import java.util.ArrayList;
+
 import ProjetoPoo.Artes;
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Entidades.Inimigo;
 
 
 public class CartaDano extends Carta{
@@ -32,9 +35,17 @@ public class CartaDano extends Carta{
 
     @Override
     public void usar(Entidade heroi, Entidade... alvos) {
-        for (Entidade alvo : alvos) {
-            int danoFinal = heroi.calcularDanoFinalAtaque(ataque, alvo);
-            alvo.receberDano(danoFinal);
+        for (Entidade target : alvos) {
+            int danoFinal = heroi.calcularDanoFinalAtaque(ataque, target);
+            target.receberDano(danoFinal);
+        }
+    }
+
+    @Override
+    public void usar(Entidade heroi, ArrayList<Inimigo> alvos) {
+        for (Entidade target : alvos) {
+            int danoFinal = heroi.calcularDanoFinalAtaque(ataque, target);
+            target.receberDano(danoFinal);
         }
     }
 

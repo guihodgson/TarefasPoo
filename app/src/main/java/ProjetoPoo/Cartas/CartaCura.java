@@ -1,6 +1,9 @@
 package ProjetoPoo.Cartas;
+import java.util.ArrayList;
+
 import ProjetoPoo.Artes;
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Entidades.Inimigo;
 
 
 public class CartaCura extends Carta{
@@ -31,6 +34,11 @@ public class CartaCura extends Carta{
 
     @Override
     public void usar(Entidade heroi, Entidade... alvo) {
+        heroi.curarVida(cura);
+    }
+
+    @Override
+    public void usar(Entidade heroi, ArrayList<Inimigo> alvos) {
         heroi.curarVida(cura);
     }
 
