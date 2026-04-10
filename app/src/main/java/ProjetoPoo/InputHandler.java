@@ -15,12 +15,12 @@ public class InputHandler {
     }
 
     public void pressEnter() {
-        pressEnter(true);
+        pressEnter(true, Cor.formataCor(Cor.CINZA_ESCURO, "Pressione Enter para continuar."));
     }
 
-    public void pressEnter(boolean temTexto) {
+    public void pressEnter(boolean temTexto, String texto) {
         if (temTexto) {
-            System.out.println("Pressione Enter para continuar");
+            System.out.println(texto);
         }
         in.nextLine();
     }
