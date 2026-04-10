@@ -1,4 +1,7 @@
-package ProjetoPoo;
+package ProjetoPoo.Batalhas;
+
+import ProjetoPoo.Cor;
+import ProjetoPoo.InputHandler;
 
 public enum Artes {
     BANG1(Cor.formataCor(Cor.AMARELO, """

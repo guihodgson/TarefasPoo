@@ -95,4 +95,8 @@ public class GerenciadorEfeitos {
     public void limparEfeitosExpirados() {
         efeitos.removeIf(efeito -> efeito.getDuracao() <= 0);
     }
+
+    public void limparEfeitos() {
+        efeitos.clear();
+    }
 }

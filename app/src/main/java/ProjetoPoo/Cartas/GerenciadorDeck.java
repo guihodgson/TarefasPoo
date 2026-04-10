@@ -1,6 +1,6 @@
 package ProjetoPoo.Cartas;
 
-import ProjetoPoo.Artes;
+import ProjetoPoo.Batalhas.Artes;
 import ProjetoPoo.Efeitos.EfeitoBonusDano;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;

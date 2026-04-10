@@ -2,7 +2,7 @@ package ProjetoPoo.Cartas;
 
 import java.util.ArrayList;
 
-import ProjetoPoo.Artes;
+import ProjetoPoo.Batalhas.Artes;
 import ProjetoPoo.Entidades.Entidade;
 import ProjetoPoo.Entidades.Inimigo;
 

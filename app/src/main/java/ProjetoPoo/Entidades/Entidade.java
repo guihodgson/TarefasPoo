@@ -137,4 +137,8 @@ public class Entidade {
     public void limparEfeitosExpirados() {
         gerenciadorEfeitos.limparEfeitosExpirados();
     }
+
+    public void limparEfeitos() {
+        gerenciadorEfeitos.limparEfeitos();
+    }
 }

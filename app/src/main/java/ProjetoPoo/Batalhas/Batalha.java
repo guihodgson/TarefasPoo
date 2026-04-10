@@ -1,13 +1,15 @@
-package ProjetoPoo;
+package ProjetoPoo.Batalhas;
 
 import java.util.ArrayList;
 
+import ProjetoPoo.Cor;
+import ProjetoPoo.InputHandler;
 import ProjetoPoo.Cartas.AlvoCarta;
 import ProjetoPoo.Cartas.Carta;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
 
-public class Batalha {
+public class Batalha extends Evento {
 
     private static ArrayList<String> listarInimigos(ArrayList<Inimigo> inimigos) {
         ArrayList<String> listaInimigos = new ArrayList<>();
@@ -17,7 +19,10 @@ public class Batalha {
         return listaInimigos;
     }
 
-    public static boolean iniciar(InputHandler inputHandler, Heroi heroi, ArrayList<Inimigo> inimigos) {
+    public boolean iniciar(InputHandler inputHandler, ContextoHeroi ctx) {
+        Heroi heroi = ctx.heroi;
+        ArrayList<Inimigo> inimigos = ctx.inimigos;
+
         double tempoPainel;
         double tempoPadrao;
         double tempoImagem;
@@ -30,9 +35,9 @@ public class Batalha {
                 tempoImagem = 0.2;
             }
             else {
-                tempoPainel = 0.2;
-                tempoPadrao = 0.1;
-                tempoImagem = 0.1;
+                tempoPainel = 0.1;
+                tempoPadrao = 0.05;
+                tempoImagem = 0.2;
             }
 
             BatalhaVisual.exibirPainelBatalha(heroi, inimigos, inputHandler, tempoPainel);
@@ -94,9 +99,8 @@ public class Batalha {
 
             inimigos.removeIf(inimigo -> !inimigo.estaVivo());
         }
-        
+        heroi.limparEfeitos();
         return heroi.estaVivo();
-        
     }
     
     private static boolean nValidoEntre(int val, int a, int b) {

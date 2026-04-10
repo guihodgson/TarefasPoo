@@ -1,7 +1,9 @@
-package ProjetoPoo;
+package ProjetoPoo.Batalhas;
 
 import java.util.ArrayList;
 
+import ProjetoPoo.Cor;
+import ProjetoPoo.InputHandler;
 import ProjetoPoo.Efeitos.TipoEfeito;
 import ProjetoPoo.Entidades.Entidade;
 import ProjetoPoo.Entidades.Heroi;

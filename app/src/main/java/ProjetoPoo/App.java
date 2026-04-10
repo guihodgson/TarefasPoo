@@ -2,6 +2,8 @@ package ProjetoPoo;
 
 import java.util.ArrayList;
 
+import ProjetoPoo.Batalhas.Batalha;
+import ProjetoPoo.Batalhas.ContextoHeroi;
 import ProjetoPoo.Entidades.GerenciadorHeroi;
 import ProjetoPoo.Entidades.GerenciadorInimigo;
 import ProjetoPoo.Entidades.Heroi;
@@ -24,6 +26,8 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
         InputHandler inputHandler = new InputHandler();
+        Batalha batalha = new Batalha();
+        ContextoHeroi ctx = new ContextoHeroi(null);
 
         inputHandler.clear();
         inputHandler.pressEnter(true, "Pressione Enter para Iniciar!!!");
@@ -58,7 +62,10 @@ public class App {
         
         if (!desafio) {
             Heroi heroi = GerenciadorHeroi.criarHeroi(34, 5, 0);
-            if (!Batalha.iniciar(inputHandler, heroi, inimigos)) {
+            ctx.heroi = heroi;
+            ctx.inimigos = inimigos;
+
+            if (!batalha.iniciar(inputHandler, ctx)) {
                 System.out.println("Você MORREU, o mundo continua em trevas.");  
                 InputHandler.sleep(0.4);
                 GerenciadorFinal.criarPoTriste();
@@ -76,7 +83,10 @@ public class App {
         inimigos.add(GerenciadorInimigo.criarInimigo(2));
         Heroi heroi = GerenciadorHeroi.criarHeroi(50, 8, 1);
 
-        if (!Batalha.iniciar(inputHandler, heroi, inimigos)) {
+        ctx.heroi = heroi;
+        ctx.inimigos = inimigos;
+
+        if (!batalha.iniciar(inputHandler, ctx)) {
             System.out.println("Você MORREU, o mundo continua em trevas.");  
             InputHandler.sleep(0.4);
             GerenciadorFinal.criarPoTriste();
