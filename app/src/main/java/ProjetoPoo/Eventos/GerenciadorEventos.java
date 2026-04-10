@@ -4,29 +4,37 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
+import ProjetoPoo.InputHandler;
+import ProjetoPoo.Entidades.GerenciadorInimigo;
+import ProjetoPoo.Entidades.Inimigo;
 import ProjetoPoo.Entidades.TipoInimigo;
 
 public class GerenciadorEventos {
 
     Random random = new Random();
+    InputHandler inputHandler = new InputHandler();
     
     public Evento criarEvento(TipoEvento tipo, ContextoHeroi ctx) {
         switch (tipo) {
             case BATALHA -> {
-                
+                criarBatalha(ctx, TipoInimigo.COMUM, 3);
             }
         }
     }
 
-    public Evento criarBatalha(ContextoHeroi ctx, TipoInimigo tipoInimigo, int qtdMaxInim) {
-        ArrayList<NoEvento> filhos = new ArrayList<>();
+    public void criarBatalha(ContextoHeroi ctx, TipoInimigo tipoInimigo, int qtdMaxInim) {
+        ArrayList<Inimigo> inimigos = new ArrayList<>();
+        GerenciadorInimigo gerenciadorInimigo = new GerenciadorInimigo();
         Evento batalha = new Batalha();
 
         int qtdInim = random.nextInt(qtdMaxInim) + 1;
 
         for (int i = 0; i < qtdInim; i++) {
-
+            inimigos.add(gerenciadorInimigo.criarInimigoAleatorio(tipoInimigo, ctx));
         }
+        ctx.inimigos = inimigos;
+
+        batalha.iniciar(inputHandler, ctx);
     }
 }
 
