@@ -29,32 +29,29 @@ public class App {
         inputHandler.pressEnter(true, "Pressione Enter para Iniciar!!!");
         GerenciadorTitulo.criarTitulo();
 
-        
         ArrayList<String> opcoesFilme = new ArrayList<>();
         opcoesFilme.add("Filme 1");
         opcoesFilme.add("Filme 2");
         opcoesFilme.add("Filme 3");
         opcoesFilme.add("DESAFIO");
-        
+
         int filmeEscolhido;
-        
+
         do {
             System.out.println("Selecione o filme que você quer jogar:");
             filmeEscolhido = inputHandler.selecionar(opcoesFilme, 0.8);
         } while (filmeEscolhido > 3 || filmeEscolhido < 0);
-        
+
         Boolean desafio = false;
-        
+
         if (filmeEscolhido == 3) {
             desafio = true;
             filmeEscolhido = 0;
         }
-        
 
         ArrayList<Inimigo> inimigos = new ArrayList<>();
 
         inimigos.add(GerenciadorInimigo.criarInimigo(filmeEscolhido));
-        
         inimigos.get(0).embaralharMao();
         
         inputHandler.clear();

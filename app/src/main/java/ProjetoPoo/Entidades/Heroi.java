@@ -59,6 +59,12 @@ public class Heroi extends Entidade {
         return deck.mostrarBaralho();
     }
 
+    public void usarCartaNDeck(int n, ArrayList<Inimigo> alvos) {
+        Carta atual = deck.retirarCartaN(n);
+        atual.usar(this, alvos);
+        descarte.adicionarCarta(atual);
+    }
+
     public void usarCartaNDeck(int n, Entidade... alvos) {
         Carta atual = deck.retirarCartaN(n);
         atual.usar(this, alvos);

@@ -1,6 +1,9 @@
 package ProjetoPoo.Cartas;
+import java.util.ArrayList;
+
 import ProjetoPoo.Artes;
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Entidades.Inimigo;
 
 public class CartaEscudo extends Carta{
 
@@ -30,6 +33,11 @@ public class CartaEscudo extends Carta{
 
     @Override
     public void usar(Entidade atacante, Entidade... alvos) {
+        atacante.ganharEscudo(defesa);
+    }
+
+    @Override
+    public void usar(Entidade atacante, ArrayList<Inimigo> alvos) {
         atacante.ganharEscudo(defesa);
     }
 

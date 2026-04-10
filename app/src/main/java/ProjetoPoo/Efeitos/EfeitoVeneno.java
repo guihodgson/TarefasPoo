@@ -1,5 +1,6 @@
 package ProjetoPoo.Efeitos;
 
+import ProjetoPoo.Cor;
 import ProjetoPoo.Entidades.Entidade;
 
 public class EfeitoVeneno extends Efeito{
@@ -22,7 +23,8 @@ public class EfeitoVeneno extends Efeito{
             if (evento.equals("fimRound")) {
                 if (duracao > 0) {
                     alvo.receberDano(duracao);
-                    System.out.println(alvo.getNome() + " tomou " + duracao + " de dano de Veneno.");
+                    System.out.println(alvo.getNome() + " tomou " + duracao + " de dano de " +  Cor.formataCor(Cor.VERDE, "Veneno."));
+                    System.out.println();
                     duracao--;
                 }
             }

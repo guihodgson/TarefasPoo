@@ -1,8 +1,11 @@
 package ProjetoPoo.Cartas;
 
+import java.util.ArrayList;
+
 import ProjetoPoo.Artes;
 import ProjetoPoo.Efeitos.Efeito;
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Entidades.Inimigo;
 
 public class CartaEfeito extends Carta {
 
@@ -32,12 +35,22 @@ public class CartaEfeito extends Carta {
 
     @Override
     public void usar(Entidade heroi, Entidade... alvos) {
-        for (Entidade alvo : alvos) {
-            if (alvo != null) {
-                alvo.ganharEfeito(efeito.copiaEfeito());
+        for (Entidade target : alvos) {
+            if (target != null) {
+                target.ganharEfeito(efeito.copiaEfeito());
             }
         }
     }
+
+    @Override
+    public void usar(Entidade heroi, ArrayList<Inimigo> alvos) {
+        for (Entidade target : alvos) {
+            if (target != null) {
+                target.ganharEfeito(efeito.copiaEfeito());
+            }
+        }
+    }
+
 
     @Override
 

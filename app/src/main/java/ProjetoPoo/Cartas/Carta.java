@@ -1,7 +1,10 @@
 package ProjetoPoo.Cartas;
 
+import java.util.ArrayList;
+
 import ProjetoPoo.Artes;
 import ProjetoPoo.Entidades.Entidade;
+import ProjetoPoo.Entidades.Inimigo;
 
 public abstract class Carta {
 
@@ -54,6 +57,8 @@ public abstract class Carta {
     }
 
     // Metodos
+
+    public abstract void usar(Entidade atacante, ArrayList<Inimigo> alvos);
 
     public abstract void usar(Entidade atacante, Entidade... alvos);
 
