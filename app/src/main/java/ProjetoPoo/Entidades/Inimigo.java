@@ -13,14 +13,22 @@ public class Inimigo extends Entidade {
 
     // Atributos
 
+    private TipoInimigo tipo;
     private final Baralho baralho;
 
     // Constructor
 
-    public Inimigo(String nome, int vida, int escudo, int energia) {
+    public Inimigo(String nome, int vida, int escudo, int energia, TipoInimigo tipo) {
         super(nome, vida, escudo);
         this.energia = energiaMax = energia;
+        this.tipo = tipo;
         baralho = new Baralho();
+    }
+
+    // Getters
+
+    public TipoInimigo getTipo() {
+        return tipo;
     }
 
     // Metodos
