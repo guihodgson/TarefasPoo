@@ -2,15 +2,20 @@ package ProjetoPoo.Batalhas;
 
 import java.util.ArrayList;
 
-import ProjetoPoo.Cor;
-import ProjetoPoo.InputHandler;
 import ProjetoPoo.Cartas.AlvoCarta;
 import ProjetoPoo.Cartas.Carta;
+import ProjetoPoo.Cor;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
+import ProjetoPoo.InputHandler;
 
 public class Batalha extends Evento {
 
+    /**
+     * Lista os nomes dos inimigos.
+     * @param inimigos A lista de inimigos.
+     * @return Uma lista de strings contendo os nomes dos inimigos.
+     */
     private static ArrayList<String> listarInimigos(ArrayList<Inimigo> inimigos) {
         ArrayList<String> listaInimigos = new ArrayList<>();
         for (Inimigo vilao : inimigos) {
@@ -19,6 +24,12 @@ public class Batalha extends Evento {
         return listaInimigos;
     }
 
+    /**
+     * Inicia a batalha.
+     * @param inputHandler O objeto que lida com as entradas do usuário.
+     * @param ctx O contexto do herói.
+     * @return true se o herói vencer, false caso contrário.
+     */
     public boolean iniciar(InputHandler inputHandler, ContextoHeroi ctx) {
         Heroi heroi = ctx.heroi;
         ArrayList<Inimigo> inimigos = ctx.inimigos;
