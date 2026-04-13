@@ -2,9 +2,10 @@ package ProjetoPoo.Eventos;
 
 public enum TipoEvento {
     RAIZ,
-    BATALHA,
+    BATALHA_COMUM,
+    BATALHA_ELITE,
+    BOSS,
     LOJA,
     CASSINO,
-    ALEATORIO,
-    BOSS;
+    ALEATORIO;
 }

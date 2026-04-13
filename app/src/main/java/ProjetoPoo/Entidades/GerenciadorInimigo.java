@@ -17,6 +17,7 @@ import ProjetoPoo.Efeitos.EfeitoVulneravel;
 import ProjetoPoo.Efeitos.TipoEfeito;
 import ProjetoPoo.Eventos.Artes;
 import ProjetoPoo.Eventos.ContextoHeroi;
+import ProjetoPoo.Eventos.TipoEvento;
 
 public class GerenciadorInimigo {
 
@@ -27,7 +28,7 @@ public class GerenciadorInimigo {
      *
      * @param opcao identificador do inimigo (0 = Tai Lung, 1 = Lord Shen, 2 = Kai)
      */
-    public static Inimigo criarInimigo(int opcao) {
+    public static Inimigo criarBoss(ContextoHeroi ctx) {
         Inimigo inimigo;
 
         EfeitoVeneno efeitoVeneno3 = new EfeitoVeneno(2, TipoEfeito.VENENO);
@@ -35,7 +36,7 @@ public class GerenciadorInimigo {
         EfeitoEnfraquecido efeitoEnfraquecido25 = new EfeitoEnfraquecido(25, 2, TipoEfeito.ENFRAQUECIDO);
 
 
-        switch (opcao) {
+        switch (ctx.getArea()) {
             case 0 -> {
                 inimigo = new Inimigo("Tai Lung", 34, 0, 1, TipoInimigo.BOSS);
                 CartaDano ataqueTaiPeq = new CartaDano(Cor.formataCor(Cor.VERMELHO_CLARO, "Investida da Pantera"), "Um soco poderoso de Tai Lung", 1, 7, AlvoCarta.UM_ALVO, Artes.BANG1);
@@ -94,16 +95,16 @@ public class GerenciadorInimigo {
         return inimigo;
     }
 
-    public Inimigo criarInimigoAleatorio(TipoInimigo tipo, ContextoHeroi ctx) {
-        switch (tipo) {
-            case COMUM -> {
+    public Inimigo criarInimigoAleatorio(TipoEvento tipoEvento, ContextoHeroi ctx) {
+        switch (tipoEvento) {
+            case BATALHA_COMUM -> {
                 return criarInimigoComum(ctx);
             }
-            case ELITE -> {
+            case BATALHA_ELITE -> {
                 return criarInimigoElite(ctx);
             }
             case BOSS -> {
-                return criarInimigoBoss(ctx);
+                return criarBoss(ctx);
             }
             default -> {
                 throw new AssertionError();
@@ -208,4 +209,36 @@ public class GerenciadorInimigo {
         }
         return null;
     }
+
+    public Inimigo criarInimigoElite(ContextoHeroi ctx) {
+        switch (ctx.getArea()) {
+            case 0 -> {
+                Inimigo inimigo = new Inimigo("Lobo de Pedra", 22, 0, 1, TipoInimigo.ELITE);
+                CartaDano ataquePeq = new CartaDano(Cor.formataCor(Cor.VERMELHO_CLARO, "Mordida do Lobo de Pedra"), "Uma mordida do lobo de pedra", 1, 12, AlvoCarta.UM_ALVO, Artes.BANG1);
+                CartaEscudo escudoPeq = new CartaEscudo(Cor.formataCor(Cor.AZUL_CLARO, "Esquiva do Lobo de Pedra"), "O lobo de pedra tenta esquivar do próximo ataque", 1, 7, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
+                inimigo.adicionarCarta(ataquePeq, 5);
+                inimigo.adicionarCarta(escudoPeq, 3);
+                return inimigo;
+            }
+            case 1 -> {
+                Inimigo inimigo = new Inimigo("Tigre de Pedra", 24, 0, 1, TipoInimigo.ELITE);
+                CartaDano ataquePeq = new CartaDano(Cor.formataCor(Cor.VERMELHO_CLARO, "Garras do Tigre de Pedra"), "Um ataque com garras do tigre de pedra", 1, 14, AlvoCarta.UM_ALVO, Artes.BANG1);
+                CartaEscudo escudoPeq = new CartaEscudo(Cor.formataCor(Cor.AZUL_CLARO, "Esquiva do Tigre de Pedra"), "O tigre de pedra tenta esquivar do próximo ataque", 1, 8, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
+                inimigo.adicionarCarta(ataquePeq, 5);
+                inimigo.adicionarCarta(escudoPeq, 3);
+                return inimigo;
+            }
+            case 2 -> {
+                Inimigo inimigo = new Inimigo("Dragão de Pedra", 26, 0, 1, TipoInimigo.ELITE);
+                CartaDano ataquePeq = new CartaDano(Cor.formataCor(Cor.VERMELHO_CLARO, "Sopro do Dragão de Pedra"), "Um ataque de fogo do dragão de pedra", 1, 16, AlvoCarta.UM_ALVO, Artes.BANG1);
+                CartaEscudo escudoPeq = new CartaEscudo(Cor.formataCor(Cor.AZUL_CLARO, "Esquiva do Dragão de Pedra"), "O dragão de pedra tenta esquivar do próximo ataque", 1, 9, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
+                inimigo.adicionarCarta(ataquePeq, 5);
+                inimigo.adicionarCarta(escudoPeq, 3);
+                return inimigo;
+            }
+        }
+        return null;
+    }
+
+
 }

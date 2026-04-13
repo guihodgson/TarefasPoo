@@ -95,7 +95,7 @@ public class InputHandler {
         return resposta - 1;
     }
 
-        public static void imprimirBonito(String texto, double tempo) {
+    public static void imprimirBonito(String texto, double tempo) {
         String[] linhas = texto.split("\n");
 
         int tam = 0;

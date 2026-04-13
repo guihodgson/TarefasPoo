@@ -34,7 +34,7 @@ public class GerenciadorDeck {
                 CartaDano cartaSkidoosh = new CartaDano("Skidoosh (18 de ataque)", "O Ataque Espiritual mais forte do Dragão Guerreiro", 5, 18, AlvoCarta.UM_ALVO, Artes.SKIDOOSH);
                 CartaDano cartaDanoMed = new CartaDano("Barrigada do Panda (5 de ataque)", "Uma forte investida com a barriga do Dragão Guerreiro", 2, 5, AlvoCarta.UM_ALVO, Artes.BANG1);
                 CartaDano cartaDanoPeq = new CartaDano("Soco do Panda (2 de ataque)", "Um soco levemente carinhoso do Dragão Guerreiro", 1, 2, AlvoCarta.UM_ALVO, Artes.BANG1);
-                CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (8 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 8, AlvoCarta.GLOBAL, Artes.FLATULENCIA);
+                CartaDano cartaDanoGlobalMed = new CartaDano("Flatulencia do Dragão Guerreiro (80 de ataque para todos os inimigos)", "O Dragão Guerreiro solta uma flatulencia que atinge todos os inimigos", 2, 80, AlvoCarta.GLOBAL, Artes.FLATULENCIA);
             
                 CartaEscudo cartaEscudoGrnd = new CartaEscudo("A Fuga do Panda (10 de defesa)", "O Dragão Guerreiro sairá correndo da batalha fugindo dos danos do ataque", 3, 10, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
                 CartaEscudo cartaEscudoMed = new CartaEscudo("Absorção de dano na Barriga (5 de defesa)", "A barriga do Dragão Guerreiro será usada para absorver o ataque", 2, 5, AlvoCarta.USO_PROPRIO, Artes.ESCUDO);
@@ -56,7 +56,7 @@ public class GerenciadorDeck {
                 heroi.adicionarCartaBaralho(cartaDanoMed, 3);
                 heroi.adicionarCartaBaralho(cartaDanoPeq, 2);
                 heroi.adicionarCartaBaralho(cartaSkidoosh, 1);
-                heroi.adicionarCartaBaralho(cartaDanoGlobalMed, 1);
+                heroi.adicionarCartaBaralho(cartaDanoGlobalMed, 100);
 
                 heroi.adicionarCartaBaralho(cartaEscudoPeq, 1);
                 heroi.adicionarCartaBaralho(cartaEscudoMed, 2);

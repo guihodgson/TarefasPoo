@@ -1,5 +1,6 @@
 package ProjetoPoo;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ProjetoPoo.Entidades.GerenciadorHeroi;
@@ -8,6 +9,11 @@ import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
 import ProjetoPoo.Eventos.Batalha;
 import ProjetoPoo.Eventos.ContextoHeroi;
+import ProjetoPoo.Eventos.Evento;
+import ProjetoPoo.Eventos.GeradorArvore;
+import ProjetoPoo.Eventos.GerenciadorEventos;
+import ProjetoPoo.Eventos.NoEvento;
+import ProjetoPoo.Eventos.TipoEvento;
 
 /**
  * Classe de entrada da aplicação.
@@ -26,73 +32,43 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
         InputHandler inputHandler = new InputHandler();
-        Batalha batalha = new Batalha();
-        ContextoHeroi ctx = new ContextoHeroi(null);
+        Heroi heroi = GerenciadorHeroi.criarHeroi(34, 5, 0);
+        ContextoHeroi ctx = new ContextoHeroi(heroi);
+        GeradorArvore geradorArvore = new GeradorArvore();
+        GerenciadorEventos gerenciadorEventos = new GerenciadorEventos();
 
         inputHandler.clear();
         inputHandler.pressEnter(true, "Pressione Enter para Iniciar!!!");
         GerenciadorTitulo.criarTitulo();
-
-        ArrayList<String> opcoesFilme = new ArrayList<>();
-        opcoesFilme.add("Filme 1");
-        opcoesFilme.add("Filme 2");
-        opcoesFilme.add("Filme 3");
-        opcoesFilme.add("DESAFIO");
-
-        int filmeEscolhido;
-
-        do {
-            System.out.println("Selecione o filme que você quer jogar:");
-            filmeEscolhido = inputHandler.selecionar(opcoesFilme, 0.8);
-        } while (filmeEscolhido > 3 || filmeEscolhido < 0);
-
-        Boolean desafio = false;
-
-        if (filmeEscolhido == 3) {
-            desafio = true;
-            filmeEscolhido = 0;
-        }
-
-        ArrayList<Inimigo> inimigos = new ArrayList<>();
-
-        inimigos.add(GerenciadorInimigo.criarInimigo(filmeEscolhido));
-        inimigos.get(0).embaralharMao();
-        
+        inputHandler.pressEnter(true, "Pressione Enter para continuar.");
         inputHandler.clear();
-        
-        if (!desafio) {
-            Heroi heroi = GerenciadorHeroi.criarHeroi(34, 5, 0);
-            ctx.heroi = heroi;
-            ctx.inimigos = inimigos;
 
-            if (!batalha.iniciar(inputHandler, ctx)) {
-                System.out.println("Você MORREU, o mundo continua em trevas.");  
-                InputHandler.sleep(0.4);
-                GerenciadorFinal.criarPoTriste();
-                System.exit(0);
-            }
-            if (desafio == false) {
-                System.out.println("Você GANHOU de " + inimigos.get(0).getNome() + "!!\nO mundo está mais seguro agora.");
-                InputHandler.sleep(0.4);
-                GerenciadorFinal.criarPoFeliz();
-                System.exit(0);
+        NoEvento raiz = geradorArvore.criarArvore();
+
+        for (int i = 0; i < 3; i++) {
+            ctx.setArea(i);
+            raiz = geradorArvore.criarArvore();
+            while(raiz.getFilhos() != null && raiz.getFilhos().size() > 0) {
+                ArrayList<String> opcoesEventos = raiz.getOpcoesFilhos();
+
+                InputHandler.imprimirBonito(Cor.formataCor(Cor.AMARELO,"ESCOLHA SUA PROXIMA BATALHA\n"), 0.5);
+                int opcaoEvento = inputHandler.selecionar(opcoesEventos, 0.2);
+                inputHandler.clear();
+
+                // Preciso verificar se é valido depois
+
+                TipoEvento tipoEventoEscolhido = raiz.getFilhos().get(opcaoEvento).getTipo();
+                Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx);
+                if (!eventoAtual.iniciar(inputHandler, ctx)) {
+                    System.out.println("Você MORREU, o mundo continua em trevas.");  
+                    InputHandler.sleep(0.4);
+                    GerenciadorFinal.criarPoTriste();
+                    System.exit(0);
+                }
+                heroi.resetarRound();
+                raiz = raiz.getFilhos().get(opcaoEvento);
             }
         }
-
-        inimigos.add(GerenciadorInimigo.criarInimigo(1));
-        inimigos.add(GerenciadorInimigo.criarInimigo(2));
-        Heroi heroi = GerenciadorHeroi.criarHeroi(50, 8, 1);
-
-        ctx.heroi = heroi;
-        ctx.inimigos = inimigos;
-
-        if (!batalha.iniciar(inputHandler, ctx)) {
-            System.out.println("Você MORREU, o mundo continua em trevas.");  
-            InputHandler.sleep(0.4);
-            GerenciadorFinal.criarPoTriste();
-            System.exit(0);
-        }
-
         System.out.println("Voce VENCEU o DESAFIO SUPREMO!!!");
         InputHandler.sleep(0.4);
         System.out.println("Agora, voce é conhecido como o Dragao Guerreiro Mestre do Chi.");

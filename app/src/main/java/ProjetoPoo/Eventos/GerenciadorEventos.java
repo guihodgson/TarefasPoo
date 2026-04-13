@@ -16,13 +16,26 @@ public class GerenciadorEventos {
     
     public Evento criarEvento(TipoEvento tipo, ContextoHeroi ctx) {
         switch (tipo) {
-            case BATALHA -> {
-                criarBatalha(ctx, TipoInimigo.COMUM, 3);
+            case BATALHA_COMUM -> {
+                return criarBatalha(ctx, TipoEvento.BATALHA_COMUM, 3);
             }
+            case BATALHA_ELITE -> {
+                return criarBatalha(ctx, TipoEvento.BATALHA_ELITE, 2);
+            }
+            case BOSS -> {
+                return criarBatalha(ctx, TipoEvento.BOSS, 1);
+            }
+            case ALEATORIO -> {
+                return criarBatalha(ctx, TipoEvento.ALEATORIO, 3);
+            }
+            default -> {
+                return null;
+            }
+
         }
     }
 
-    public void criarBatalha(ContextoHeroi ctx, TipoInimigo tipoInimigo, int qtdMaxInim) {
+    public Evento criarBatalha(ContextoHeroi ctx, TipoEvento tipoEvento, int qtdMaxInim) {
         ArrayList<Inimigo> inimigos = new ArrayList<>();
         GerenciadorInimigo gerenciadorInimigo = new GerenciadorInimigo();
         Evento batalha = new Batalha();
@@ -30,11 +43,11 @@ public class GerenciadorEventos {
         int qtdInim = random.nextInt(qtdMaxInim) + 1;
 
         for (int i = 0; i < qtdInim; i++) {
-            inimigos.add(gerenciadorInimigo.criarInimigoAleatorio(tipoInimigo, ctx));
+            inimigos.add(gerenciadorInimigo.criarInimigoAleatorio(tipoEvento, ctx));
         }
         ctx.inimigos = inimigos;
 
-        batalha.iniciar(inputHandler, ctx);
+        return batalha;
     }
 }
 
