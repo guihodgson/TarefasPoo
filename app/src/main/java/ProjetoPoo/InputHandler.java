@@ -73,7 +73,7 @@ public class InputHandler {
             sleep(tempoOpcao);
         }
         if (opcaoVoltar) {
-            System.out.println(Cor.AMARELO.getCodigo() + (listaOpcoes.size() + 1) + " > " + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": " + textoVoltar + Cor.RESET.getCodigo());
+            System.out.println(Cor.AMARELO.getCodigo() + (listaOpcoes.size() + 1) + " > " + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + textoVoltar + Cor.RESET.getCodigo());
         }
         sleep(tempoOpcao);
 
@@ -132,6 +132,13 @@ public class InputHandler {
                 System.out.println();
             }
             InputHandler.sleep(tempo/tam);
+        }
+    }
+
+    public void clearLines(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.print("\033[F"); // Move o cursor para a linha anterior
+            System.out.print("\033[K"); // Limpa a linha atual
         }
     }
 }

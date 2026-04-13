@@ -3,13 +3,12 @@ package ProjetoPoo.Eventos;
 import java.util.ArrayList;
 import java.util.Random;
 
-import ProjetoPoo.Cor;
-import ProjetoPoo.InputHandler;
 import ProjetoPoo.Cartas.AlvoCarta;
 import ProjetoPoo.Cartas.Carta;
+import ProjetoPoo.Cor;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
-import ProjetoPoo.Entidades.TipoInimigo;
+import ProjetoPoo.InputHandler;
 
 public class Batalha extends Evento {
 
@@ -23,11 +22,12 @@ public class Batalha extends Evento {
         return listaInimigos;
     }
 
+    @Override
     public boolean iniciar(InputHandler inputHandler, ContextoHeroi ctx) {
         Heroi heroi = ctx.heroi;
         ArrayList<Inimigo> inimigos = ctx.inimigos;
 
-        TipoInimigo tipoInimigo = inimigos.get(0).getTipo();
+        int qtdInimigos = inimigos.size();
         double tempoPainel;
         double tempoPadrao;
         double tempoImagem;
@@ -107,12 +107,12 @@ public class Batalha extends Evento {
         heroi.limparEfeitos();
 
         if (heroi.estaVivo()) {
-            int moedasGanhas = random.nextInt(inimigos.size() * ctx.getTipoEvento().getDificuldade() * 5, inimigos.size() * ctx.getTipoEvento().getDificuldade() * 10);
+            int moedasGanhas = random.nextInt(qtdInimigos * ctx.getTipoEvento().getDificuldade() * 5, qtdInimigos * ctx.getTipoEvento().getDificuldade() * 10);
             heroi.aumentarMoedas(moedasGanhas);
-            InputHandler.imprimirBonito(Cor.formataCor(Cor.VERDE, "Parabens! Voce venceu a batalha!\n") + Cor.formataCor(Cor.AMARELO, " Voce ganhou " + moedasGanhas + " moedas."), 0.4);
+            InputHandler.imprimirBonito(Cor.formataCor(Cor.VERDE, "Parabens! Voce venceu a batalha!\n") + Cor.formataCor(Cor.AMARELO, "Voce ganhou " + moedasGanhas + " moedas."), 0.4);
             System.out.println();
             inputHandler.pressEnter(true, "Pressione Enter para continuar.");
-
+            inputHandler.clear();
         }
         return heroi.estaVivo();
     }

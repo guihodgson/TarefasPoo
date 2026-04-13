@@ -21,11 +21,17 @@ public class GeradorArvore {
             return;
         }
 
-        int numFilhos = random.nextInt(3) + 1; // 1 a 3 filhos
+        int numFilhos = random.nextInt(2) + 1; // 1 a 2 filhos
 
         for (int i = 0; i < numFilhos; i++) {
             if (camada == 1) {
-                numFilhos = 3; // Garante 3 opções na primeira camada
+                numFilhos = 4; // Garante 3 opções na primeira camada
+            }
+            if (camada == 4 && i == 0) {
+                NoEvento filho = new NoEvento(i, camada, TipoEvento.FOGUEIRA, null, new ArrayList<>());
+                pai.getFilhos().add(filho);
+                gerarNoRecursivo(filho, camada + 1, boss);
+                continue;
             }
             TipoEvento tipoEvento = gerarTipoEventoAleatorio();
             NoEvento filho = new NoEvento(i, camada, tipoEvento, null, new ArrayList<>());
@@ -35,15 +41,18 @@ public class GeradorArvore {
     }
 
     private TipoEvento gerarTipoEventoAleatorio() {
-        int pick = random.nextInt(100) + 1; // Ignora RAIZ
-        if (pick <= 75) {
+        int pick = random.nextInt(100) + 1;
+        if (pick <= 70) {
             return TipoEvento.BATALHA_COMUM;
         }
-        else if (pick <= 85) {
+        else if (pick <= 93) {
             return TipoEvento.BATALHA_ELITE;
         }
+        else if (pick <= 96) {
+            return TipoEvento.ALEATORIO;
+        }
         else {
-            return TipoEvento.BATALHA_ELITE; // DEBUGGGGG
+            return TipoEvento.FOGUEIRA;
         }
     }
 }

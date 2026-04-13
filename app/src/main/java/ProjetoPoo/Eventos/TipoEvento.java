@@ -6,7 +6,7 @@ public enum TipoEvento {
     BATALHA_ELITE,
     BOSS,
     LOJA,
-    CASSINO,
+    FOGUEIRA,
     ALEATORIO;
 
     public int getDificuldade() {

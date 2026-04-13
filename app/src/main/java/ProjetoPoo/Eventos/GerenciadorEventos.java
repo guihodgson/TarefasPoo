@@ -28,6 +28,9 @@ public class GerenciadorEventos {
             case ALEATORIO -> {
                 return criarCasino(ctx, TipoEvento.ALEATORIO);
             }
+            case FOGUEIRA -> {
+                return criarFogueira(ctx, TipoEvento.FOGUEIRA);
+            }
             default -> {
                 return null;
             }
@@ -54,6 +57,11 @@ public class GerenciadorEventos {
     public Evento criarCasino(ContextoHeroi ctx, TipoEvento tipoEvento) {
         ctx.setTipoEvento(tipoEvento);
         return new Casino();
+    }
+
+    public Evento criarFogueira(ContextoHeroi ctx, TipoEvento tipoEvento) {
+        ctx.setTipoEvento(tipoEvento);
+        return new Fogueira();
     }
 }
 
