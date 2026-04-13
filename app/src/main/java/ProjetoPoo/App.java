@@ -75,4 +75,5 @@ public class App {
         InputHandler.sleep(0.4);
         GerenciadorFinal.criarPoFeliz();
     }
+    
 }

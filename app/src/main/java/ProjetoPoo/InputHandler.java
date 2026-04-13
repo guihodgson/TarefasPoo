@@ -69,11 +69,11 @@ public class InputHandler {
         }
 
         for(int i = 0; i < listaOpcoes.size(); i++) {
-            System.out.println(Cor.AMARELO.getCodigo() + "[" + (i + 1) + "]" + Cor.RESET.getCodigo() + ": " + listaOpcoes.get(i));
+            System.out.println(Cor.AMARELO.getCodigo() + (i + 1) + " > " + Cor.RESET.getCodigo() + listaOpcoes.get(i));
             sleep(tempoOpcao);
         }
         if (opcaoVoltar) {
-            System.out.println(Cor.AMARELO.getCodigo() + "[" + (listaOpcoes.size() + 1) + "]" + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": " + textoVoltar + Cor.RESET.getCodigo());
+            System.out.println(Cor.AMARELO.getCodigo() + (listaOpcoes.size() + 1) + " > " + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": " + textoVoltar + Cor.RESET.getCodigo());
         }
         sleep(tempoOpcao);
 
@@ -96,6 +96,10 @@ public class InputHandler {
     }
 
     public static void imprimirBonito(String texto, double tempo) {
+        imprimirBonito(texto, tempo, true);
+    }
+
+    public static void imprimirBonito(String texto, double tempo, boolean pularLinha) {
         String[] linhas = texto.split("\n");
 
         int tam = 0;
@@ -109,7 +113,9 @@ public class InputHandler {
                 InputHandler.sleep(tempo/(linha.length() * tam)); 
             }
             
-            System.out.println();
+            if (pularLinha) {
+                System.out.println();
+            }
             InputHandler.sleep(tempo/tam);
         }
     }

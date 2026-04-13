@@ -12,7 +12,7 @@ import ProjetoPoo.Entidades.Inimigo;
 public final class BatalhaVisual {
 
     private static final String SEPARADOR_BATALHA = "===================================8===================================";
-    private static final String SEPARADOR_INIMIGO = "------------------------------------------------------------";
+    private static final String SEPARADOR_INIMIGO = "- ";
     private static final int TAMANHO_BARRA = 10;
 
 
@@ -29,24 +29,37 @@ public final class BatalhaVisual {
         Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_BATALHA);
         InputHandler.sleep(tempoOpcao);
 
-        System.out.println("HEROI: " + Cor.formataCor(Cor.AMARELO, heroi.getNome()));
-        InputHandler.sleep(tempoOpcao / 2);
-        System.out.println(montarStatus(heroi));
+        InputHandler.imprimirBonito("HEROI: " + Cor.formataCor(Cor.AMARELO, heroi.getNome()) + " " + montarStatus(heroi), tempoOpcao);
         InputHandler.sleep(tempoOpcao);
+        System.out.println();
+        System.out.println(Cor.formataCor(Cor.AMARELO, "VERSUS:"));
+        InputHandler.sleep(tempoOpcao);
+        System.out.println();
 
         for (int i = 0; i < inimigos.size(); i++) {
             Inimigo inimigo = inimigos.get(i);
 
-            Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_INIMIGO);
+            // System.out.println();
+            // Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_INIMIGO);
             InputHandler.sleep(tempoOpcao);
 
-            System.out.println("INIMIGO " + (i + 1) + ": " + Cor.formataCor(Cor.VERMELHO, inimigo.getNome()));
-            InputHandler.sleep(tempoOpcao / 2);
-            System.out.println(montarStatus(inimigo));
-            InputHandler.sleep(tempoOpcao / 2);
-            inimigo.printarProxAcao();
+            InputHandler.imprimirBonito(Cor.VERMELHO_ESCURO.getCodigo() + "INIMIGO " + (i + 1) + ": " + Cor.RESET.getCodigo() + Cor.formataCor(Cor.VERMELHO, inimigo.getNome()) + " " + montarStatus(inimigo) + "\n", tempoOpcao);
             InputHandler.sleep(tempoOpcao);
+            System.out.println();
         }
+
+        System.out.println(Cor.formataCor(Cor.VERMELHO, "AVISO >> "));
+        for (int i = 0; i < inimigos.size(); i++) {
+            String acao = inimigos.get(i).stringProxAcao();
+            if (!acao.isEmpty()) {
+                if (i < inimigos.size() - 1) {
+                    acao += " | ";
+                }
+                InputHandler.imprimirBonito(acao, tempoOpcao / 2, false);
+                InputHandler.sleep(tempoOpcao);
+            }
+        }
+        System.out.println();
 
         Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_BATALHA);
         System.out.println();
@@ -89,7 +102,8 @@ public final class BatalhaVisual {
     private static String montarStatus(Entidade entidade) {
         String barraVida = montarBarraVida(entidade.getVida(), entidade.getVidaMax());
 
-        String status = "HP: " + barraVida + " " + entidade.getVida() + "/" + entidade.getVidaMax() + Cor.formataCor(Cor.AZUL, " \nEscudo: ") + entidade.getEscudo();
+        String status = "| HP: " + barraVida + " " + entidade.getVida() + "/" + entidade.getVidaMax() + "\n";
+        status += Cor.formataCor(Cor.AZUL, "Escudo: ") + entidade.getEscudo();
 
         status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.BONUS_DANO, Cor.AMARELO, " Bonus: ");
         status = adicionarEfeitoComDuracao(status, entidade, TipoEfeito.VENENO, Cor.VERDE, " Veneno: ");
