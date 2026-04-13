@@ -2,6 +2,7 @@ package ProjetoPoo;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 import ProjetoPoo.Entidades.GerenciadorHeroi;
 import ProjetoPoo.Entidades.GerenciadorInimigo;
@@ -22,6 +23,9 @@ import ProjetoPoo.Eventos.TipoEvento;
  * filme e coordenar a batalha principal ou o desafio final.</p>
  */
 public class App {
+
+    private static Random random = new Random();
+
     /**
      * Inicializa o jogo, solicita a escolha do cenário e executa a batalha
      * correspondente.
@@ -55,10 +59,15 @@ public class App {
                 int opcaoEvento = inputHandler.selecionar(opcoesEventos, 0.2);
                 inputHandler.clear();
 
-                // Preciso verificar se é valido depois
+                if (opcaoEvento < 0 || opcaoEvento >= opcoesEventos.size()) {
+                    System.out.println("Opcao invalida, tente novamente.");
+                    continue;
+                }
 
                 TipoEvento tipoEventoEscolhido = raiz.getFilhos().get(opcaoEvento).getTipo();
-                Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx);
+                // Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx);
+                Evento eventoAtual = gerenciadorEventos.criarEvento(TipoEvento.ALEATORIO, ctx);
+
                 if (!eventoAtual.iniciar(inputHandler, ctx)) {
                     System.out.println("Você MORREU, o mundo continua em trevas.");  
                     InputHandler.sleep(0.4);

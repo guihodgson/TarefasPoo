@@ -99,6 +99,21 @@ public class InputHandler {
         imprimirBonito(texto, tempo, true);
     }
 
+    public int getInt(String mensagem, double tempo) {
+        imprimirBonito(mensagem, tempo);
+        int resposta;
+
+        try {
+            resposta = in.nextInt();
+        } 
+        catch (Exception e) {
+            resposta = -1;
+        }
+
+        in.nextLine();  // Limpando o \n do buffer
+        return resposta;
+    }
+
     public static void imprimirBonito(String texto, double tempo, boolean pularLinha) {
         String[] linhas = texto.split("\n");
 

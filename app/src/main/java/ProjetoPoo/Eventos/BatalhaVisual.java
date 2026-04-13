@@ -11,8 +11,7 @@ import ProjetoPoo.Entidades.Inimigo;
 
 public final class BatalhaVisual {
 
-    private static final String SEPARADOR_BATALHA = "===================================8===================================";
-    private static final String SEPARADOR_INIMIGO = "- ";
+    private static final String SEPARADOR_BATALHA = "||================================:88:================================||";
     private static final int TAMANHO_BARRA = 10;
 
 
@@ -32,7 +31,7 @@ public final class BatalhaVisual {
         InputHandler.imprimirBonito("HEROI: " + Cor.formataCor(Cor.AMARELO, heroi.getNome()) + " " + montarStatus(heroi), tempoOpcao);
         InputHandler.sleep(tempoOpcao);
         System.out.println();
-        System.out.println(Cor.formataCor(Cor.AMARELO, "VERSUS:"));
+        System.out.println(Cor.formataCor(Cor.AMARELO, "  |===============================:VS:===============================|"));
         InputHandler.sleep(tempoOpcao);
         System.out.println();
 
@@ -52,14 +51,10 @@ public final class BatalhaVisual {
         for (int i = 0; i < inimigos.size(); i++) {
             String acao = inimigos.get(i).stringProxAcao();
             if (!acao.isEmpty()) {
-                if (i < inimigos.size() - 1) {
-                    acao += " | ";
-                }
-                InputHandler.imprimirBonito(acao, tempoOpcao / 2, false);
-                InputHandler.sleep(tempoOpcao);
+                InputHandler.imprimirBonito(acao, tempoOpcao * 0.8);
+                InputHandler.sleep(tempoOpcao * 0.8);
             }
         }
-        System.out.println();
 
         Cor.imprimeAnsi(Cor.AMARELO, SEPARADOR_BATALHA);
         System.out.println();

@@ -8,4 +8,13 @@ public enum TipoEvento {
     LOJA,
     CASSINO,
     ALEATORIO;
+
+    public int getDificuldade() {
+        return switch (this) {
+            case BATALHA_COMUM -> 1;
+            case BATALHA_ELITE -> 4;
+            case BOSS -> 16;
+            default -> 0;
+        };
+    }
 }

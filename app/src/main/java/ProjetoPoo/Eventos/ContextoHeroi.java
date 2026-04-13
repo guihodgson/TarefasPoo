@@ -8,6 +8,7 @@ import ProjetoPoo.Entidades.Inimigo;
 public class ContextoHeroi {
     public Heroi heroi;
     public ArrayList<Inimigo> inimigos;
+    public TipoEvento tipoEvento;
     private int area;
 
     public ContextoHeroi(Heroi heroi) {
@@ -27,5 +28,13 @@ public class ContextoHeroi {
 
     public void setArea(int area) {
         this.area = area;
+    }
+
+    public void setTipoEvento(TipoEvento tipoEvento) {
+        this.tipoEvento = tipoEvento;
+    }
+
+    public TipoEvento getTipoEvento() {
+        return tipoEvento;
     }
 }

@@ -47,20 +47,20 @@ public class Inimigo extends Entidade {
     public String stringProxAcao() {
 
         if (baralho.mostrarPrimeiraCarta() instanceof CartaDano cartadano) {
-            return nome + " -> " + cartadano.getNome() + " (" + cartadano.getAtaque() + " de dano)";
+            return nome + " vai usar " + cartadano.getNome() + " (" + cartadano.getAtaque() + " de dano)";
         }
         if (baralho.mostrarPrimeiraCarta() instanceof CartaEscudo cartaescudo) {
-            return nome + " -> " + cartaescudo.getNome() + " (" + cartaescudo.getDefesa() + " de escudo)";
+            return nome + " vai usar " + cartaescudo.getNome() + " (" + cartaescudo.getDefesa() + " de escudo)";
         }
         if (baralho.mostrarPrimeiraCarta() instanceof CartaEfeito cartaEfeito) {
             if (cartaEfeito.getEfeito() instanceof EfeitoVeneno EfeitoVeneno) {
-                return nome + " -> " + cartaEfeito.getNome() + " (" + EfeitoVeneno.getDuracao() + " de veneno)";
+                return nome + " vai usar " + cartaEfeito.getNome() + " (" + EfeitoVeneno.getDuracao() + " de veneno)";
             }
             if (cartaEfeito.getEfeito() instanceof EfeitoVulneravel EfeitoVulneravel) {
-                return nome + " -> " + cartaEfeito.getNome() + " (+" + EfeitoVulneravel.getValor() + "% de dano recebido)";
+                return nome + " vai usar " + cartaEfeito.getNome() + " (+" + EfeitoVulneravel.getValor() + "% de dano recebido)";
             }
             if (cartaEfeito.getEfeito() instanceof EfeitoEnfraquecido EfeitoEnfraquecido) {
-                return nome + " -> " + cartaEfeito.getNome() + " (-" + EfeitoEnfraquecido.getValor() + "% de dano causado)";
+                return nome + " vai usar " + cartaEfeito.getNome() + " (-" + EfeitoEnfraquecido.getValor() + "% de dano causado)";
             }
         }
         return "";

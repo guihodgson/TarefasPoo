@@ -26,7 +26,7 @@ public class GerenciadorEventos {
                 return criarBatalha(ctx, TipoEvento.BOSS, 1);
             }
             case ALEATORIO -> {
-                return criarBatalha(ctx, TipoEvento.ALEATORIO, 3);
+                return criarCasino(ctx, TipoEvento.ALEATORIO);
             }
             default -> {
                 return null;
@@ -46,8 +46,14 @@ public class GerenciadorEventos {
             inimigos.add(gerenciadorInimigo.criarInimigoAleatorio(tipoEvento, ctx));
         }
         ctx.inimigos = inimigos;
+        ctx.setTipoEvento(tipoEvento);
 
         return batalha;
+    }
+
+    public Evento criarCasino(ContextoHeroi ctx, TipoEvento tipoEvento) {
+        ctx.setTipoEvento(tipoEvento);
+        return new Casino();
     }
 }
 
