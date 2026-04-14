@@ -99,6 +99,10 @@ public class InputHandler {
         imprimirBonito(texto, tempo, true);
     }
 
+    public int getInt(String mensagem) {
+        return getInt(mensagem, 0);
+    }
+
     public int getInt(String mensagem, double tempo) {
         imprimirBonito(mensagem, tempo);
         int resposta;

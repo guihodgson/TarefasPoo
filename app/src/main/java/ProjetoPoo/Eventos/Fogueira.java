@@ -13,6 +13,9 @@ public class Fogueira extends Evento {
         opcoes.add(Cor.formataCor(Cor.AMARELO, "Curar Vida"));
         opcoes.add(Cor.formataCor(Cor.AMARELO, "Melhorar Cartas"));
 
+        Artes.imprimir(Artes.FOGUEIRA);
+        System.out.println();
+
         InputHandler.imprimirBonito("Você encontrou uma " + Cor.formataCor(Cor.AMARELO, "fogueira!") + " Hora de descansar e se preparar para os próximos desafios.", 0.5);
         int opcao = inputHandler.selecionar(opcoes, 0.4, true, Cor.formataCor(Cor.CINZA_ESCURO, "Sair da Fogueira"));
 

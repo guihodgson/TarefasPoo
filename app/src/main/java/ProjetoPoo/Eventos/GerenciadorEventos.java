@@ -1,13 +1,11 @@
 package ProjetoPoo.Eventos;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-import ProjetoPoo.InputHandler;
 import ProjetoPoo.Entidades.GerenciadorInimigo;
 import ProjetoPoo.Entidades.Inimigo;
-import ProjetoPoo.Entidades.TipoInimigo;
+import ProjetoPoo.InputHandler;
 
 public class GerenciadorEventos {
 
@@ -26,7 +24,7 @@ public class GerenciadorEventos {
                 return criarBatalha(ctx, TipoEvento.BOSS, 1);
             }
             case ALEATORIO -> {
-                return criarCasino(ctx, TipoEvento.ALEATORIO);
+                return criarCassino(ctx, TipoEvento.ALEATORIO);
             }
             case FOGUEIRA -> {
                 return criarFogueira(ctx, TipoEvento.FOGUEIRA);
@@ -54,9 +52,9 @@ public class GerenciadorEventos {
         return batalha;
     }
 
-    public Evento criarCasino(ContextoHeroi ctx, TipoEvento tipoEvento) {
+    public Evento criarCassino(ContextoHeroi ctx, TipoEvento tipoEvento) {
         ctx.setTipoEvento(tipoEvento);
-        return new Casino();
+        return new Cassino();
     }
 
     public Evento criarFogueira(ContextoHeroi ctx, TipoEvento tipoEvento) {

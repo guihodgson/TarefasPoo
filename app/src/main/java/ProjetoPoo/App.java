@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import ProjetoPoo.Entidades.GerenciadorHeroi;
 import ProjetoPoo.Entidades.Heroi;
+import ProjetoPoo.Eventos.Artes;
 import ProjetoPoo.Eventos.ContextoHeroi;
 import ProjetoPoo.Eventos.Evento;
 import ProjetoPoo.Eventos.GeradorArvore;
@@ -40,13 +41,15 @@ public class App {
         inputHandler.pressEnter(true, "Pressione Enter para continuar.");
         inputHandler.clear();
 
-        NoEvento raiz = geradorArvore.criarArvore();
+        NoEvento raiz;
 
         for (int i = 0; i < 3; i++) {
             ctx.setArea(i);
             raiz = geradorArvore.criarArvore();
             while(raiz.getFilhos() != null && !raiz.getFilhos().isEmpty()) {
                 ArrayList<String> opcoesEventos = raiz.getOpcoesFilhos();
+                Artes.imprimir(Artes.MAPA);
+                System.out.println();
 
                 InputHandler.imprimirBonito(Cor.formataCor(Cor.AMARELO,"ESCOLHA SUA PROXIMA BATALHA\n"), 0.5);
                 int opcaoEvento = inputHandler.selecionar(opcoesEventos, 0.2);
@@ -59,7 +62,7 @@ public class App {
 
                 TipoEvento tipoEventoEscolhido = raiz.getFilhos().get(opcaoEvento).getTipo();
                 // Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx);
-                Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx);
+                Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx); 
 
                 if (!eventoAtual.iniciar(inputHandler, ctx)) {
                     System.out.println("Você MORREU, o mundo continua em trevas.");  

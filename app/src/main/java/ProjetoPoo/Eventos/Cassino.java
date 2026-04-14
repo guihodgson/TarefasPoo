@@ -6,7 +6,7 @@ import java.util.Random;
 import ProjetoPoo.Cor;
 import ProjetoPoo.InputHandler;
 
-public class Casino extends Evento {
+public class Cassino extends Evento {
 
     private final Random random = new Random();
 
@@ -18,8 +18,10 @@ public class Casino extends Evento {
         opcoes.add(Cor.formataCor(Cor.AMARELO, "Apostar Vida"));
 
         while (true) {
-            InputHandler.imprimirBonito(Cor.formataCor(Cor.CIANO, "Bem-vindo ao Casino! Escolha uma opcao para apostar:\n"), 0.5);
-            int opcao = inputHandler.selecionar(opcoes, 0.4, true, Cor.formataCor(Cor.CINZA_ESCURO, "Sair do Casino"));
+            Artes.imprimir(Artes.CASSINO);
+            System.out.println();
+            InputHandler.imprimirBonito(Cor.formataCor(Cor.CIANO, "Bem-vindo ao Cassino! Escolha uma opcao para apostar:\n"), 0.5);
+            int opcao = inputHandler.selecionar(opcoes, 0.4, true, Cor.formataCor(Cor.CINZA_ESCURO, "Sair do Cassino"));
             inputHandler.clear();
 
             if (opcao < 0 || opcao > opcoes.size()) {
@@ -30,7 +32,7 @@ public class Casino extends Evento {
             }
 
             if (opcao == opcoes.size()) {
-                InputHandler.imprimirBonito("Voce decidiu sair do casino. Ate a proxima!", 0.5);
+                InputHandler.imprimirBonito("Voce decidiu sair do cassino. Ate a proxima!", 0.5);
                 System.out.println();
                 inputHandler.pressEnter(true, "Pressione Enter para continuar.");
                 inputHandler.clear();
@@ -38,8 +40,9 @@ public class Casino extends Evento {
             }
 
             if (opcao == 0) {
-                int nMoedas = inputHandler.getInt("Voce escolheu apostar " + Cor.formataCor(Cor.VERDE, "dinheiro") + ". Escolha um numero de moedas para apostar. " + Cor.formataCor(Cor.VERDE, " Moedas: " + ctx.heroi.getMoedas()), 0.5);
+                InputHandler.imprimirBonito("Voce escolheu apostar " + Cor.formataCor(Cor.VERDE, "dinheiro") + ". Escolha um numero de moedas para apostar. " + Cor.formataCor(Cor.VERDE, " Moedas: " + ctx.heroi.getMoedas()), 0.5);
                 InputHandler.imprimirBonito(Cor.formataCor(Cor.AMARELO, "-------------------------------------------------"), 0.2);
+                int nMoedas = inputHandler.getInt("", 0.001);
                 System.out.println();
 
                 if (nMoedas <= 1 || nMoedas > ctx.heroi.getMoedas()) {

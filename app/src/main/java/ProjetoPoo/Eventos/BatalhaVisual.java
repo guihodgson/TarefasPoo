@@ -3,11 +3,11 @@ package ProjetoPoo.Eventos;
 import java.util.ArrayList;
 
 import ProjetoPoo.Cor;
-import ProjetoPoo.InputHandler;
 import ProjetoPoo.Efeitos.TipoEfeito;
 import ProjetoPoo.Entidades.Entidade;
 import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Entidades.Inimigo;
+import ProjetoPoo.InputHandler;
 
 public final class BatalhaVisual {
 
@@ -31,7 +31,7 @@ public final class BatalhaVisual {
         InputHandler.imprimirBonito("HEROI: " + Cor.formataCor(Cor.AMARELO, heroi.getNome()) + " " + montarStatus(heroi), tempoOpcao);
         InputHandler.sleep(tempoOpcao);
         System.out.println();
-        System.out.println(Cor.formataCor(Cor.AMARELO, "  |===============================:VS:===============================|"));
+        System.out.println(Cor.formataCor(Cor.AMARELO, "|=========================:VS:=========================|"));
         InputHandler.sleep(tempoOpcao);
         System.out.println();
 

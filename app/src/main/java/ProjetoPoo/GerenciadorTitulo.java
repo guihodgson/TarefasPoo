@@ -45,6 +45,6 @@ public class GerenciadorTitulo {
              ███    ███                                                                                ███    ███   ███    ███                   ███    ███ 
         """)); 
 
-        InputHandler.imprimirBonito(titulo.get(gerador.nextInt(titulo.size())), 1.5);
+        InputHandler.imprimirBonito(titulo.get(gerador.nextInt(titulo.size())), 1);
     }
 }

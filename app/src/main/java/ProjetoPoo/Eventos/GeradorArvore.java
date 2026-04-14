@@ -21,7 +21,7 @@ public class GeradorArvore {
             return;
         }
 
-        int numFilhos = random.nextInt(2) + 1; // 1 a 2 filhos
+        int numFilhos = random.nextInt(3) + 1; // 1 a 3 filhos
 
         for (int i = 0; i < numFilhos; i++) {
             if (camada == 1) {
