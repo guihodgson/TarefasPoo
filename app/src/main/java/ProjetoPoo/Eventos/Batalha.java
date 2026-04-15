@@ -47,9 +47,9 @@ public class Batalha extends Evento {
         for (Inimigo inimigo : inimigos) {
             InputHandler.imprimirBonito(Cor.formataCor(Cor.VERMELHO, "Um " + inimigo.getNome() + " apareceu!"), 0.4);
             System.out.println();
-            inputHandler.pressEnter(true, "Pressione Enter para continuar.");
-            inputHandler.clear();
         }
+        inputHandler.pressEnter(true, "Pressione Enter para continuar.");
+        inputHandler.clear();
 
         while(heroi.estaVivo() && !inimigos.isEmpty()) {
             if (acoesRound  == 0) {
