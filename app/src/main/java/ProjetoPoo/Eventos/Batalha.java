@@ -12,9 +12,14 @@ import ProjetoPoo.InputHandler;
 
 public class Batalha extends Evento {
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
-    private static ArrayList<String> listarInimigos(ArrayList<Inimigo> inimigos) {
+    /**
+     * Lista os nomes dos inimigos.
+     * @param inimigos A lista de inimigos.
+     * @return Uma lista de strings contendo os nomes dos inimigos.
+     */
+    private ArrayList<String> listarInimigos(ArrayList<Inimigo> inimigos) {
         ArrayList<String> listaInimigos = new ArrayList<>();
         for (Inimigo vilao : inimigos) {
             listaInimigos.add(vilao.getNome());
@@ -22,6 +27,12 @@ public class Batalha extends Evento {
         return listaInimigos;
     }
 
+    /**
+     * Inicia a batalha.
+     * @param inputHandler O objeto que lida com as entradas do usuário.
+     * @param ctx O contexto do herói.
+     * @return true se o herói vencer, false caso contrário.
+    */
     @Override
     public boolean iniciar(InputHandler inputHandler, ContextoHeroi ctx) {
         Heroi heroi = ctx.heroi;
@@ -34,12 +45,11 @@ public class Batalha extends Evento {
         int acoesRound = 0;
 
         for (Inimigo inimigo : inimigos) {
-            InputHandler.imprimirBonito(Cor.formataCor(Cor.VERMELHO, "Um " + inimigo.getNome() + " apareceu!"), 0.2);
-            inimigo.embaralharMao();
+            InputHandler.imprimirBonito(Cor.formataCor(Cor.VERMELHO, "Um " + inimigo.getNome() + " apareceu!"), 0.4);
             System.out.println();
+            inputHandler.pressEnter(true, "Pressione Enter para continuar.");
+            inputHandler.clear();
         }
-        inputHandler.pressEnter(true, "Pressione Enter para continuar.");
-        inputHandler.clear();
 
         while(heroi.estaVivo() && !inimigos.isEmpty()) {
             if (acoesRound  == 0) {
