@@ -33,6 +33,14 @@ public class Batalha extends Evento {
         double tempoImagem;
         int acoesRound = 0;
 
+        for (Inimigo inimigo : inimigos) {
+            InputHandler.imprimirBonito(Cor.formataCor(Cor.VERMELHO, "Um " + inimigo.getNome() + " apareceu!"), 0.2);
+            inimigo.embaralharMao();
+            System.out.println();
+        }
+        inputHandler.pressEnter(true, "Pressione Enter para continuar.");
+        inputHandler.clear();
+
         while(heroi.estaVivo() && !inimigos.isEmpty()) {
             if (acoesRound  == 0) {
                 tempoPainel = 0.6;
