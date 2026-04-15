@@ -12,6 +12,7 @@ public class Heroi extends Entidade {
     private final Baralho baralho;
     private final Baralho deck;
     private final Baralho descarte;
+    private int moedas;
     
 
     // Getters
@@ -37,9 +38,41 @@ public class Heroi extends Entidade {
         baralho = new Baralho();
         deck = new Baralho();
         descarte = new Baralho();
+        moedas = 0;
     }
 
     // Metodos
+
+    public void aumentarMoedas(int valor) {
+        moedas += valor;
+    }
+
+    public boolean podeGastarMoedas(int valor) {
+        return moedas >= valor;
+    }
+
+    public void gastarMoedas(int valor) {
+        if (podeGastarMoedas(valor)) {
+            moedas -= valor;
+        } else {
+            throw new IllegalArgumentException("Moedas insuficientes.");
+        }
+    }
+
+    public void perderMoedas(int valor) {
+        moedas -= valor;
+        if (moedas < 0) {
+            moedas = 0;
+        }
+    }
+
+    public int getMoedas() {
+        return moedas;
+    }
+
+    public void setMoedas(int moedas) {
+        this.moedas = moedas;
+    }
 
     public void adicionarCartaBaralho(Carta carta) {
         baralho.adicionarCarta(carta);

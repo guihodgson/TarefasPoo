@@ -5,6 +5,7 @@ import ProjetoPoo.Cartas.CartaDano;
 import ProjetoPoo.Cartas.CartaEfeito;
 import ProjetoPoo.Cartas.CartaEscudo;
 import ProjetoPoo.Cor;
+import ProjetoPoo.InputHandler;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
@@ -13,14 +14,22 @@ public class Inimigo extends Entidade {
 
     // Atributos
 
+    private TipoInimigo tipo;
     private final Baralho baralho;
 
     // Constructor
 
-    public Inimigo(String nome, int vida, int escudo, int energia) {
+    public Inimigo(String nome, int vida, int escudo, int energia, TipoInimigo tipo) {
         super(nome, vida, escudo);
         this.energia = energiaMax = energia;
+        this.tipo = tipo;
         baralho = new Baralho();
+    }
+
+    // Getters
+
+    public TipoInimigo getTipo() {
+        return tipo;
     }
 
     // Metodos
@@ -35,25 +44,26 @@ public class Inimigo extends Entidade {
         baralho.embaralhar();
     }
 
-    public void printarProxAcao() {
+    public String stringProxAcao() {
 
         if (baralho.mostrarPrimeiraCarta() instanceof CartaDano cartadano) {
-            System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartadano.getNome() + " (" + cartadano.getAtaque() + " de dano, " + cartadano.getDescricao() + ")");
+            return nome + " vai usar " + cartadano.getNome() + " (" + cartadano.getAtaque() + " de dano)";
         }
         if (baralho.mostrarPrimeiraCarta() instanceof CartaEscudo cartaescudo) {
-            System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaescudo.getNome() + " (" + cartaescudo.getDefesa() + " de escudo, " + cartaescudo.getDescricao() + ")");
+            return nome + " vai usar " + cartaescudo.getNome() + " (" + cartaescudo.getDefesa() + " de escudo)";
         }
         if (baralho.mostrarPrimeiraCarta() instanceof CartaEfeito cartaEfeito) {
             if (cartaEfeito.getEfeito() instanceof EfeitoVeneno EfeitoVeneno) {
-                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (" + EfeitoVeneno.getDuracao() + " de veneno, " + cartaEfeito.getDescricao() + ")");
+                return nome + " vai usar " + cartaEfeito.getNome() + " (" + EfeitoVeneno.getDuracao() + " de veneno)";
             }
             if (cartaEfeito.getEfeito() instanceof EfeitoVulneravel EfeitoVulneravel) {
-                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (+" + EfeitoVulneravel.getValor() + "% de dano recebido, " + cartaEfeito.getDescricao() + ")");
+                return nome + " vai usar " + cartaEfeito.getNome() + " (+" + EfeitoVulneravel.getValor() + "% de dano recebido)";
             }
             if (cartaEfeito.getEfeito() instanceof EfeitoEnfraquecido EfeitoEnfraquecido) {
-                System.out.println(Cor.formataCor(Cor.VERMELHO_CLARO, ">>> AVISO: ") + nome + " vai usar " + cartaEfeito.getNome() + " (-" + EfeitoEnfraquecido.getValor() + "% de dano causado, " + cartaEfeito.getDescricao() + ")");
+                return nome + " vai usar " + cartaEfeito.getNome() + " (-" + EfeitoEnfraquecido.getValor() + "% de dano causado)";
             }
         }
+        return "";
     }
 
     public void usarCartas(Heroi heroi) {

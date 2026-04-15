@@ -69,11 +69,11 @@ public class InputHandler {
         }
 
         for(int i = 0; i < listaOpcoes.size(); i++) {
-            System.out.println(Cor.AMARELO.getCodigo() + "[" + (i + 1) + "]" + Cor.RESET.getCodigo() + ": " + listaOpcoes.get(i));
+            System.out.println(Cor.AMARELO.getCodigo() + (i + 1) + " > " + Cor.RESET.getCodigo() + listaOpcoes.get(i));
             sleep(tempoOpcao);
         }
         if (opcaoVoltar) {
-            System.out.println(Cor.AMARELO.getCodigo() + "[" + (listaOpcoes.size() + 1) + "]" + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + ": " + textoVoltar + Cor.RESET.getCodigo());
+            System.out.println(Cor.AMARELO.getCodigo() + (listaOpcoes.size() + 1) + " > " + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + textoVoltar + Cor.RESET.getCodigo());
         }
         sleep(tempoOpcao);
 
@@ -95,7 +95,30 @@ public class InputHandler {
         return resposta - 1;
     }
 
-        public static void imprimirBonito(String texto, double tempo) {
+    public static void imprimirBonito(String texto, double tempo) {
+        imprimirBonito(texto, tempo, true);
+    }
+
+    public int getInt(String mensagem) {
+        return getInt(mensagem, 0);
+    }
+
+    public int getInt(String mensagem, double tempo) {
+        imprimirBonito(mensagem, tempo);
+        int resposta;
+
+        try {
+            resposta = in.nextInt();
+        } 
+        catch (Exception e) {
+            resposta = -1;
+        }
+
+        in.nextLine();  // Limpando o \n do buffer
+        return resposta;
+    }
+
+    public static void imprimirBonito(String texto, double tempo, boolean pularLinha) {
         String[] linhas = texto.split("\n");
 
         int tam = 0;
@@ -109,8 +132,17 @@ public class InputHandler {
                 InputHandler.sleep(tempo/(linha.length() * tam)); 
             }
             
-            System.out.println();
+            if (pularLinha) {
+                System.out.println();
+            }
             InputHandler.sleep(tempo/tam);
+        }
+    }
+
+    public void clearLines(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.print("\033[F"); // Move o cursor para a linha anterior
+            System.out.print("\033[K"); // Limpa a linha atual
         }
     }
 }

@@ -1,12 +1,12 @@
 package ProjetoPoo.Cartas;
 
-import ProjetoPoo.Batalhas.Artes;
 import ProjetoPoo.Efeitos.EfeitoBonusDano;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
 import ProjetoPoo.Efeitos.TipoEfeito;
 import ProjetoPoo.Entidades.Heroi;
+import ProjetoPoo.Eventos.Artes;
 
 public class GerenciadorDeck {
     
@@ -56,7 +56,7 @@ public class GerenciadorDeck {
                 heroi.adicionarCartaBaralho(cartaDanoMed, 3);
                 heroi.adicionarCartaBaralho(cartaDanoPeq, 2);
                 heroi.adicionarCartaBaralho(cartaSkidoosh, 1);
-                heroi.adicionarCartaBaralho(cartaDanoGlobalMed, 1);
+                heroi.adicionarCartaBaralho(cartaDanoGlobalMed, 2);
 
                 heroi.adicionarCartaBaralho(cartaEscudoPeq, 1);
                 heroi.adicionarCartaBaralho(cartaEscudoMed, 2);

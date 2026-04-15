@@ -1,8 +1,7 @@
 package ProjetoPoo;
-import java.lang.String;
 
 public enum Cor {
-    RESET("\u001B[0m"),
+RESET("\u001B[0m"),
     PRETO("\u001B[30m"),
     VERMELHO("\u001B[31m"),
     VERDE("\u001B[32m"),
@@ -19,6 +18,8 @@ public enum Cor {
     ROXO_CLARO("\u001B[95m"),
     CIANO_CLARO("\u001B[96m"),
     BRANCO_CLARO("\u001B[97m"),
+    LARANJA("\u001B[38;2;255;165;0m"),
+    LARANJA_ESCURO("\u001B[38;2;255;140;0m"),
     VERMELHO_ESCURO("\u001B[38;2;139;0;0m"),
     VERDE_ESCURO("\u001B[38;2;0;100;0m"),
     AZUL_ESCURO("\u001B[38;2;0;0;128m"),
