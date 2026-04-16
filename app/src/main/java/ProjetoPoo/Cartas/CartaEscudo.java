@@ -32,8 +32,10 @@ public class CartaEscudo extends Carta{
     // Metodos
 
     @Override
-    public void usar(Entidade atacante, Entidade... alvos) {
-        atacante.ganharEscudo(defesa);
+    public void usar(Entidade heroi, Entidade alvo) {
+        ArrayList<Inimigo> alvos = new ArrayList<>();
+        alvos.add((Inimigo) alvo);
+        usar(heroi, alvos);
     }
 
     @Override

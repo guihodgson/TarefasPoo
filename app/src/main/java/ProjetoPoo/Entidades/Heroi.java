@@ -98,9 +98,9 @@ public class Heroi extends Entidade {
         descarte.adicionarCarta(atual);
     }
 
-    public void usarCartaNDeck(int n, Entidade... alvos) {
+    public void usarCartaNDeck(int n, Entidade alvo) {
         Carta atual = deck.retirarCartaN(n);
-        atual.usar(this, alvos);
+        atual.usar(this, alvo);
         descarte.adicionarCarta(atual);
     }
 

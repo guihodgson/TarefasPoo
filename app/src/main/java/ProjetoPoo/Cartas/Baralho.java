@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Stack;
 
 import ProjetoPoo.Cor;
+import ProjetoPoo.Efeitos.EfeitoCura;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 
 public class Baralho {
@@ -87,11 +88,11 @@ public class Baralho {
             else if (baralho.get(i) instanceof CartaEfeito cartaEfeito && cartaEfeito.getEfeito() instanceof EfeitoVeneno) {
                 nome = Cor.formataCor(Cor.VERDE_CLARO, nome);
             }
+            else if (baralho.get(i) instanceof CartaEfeito cartaEfeito && cartaEfeito.getEfeito() instanceof EfeitoCura) {
+                nome = Cor.formataCor(Cor.VERDE_CLARO, nome);
+            }
             else if (baralho.get(i) instanceof CartaEfeito) {
                 nome = Cor.formataCor(Cor.AMARELO_CLARO, nome);
-            }
-            else if (baralho.get(i) instanceof CartaCura) {
-                nome = Cor.formataCor(Cor.VERDE_CLARO, nome);
             }
 
             int custo = baralho.get(i).getCusto();

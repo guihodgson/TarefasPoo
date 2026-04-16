@@ -46,6 +46,16 @@ public class GerenciadorEfeitos {
         return val;
     }
 
+    public int getValorTotalEfeito(TipoEfeito tipo) {
+        int val = 0;
+        for (Efeito efeito : efeitos) {
+            if (efeito.getTipo() == tipo && efeito.getDuracao() > 0) {
+                val += efeito.getValor();
+            }
+        }
+        return val;
+    }
+
     /**
      * Retorna o tempo do maior efeito que tem na lista.
      * @param tipo

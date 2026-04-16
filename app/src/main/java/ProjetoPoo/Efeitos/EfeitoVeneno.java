@@ -15,7 +15,7 @@ public class EfeitoVeneno extends Efeito{
         super(copia);
     }
 
-    // Metodo
+    // Metodos
 
     @Override
     public void atualizar(String evento, Object objeto) {

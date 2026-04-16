@@ -7,7 +7,7 @@ import ProjetoPoo.Entidades.Entidade;
 import ProjetoPoo.Entidades.Inimigo;
 import ProjetoPoo.Eventos.Artes;
 
-public class CartaEfeito extends Carta {
+public class CartaDanoComEfeito extends CartaDano {
 
     // Atributos
 
@@ -21,14 +21,14 @@ public class CartaEfeito extends Carta {
 
     // Constructor
 
-    public CartaEfeito(String nome, String descricao, int custo, AlvoCarta alvo, Artes arte, Efeito efeito) {
-        super(nome, descricao, custo, alvo, arte);
+    public CartaDanoComEfeito(String nome, String descricao, int custo, int ataque, Efeito efeito, AlvoCarta alvo, Artes arte) {
+        super(nome, descricao, custo, ataque, alvo, arte);
         this.efeito = efeito;
     }
 
-    public CartaEfeito(CartaEfeito copia) {
+    public CartaDanoComEfeito(CartaDanoComEfeito copia) {
         super(copia);
-        this.efeito = copia.efeito.copiaEfeito();
+        this.efeito = copia.efeito;
     }
 
     // Metodos
@@ -43,16 +43,23 @@ public class CartaEfeito extends Carta {
     @Override
     public void usar(Entidade heroi, ArrayList<Inimigo> alvos) {
         for (Entidade target : alvos) {
-            if (target != null) {
+            int danoFinal = heroi.calcularDanoFinalAtaque(ataque, target);
+            target.receberDano(danoFinal);
+
+            if (alvo == AlvoCarta.USO_PROPRIO) {
+                heroi.ganharEfeito(efeito.copiaEfeito());
+            } 
+
+            else {
                 target.ganharEfeito(efeito.copiaEfeito());
             }
         }
     }
 
-
     @Override
-
     public Carta copiaCarta() {
-        return new CartaEfeito(this);
+        return new CartaDanoComEfeito(this);
     }
+
+
 }

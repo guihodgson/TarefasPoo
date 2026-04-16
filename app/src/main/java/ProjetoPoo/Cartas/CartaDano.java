@@ -34,11 +34,10 @@ public class CartaDano extends Carta{
     // Metodos
 
     @Override
-    public void usar(Entidade heroi, Entidade... alvos) {
-        for (Entidade target : alvos) {
-            int danoFinal = heroi.calcularDanoFinalAtaque(ataque, target);
-            target.receberDano(danoFinal);
-        }
+    public void usar(Entidade heroi, Entidade alvo) {
+        ArrayList<Inimigo> alvos = new ArrayList<>();
+        alvos.add((Inimigo) alvo);
+        usar(heroi, alvos);
     }
 
     @Override

@@ -46,6 +46,7 @@ public class Batalha extends Evento {
 
         for (Inimigo inimigo : inimigos) {
             InputHandler.imprimirBonito(Cor.formataCor(Cor.VERMELHO, "Um " + inimigo.getNome() + " apareceu!"), 0.4);
+            inimigo.embaralharMao();
             System.out.println();
         }
         inputHandler.pressEnter(true, "Pressione Enter para continuar.");
@@ -62,6 +63,8 @@ public class Batalha extends Evento {
                 tempoPadrao = 0.05;
                 tempoImagem = 0.2;
             }
+
+            heroi.atualizarEfeito("inicioRound");
 
             BatalhaVisual.exibirPainelBatalha(heroi, inimigos, inputHandler, tempoPainel);
             InputHandler.sleep(tempoPadrao);
@@ -114,7 +117,7 @@ public class Batalha extends Evento {
             }
 
             heroi.gastarEnergia(cartaSelecionada.getCusto());
-            heroi.atualizarEfeito("ataque");
+            heroi.atualizarEfeito("acao");
             inputHandler.clear();
             InputHandler.imprimirBonito(cartaSelecionada.getArte().getArte(), tempoImagem);
             inputHandler.pressEnter(true, Cor.formataCor(Cor.CINZA_ESCURO, "Pressione Enter para prosseguir."));

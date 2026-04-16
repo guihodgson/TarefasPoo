@@ -4,5 +4,7 @@ public enum TipoEfeito {
     VENENO,
     BONUS_DANO,
     VULNERAVEL,
+    CURA,
+    ESCUDO,
     ENFRAQUECIDO;
 }

@@ -60,7 +60,7 @@ public abstract class Carta {
 
     public abstract void usar(Entidade atacante, ArrayList<Inimigo> alvos);
 
-    public abstract void usar(Entidade atacante, Entidade... alvos);
+    public abstract void usar(Entidade atacante, Entidade alvo);
 
     public abstract Carta copiaCarta();
 

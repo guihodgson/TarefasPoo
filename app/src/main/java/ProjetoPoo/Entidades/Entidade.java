@@ -80,16 +80,6 @@ public class Entidade {
         return escudo;
     }
 
-    public int perderEscudo(int valor) {
-        if (escudo - valor < 0) {
-            escudo = 0;
-        }
-        else {
-            escudo -= valor;
-        }
-        return escudo;
-    }
-
     public void resetarEscudo() {
         escudo = 0;
     }
@@ -132,6 +122,7 @@ public class Entidade {
 
     public void atualizarEfeito(String evento) {
         gerenciadorEfeitos.atualizarEfeito(evento, this);
+        limparEfeitosExpirados();
     }
 
     public void limparEfeitosExpirados() {
