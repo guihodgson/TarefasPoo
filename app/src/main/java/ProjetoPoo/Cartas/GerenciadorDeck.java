@@ -1,5 +1,9 @@
 package ProjetoPoo.Cartas;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
 import ProjetoPoo.Efeitos.EfeitoBonusDano;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
@@ -9,6 +13,7 @@ import ProjetoPoo.Entidades.Heroi;
 import ProjetoPoo.Eventos.Artes;
 
 public class GerenciadorDeck {
+    private static final Random random = new Random();
     
 
     /**
@@ -129,5 +134,62 @@ public class GerenciadorDeck {
                 heroi.adicionarCartaBaralho(cartaCuraGrnd, 1);
             }
         }
+    }
+
+    public static ArrayList<Carta> gerarOpcoesRecompensa(int numeroFase) {
+        ArrayList<Carta> pool = montarPoolRecompensa(numeroFase);
+        Collections.shuffle(pool);
+
+        int qtdOpcoes = Math.min(3, pool.size());
+        ArrayList<Carta> opcoes = new ArrayList<>();
+
+        for (int i = 0; i < qtdOpcoes; i++) {
+            opcoes.add(pool.get(i).copiaCarta());
+        }
+
+        return opcoes;
+    }
+
+    public static ArrayList<String> formatarOpcoesCarta(ArrayList<Carta> cartas) {
+        ArrayList<String> opcoes = new ArrayList<>();
+        for (Carta carta : cartas) {
+            String linha = String.format("%s | Custo: %d | %s", carta.getNome(), carta.getCusto(), carta.getDescricao());
+            opcoes.add(linha);
+        }
+        return opcoes;
+    }
+
+    private static ArrayList<Carta> montarPoolRecompensa(int numeroFase) {
+        int tier = Math.min(3, Math.max(1, (numeroFase + 1) / 2));
+
+        EfeitoBonusDano bonusPeq = new EfeitoBonusDano(1 + tier, 2, TipoEfeito.BONUS_DANO);
+        EfeitoVeneno veneno = new EfeitoVeneno(2 + tier, TipoEfeito.VENENO);
+        EfeitoVulneravel vulneravel = new EfeitoVulneravel(25, 2, TipoEfeito.VULNERAVEL);
+        EfeitoEnfraquecido enfraquecido = new EfeitoEnfraquecido(25, 2, TipoEfeito.ENFRAQUECIDO);
+
+        ArrayList<Carta> pool = new ArrayList<>();
+        pool.add(new CartaDano("Sequencia do Panda", "Ataque direto e eficiente.", 1, 3 + (tier * 2), AlvoCarta.UM_ALVO, Artes.BANG1));
+        pool.add(new CartaEscudo("Postura de Jade", "Transforma impacto em defesa.", 1, 3 + (tier * 2), AlvoCarta.USO_PROPRIO, Artes.ESCUDO));
+        pool.add(new CartaCura("Respiracao do Chi", "Recupera vida com foco.", 2, 2 + (tier * 2), AlvoCarta.USO_PROPRIO, Artes.CURA));
+        pool.add(new CartaEfeito("Punhos Envenenados", "Aplica veneno no inimigo.", 1, AlvoCarta.UM_ALVO, Artes.VENENO, veneno));
+        pool.add(new CartaEfeito("Abertura de Guarda", "Deixa o alvo vulneravel.", 1, AlvoCarta.UM_ALVO, Artes.BONUS, vulneravel));
+        pool.add(new CartaEfeito("Intimidacao", "Enfraquece o ataque do alvo.", 1, AlvoCarta.UM_ALVO, Artes.BONUS, enfraquecido));
+        pool.add(new CartaEfeito("Fluxo de Chi", "Aumenta seu dano por alguns rounds.", 1, AlvoCarta.USO_PROPRIO, Artes.BONUS, bonusPeq));
+
+        if (tier >= 2) {
+            pool.add(new CartaDano("Golpe das Mil Sombras", "Atinge todos os inimigos.", 2, 5 + tier, AlvoCarta.GLOBAL, Artes.FLATULENCIA));
+            pool.add(new CartaEscudo("Muralha do Dragao", "Grande defesa para o proximo impacto.", 2, 6 + (tier * 2), AlvoCarta.USO_PROPRIO, Artes.ESCUDO));
+        }
+
+        if (tier >= 3) {
+            pool.add(new CartaDano("Mini Skidoosh", "Explosao de dano concentrado.", 3, 11, AlvoCarta.UM_ALVO, Artes.SKIDOOSH));
+            pool.add(new CartaCura("Banquete do Mestre", "Recuperacao forte para continuar a run.", 3, 8, AlvoCarta.USO_PROPRIO, Artes.CURA));
+        }
+
+        if (pool.size() > 3 && random.nextBoolean()) {
+            Collections.rotate(pool, 1);
+        }
+
+        return pool;
     }
 }

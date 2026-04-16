@@ -28,7 +28,7 @@ public class GerenciadorInimigo {
      *
      * @param opcao identificador do inimigo (0 = Tai Lung, 1 = Lord Shen, 2 = Kai)
      */
-    public static Inimigo criarBoss(ContextoHeroi ctx) {
+    public Inimigo criarBoss(ContextoHeroi ctx) {
         Inimigo inimigo;
 
         EfeitoVeneno efeitoVeneno3 = new EfeitoVeneno(2, TipoEfeito.VENENO);
