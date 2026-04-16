@@ -8,6 +8,10 @@ public class GerenciadorEfeitos {
 
     private final ArrayList<Efeito> efeitos = new ArrayList<>();
 
+    public ArrayList<Efeito> getEfeitos() {
+        return efeitos;
+    }
+
     /**
      * Verifica se o efeito já está no ArrayList efeitos, se estiver, aumenta o tempo, senao cria um novo.
      * @param efeito

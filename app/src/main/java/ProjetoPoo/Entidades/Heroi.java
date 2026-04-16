@@ -29,6 +29,18 @@ public class Heroi extends Entidade {
         return energia;
     }
 
+    public Baralho getBaralho() {
+        return baralho;
+    }
+
+    public Baralho getDeck() {
+        return deck;
+    }
+
+    public Baralho getDescarte() {
+        return descarte;
+    }
+
     // Constructor
 
     public Heroi(String nome, int vida, int escudo, int energia, int nCartasDeck) {

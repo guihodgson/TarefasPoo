@@ -43,6 +43,14 @@ public class Entidade {
         return gerenciadorEfeitos;
     }
 
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public void setEnergia(int energia) {
+        this.energia = energia;
+    }
+
     // Constructor
 
     public Entidade(String nome, int vida, int escudo) {
