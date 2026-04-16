@@ -5,4 +5,4 @@
 
 - Ver mais sobre subscriber pra ver se fiz certo 
 
-- Fazer JSON
+- Fazer JSON (talvez pelo jackson)
