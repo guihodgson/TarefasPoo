@@ -4,8 +4,6 @@ import ProjetoPoo.Cartas.Carta;
 import ProjetoPoo.Cartas.CartaDano;
 import ProjetoPoo.Cartas.CartaEfeito;
 import ProjetoPoo.Cartas.CartaEscudo;
-import ProjetoPoo.Cor;
-import ProjetoPoo.InputHandler;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
 import ProjetoPoo.Efeitos.EfeitoVulneravel;
@@ -30,6 +28,10 @@ public class Inimigo extends Entidade {
 
     public TipoInimigo getTipo() {
         return tipo;
+    }
+
+    public Baralho getBaralho() {
+        return baralho;
     }
 
     // Metodos
