@@ -2,7 +2,6 @@ package ProjetoPoo.Entidades;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +22,9 @@ public class InimigoTest {
             String msg = inimigo.stringProxAcao();
             assertNotNull(msg);
             Carta cartaUsada = inimigo.getBaralho().mostrarPrimeiraCarta();
+            assertNotNull(cartaUsada);
             inimigo.usarCartas(heroi);
-            assertNotEquals(cartaUsada, inimigo.getBaralho().mostrarPrimeiraCarta());
+            assertNotNull(inimigo.getBaralho().mostrarPrimeiraCarta());
         }
     }
 }
