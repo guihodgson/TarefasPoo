@@ -1,15 +1,11 @@
 package ProjetoPoo.Entidades;
 
+import java.util.Random;
+
 import ProjetoPoo.Cartas.AlvoCarta;
-import ProjetoPoo.Cartas.Carta;
 import ProjetoPoo.Cartas.CartaDano;
 import ProjetoPoo.Cartas.CartaEfeito;
 import ProjetoPoo.Cartas.CartaEscudo;
-
-import java.util.Random;
-
-import javax.naming.Context;
-
 import ProjetoPoo.Cor;
 import ProjetoPoo.Efeitos.EfeitoEnfraquecido;
 import ProjetoPoo.Efeitos.EfeitoVeneno;
@@ -28,7 +24,7 @@ public class GerenciadorInimigo {
      *
      * @param opcao identificador do inimigo (0 = Tai Lung, 1 = Lord Shen, 2 = Kai)
      */
-    public static Inimigo criarBoss(ContextoHeroi ctx) {
+    public Inimigo criarBoss(ContextoHeroi ctx) {
         Inimigo inimigo;
 
         EfeitoVeneno efeitoVeneno3 = new EfeitoVeneno(2, TipoEfeito.VENENO);
@@ -113,6 +109,10 @@ public class GerenciadorInimigo {
     }
 
     public Inimigo criarInimigoComum(ContextoHeroi ctx) {
+        return criarInimigoComum(ctx, false, 0);
+    }
+
+    public Inimigo criarInimigoComum(ContextoHeroi ctx, boolean teste, int id) {
         final int QTD_INIMIGOS0 = 3;
         final int QTD_INIMIGOS1 = 3;
         final int QTD_INIMIGOS2 = 3;
@@ -120,6 +120,9 @@ public class GerenciadorInimigo {
         switch (ctx.getArea()) {
             case 0 -> {
                 int escolha = random.nextInt(QTD_INIMIGOS0);
+                if (teste) {
+                    escolha = id;
+                }
                 switch (escolha) {
                     case 0 -> {
                         Inimigo inimigo = new Inimigo("Javali Salteador", 16, 0, 1, TipoInimigo.COMUM);
@@ -149,6 +152,9 @@ public class GerenciadorInimigo {
             }
             case 1 -> {
                 int escolha = random.nextInt(QTD_INIMIGOS1);
+                if (teste) {
+                    escolha = id;
+                }
                 switch (escolha) {
                     case 0 -> {
                         Inimigo inimigo = new Inimigo("Lobo Simples", 16, 0, 1, TipoInimigo.COMUM);
@@ -179,6 +185,9 @@ public class GerenciadorInimigo {
             }
             case 2 -> {
                 int escolha = random.nextInt(QTD_INIMIGOS2);
+                if (teste) {
+                    escolha = id;
+                }
                 switch (escolha) {
                     case 0 -> {
                         Inimigo inimigo = new Inimigo("Lobo de Jade", 20, 0, 1, TipoInimigo.COMUM);
