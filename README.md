@@ -16,16 +16,11 @@ A classe principal e `ProjetoPoo.App`.
 
 ## Como executar
 
-No Windows (PowerShell/CMD):
-
-```bat
-gradlew.bat :app:run --console=plain
-```
-
 No bash (Git Bash/WSL):
 
 ```bash
-./gradlew :app:run --console=plain
+./gradlew build
+./gradlew run
 ```
 
 Observacao: o jogo e interativo e pede escolha de opcoes no terminal.
@@ -62,5 +57,4 @@ No Windows, use `gradlew.bat clean check`.
 
 ## Notas
 
-- O repositorio possui uma lista de pendencias em `Todo.txt`.
 - Dependencias e versoes ficam em `gradle/libs.versions.toml`.
