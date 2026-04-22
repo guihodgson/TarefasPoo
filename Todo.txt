@@ -1,8 +1,0 @@
-- Refatorar efeitos
-- Mudar calculadora de efeito pra ser generica
-- Cura como efeito que é aplicado insta
-- Escudo como efeito que dura 1 round e para no inicio do outro round
-
-- Ver mais sobre subscriber pra ver se fiz certo
-
-- Fazer JSON
