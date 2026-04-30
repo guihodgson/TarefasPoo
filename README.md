@@ -1,45 +1,29 @@
-# ProjetoPoo
+# Dragon Warrior
 
-Projeto em Java (Gradle) com foco em batalhas em modo texto, organizado no modulo `app`.
+"Dragon Warrior" é um projeto em Java (Gradle) com batalhas de terminal na temática de Kung Fu Panda, organizado no módulo `app`.
 A classe principal e `ProjetoPoo.App`.
 
-## Requisitos
-
-- Java 21
-- Gradle Wrapper (ja incluso no repositorio)
-
-## Estrutura
+# Estrutura
 
 - Codigo principal: `app/src/main/java/ProjetoPoo`
 - Testes: `app/src/test/java/ProjetoPoo`
 - Build e relatorios: `app/build`
 
-## Como executar
+# Como executar
 
 No bash (Git Bash/WSL):
 
-```bash
-./gradlew build
-./gradlew run
-```
+``./gradlew :app:run --console=plain``
 
 Observacao: o jogo e interativo e pede escolha de opcoes no terminal.
 
-## Como rodar testes
-
-No Windows (PowerShell/CMD):
-
-```bat
-gradlew.bat test
-```
+# Como rodar testes
 
 No bash (Git Bash/WSL):
 
-```bash
-./gradlew test
-```
+``./gradlew test``
 
-## Cobertura de testes (JaCoCo)
+# Cobertura de testes (JaCoCo)
 
 Depois de rodar os testes, o relatorio HTML pode ser aberto em:
 
@@ -47,14 +31,6 @@ Depois de rodar os testes, o relatorio HTML pode ser aberto em:
 
 O projeto tambem possui verificacao minima de cobertura no `check`.
 
-## Build completo
+# Build completo
 
-```bash
-./gradlew clean check
-```
-
-No Windows, use `gradlew.bat clean check`.
-
-## Notas
-
-- Dependencias e versoes ficam em `gradle/libs.versions.toml`.
+``./gradlew clean check``
