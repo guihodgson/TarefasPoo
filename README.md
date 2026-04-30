@@ -34,3 +34,22 @@ O projeto tambem possui verificacao minima de cobertura no `check`.
 # Build completo
 
 ``./gradlew clean check``
+
+---
+
+## Sistema de Progressão (Eventos e Mudança de Estado)
+
+*Descrição do Sistema:*
+O projeto implementa um sistema de progressão por meio de eventos que ocorrem entre as batalhas principais de modo aleatório. O jogador consegue passar por diferentes nós do mapa que alteram o seu estado enquanto player (como recuperação de vida ou aquisição de itens/recursos). 
+
+Foram criados eventos como a `Fogueira` (um evento derivado de `Escolha` onde o herói pode descansar e aumentar sua vida) e o `Cassino` (um evento derivado de `Escolha` onde o jogador aposta recursos correndo riscos). Esses sistemas estão integrados à progressão do mapa que alteram o contexto do herói antes da próxima `Batalha`.
+
+*Padrão de Design Utilizado:*
+O design adotado para gerenciar esses diferentes nodos foi o *Strategy*. A classe abstrata base `Evento` define o comando comum `+iniciar(inputHandler, ctx)`, permitindo que o jogador decida a próxima etapa da progressão (seja ela uma Batalha, uma Fogueira ou um Cassino).
+
+Além disso, o design adotado também foi o *State*. Conforme o jogador continua no jogo, o jogador transita entre diferentes estados. A classe abstrata `Evento` atua como a interface de Estado, enquanto `Batalha`, `Fogueira` e `Cassino` são os estados concretos.
+
+*Fonte Consultada:*
+* Padrão Strategy: [Refactoring Guru - Strategy](https://refactoring.guru/design-patterns/strategy)
+* Padrão State: [Refactoring Guru - State](https://refactoring.guru/design-patterns/state)
+
