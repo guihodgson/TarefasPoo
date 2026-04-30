@@ -127,6 +127,7 @@ public class Batalha extends Evento {
         if (heroi.estaVivo()) {
             int moedasGanhas = random.nextInt(qtdInimigos * ctx.getTipoEvento().getDificuldade() * 5, qtdInimigos * ctx.getTipoEvento().getDificuldade() * 10);
             heroi.aumentarMoedas(moedasGanhas);
+            heroi.fimRound();
             InputHandler.imprimirBonito(Cor.formataCor(Cor.VERDE, "Parabens! Voce venceu a batalha!\n") + Cor.formataCor(Cor.AMARELO, "Voce ganhou " + moedasGanhas + " moedas."), 0.4);
             System.out.println();
             inputHandler.pressEnter(true, "Pressione Enter para continuar.");

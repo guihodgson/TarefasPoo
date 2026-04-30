@@ -6,7 +6,7 @@ import java.util.Random;
 import ProjetoPoo.Cor;
 import ProjetoPoo.InputHandler;
 
-public class Cassino extends Evento {
+public class Cassino extends Escolha {
 
     private final Random random = new Random();
 

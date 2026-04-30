@@ -95,6 +95,75 @@ public class InputHandler {
         return resposta - 1;
     }
 
+    public int selecionarCarta(ArrayList<String> listaOpcoes, int cartasPag, double tempo) {
+        double tempoOpcao;
+        int indicePrimCarta = 0;
+
+        if (listaOpcoes.isEmpty()) {
+            tempoOpcao = tempo;
+        }
+        else {
+            tempoOpcao = tempo / listaOpcoes.size();
+        }
+
+        while(true) {
+            for(int i = 0; i < cartasPag; i++) {
+                System.out.println(Cor.AMARELO.getCodigo() + (i + 1) + " > " + Cor.RESET.getCodigo() + listaOpcoes.get(i));
+                sleep(tempoOpcao);
+            }
+            if (indicePrimCarta + cartasPag < listaOpcoes.size()) {
+                System.out.println(Cor.AMARELO.getCodigo() + "p > " + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + "Próxima Página" + Cor.RESET.getCodigo());
+            }
+            if (indicePrimCarta - cartasPag >= 0) {
+                System.out.println(Cor.AMARELO.getCodigo() + "a > " + Cor.RESET.getCodigo() + Cor.CINZA_ESCURO.getCodigo() + "Página Anterior" + Cor.RESET.getCodigo());
+            }
+
+            sleep(tempoOpcao);
+
+            System.out.println("----------");
+            sleep(tempoOpcao);
+
+            System.out.println("Selecione uma carta:");
+            int resposta;
+            String respostaStr = null;
+
+            try {
+                resposta = in.nextInt();
+            } 
+            catch (Exception e) {
+                in.nextLine();  // Limpando o \n do buffer
+                respostaStr = in.next();
+                if (respostaStr != "p" && respostaStr != "a") {
+                    resposta = -1;
+                }
+                else {
+                    resposta = -2;
+                }
+            }
+
+            in.nextLine();  // Limpando o \n do buffer
+
+            if (resposta == -2) {
+                if (respostaStr.equals("p")) {
+                    if (indicePrimCarta - cartasPag >= 0) {
+                        indicePrimCarta -= cartasPag;
+                    }
+                }
+                else if (respostaStr.equals("a")) {
+                    if (indicePrimCarta + cartasPag < listaOpcoes.size()) {
+                        indicePrimCarta += cartasPag;
+                    }
+                }
+            }
+            else {
+                resposta -= 1;
+                if (resposta >= indicePrimCarta && resposta < indicePrimCarta + cartasPag) {
+                    return resposta;
+                }
+            }
+        }  
+    }
+
     public static void imprimirBonito(String texto, double tempo) {
         imprimirBonito(texto, tempo, true);
     }

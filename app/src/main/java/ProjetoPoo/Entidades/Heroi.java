@@ -1,4 +1,5 @@
 package ProjetoPoo.Entidades;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ProjetoPoo.Cartas.Baralho;
@@ -92,6 +93,12 @@ public class Heroi extends Entidade {
         return deck.mostrarBaralho();
     }
 
+    public ArrayList<String> mostrarBaralho() {
+        return baralho.mostrarBaralho();
+    }
+
+
+
     public void usarCartaNDeck(int n, ArrayList<Inimigo> alvos) {
         Carta atual = deck.retirarCartaN(n);
         atual.usar(this, alvos);
@@ -126,9 +133,22 @@ public class Heroi extends Entidade {
         baralho.transferirNCartas(deck, cartasComprar);
     }
 
+    public void guardarBaralho() {
+        deck.transferirCartas(baralho);
+        descarte.transferirCartas(baralho);
+        baralho.embaralhar();
+    }
+
     public void resetarRound() {
         this.resetarEnergia();
         this.resetarEscudo();
         this.resetarBaralho();
+    }
+
+    public void fimRound() {
+        this.limparEfeitos();
+        this.resetarEnergia();
+        this.resetarEscudo();
+        this.guardarBaralho();
     }
 }

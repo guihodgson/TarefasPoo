@@ -46,6 +46,7 @@ public class Fogueira extends Evento {
             InputHandler.imprimirBonito("Em breve voce podera melhorar suas cartas aqui!", 0.5);
             inputHandler.pressEnter(true, "Pressione Enter para continuar.");
             inputHandler.clear();
+            return iniciar(inputHandler, ctx);
         }
 
         return true;
