@@ -62,7 +62,7 @@ public class App {
 
                 TipoEvento tipoEventoEscolhido = raiz.getFilhos().get(opcaoEvento).getTipo();
                 // Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx);
-                Evento eventoAtual = gerenciadorEventos.criarEvento(TipoEvento.ESCOLHA, ctx); 
+                Evento eventoAtual = gerenciadorEventos.criarEvento(tipoEventoEscolhido, ctx); 
 
                 if (!eventoAtual.iniciar(inputHandler, ctx)) {
                     System.out.println("Você MORREU, o mundo continua em trevas.");  
