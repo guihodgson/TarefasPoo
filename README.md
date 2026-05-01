@@ -44,12 +44,12 @@ O projeto implementa um sistema de progressão por meio de eventos que ocorrem e
 
 Foram criados eventos como a `Fogueira` (um evento derivado de `Escolha` onde o herói pode descansar e aumentar sua vida) e o `Cassino` (um evento derivado de `Escolha` onde o jogador aposta recursos correndo riscos). Esses sistemas estão integrados à progressão do mapa que alteram o contexto do herói antes da próxima `Batalha`.
 
-*Padrão de Design Utilizado:*
-O design adotado para gerenciar esses diferentes nodos foi o *Strategy*. A classe abstrata base `Evento` define o comando comum `+iniciar(inputHandler, ctx)`, permitindo que o jogador decida a próxima etapa da progressão (seja ela uma Batalha, uma Fogueira ou um Cassino).
+*Padrões e Estrutura Utilizados:*
+O projeto usa polimorfismo com a classe base `Evento` e suas subclasses (`Batalha`, `Fogueira`, `Cassino`) para encapsular o comportamento de cada tipo de evento por meio do método comum `iniciar(inputHandler, ctx)`.
 
-Além disso, o design adotado também foi o *State*. Conforme o jogador continua no jogo, o jogador transita entre diferentes estados. A classe abstrata `Evento` atua como a interface de Estado, enquanto `Batalha`, `Fogueira` e `Cassino` são os estados concretos.
+Para a criacao dos eventos, a classe `GerenciadorEventos` funciona como uma fabrica simples (Simple Factory), escolhendo e instanciando a classe concreta com base em `TipoEvento`.
 
 *Fonte Consultada:*
-* Padrão Strategy: [Refactoring Guru - Strategy](https://refactoring.guru/design-patterns/strategy)
-* Padrão State: [Refactoring Guru - State](https://refactoring.guru/design-patterns/state)
+* Simple Factory (referencia geral): [Refactoring Guru - Factory Method](https://refactoring.guru/design-patterns/factory-method)
 
+![alt text](image.png)
