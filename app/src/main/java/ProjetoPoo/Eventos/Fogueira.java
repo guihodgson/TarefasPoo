@@ -46,7 +46,7 @@ public class Fogueira extends Evento {
             InputHandler.imprimirBonito("Voce ganhou 50 moedas! Voce possui " + Cor.formataCor(Cor.AZUL, String.valueOf(ctx.heroi.getMoedas())) + " moedas.", 0.2);
             inputHandler.pressEnter(true, "Pressione Enter para continuar.");
             inputHandler.clear();
-            return iniciar(inputHandler, ctx);
+            return true;
         }
 
         return true;

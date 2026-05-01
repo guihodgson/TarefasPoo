@@ -6,7 +6,7 @@ import java.util.Random;
 import ProjetoPoo.Cor;
 import ProjetoPoo.InputHandler;
 
-public class Cassino extends Escolha {
+public class Cassino extends Evento {
 
     private final Random random = new Random();
 
@@ -14,7 +14,6 @@ public class Cassino extends Escolha {
     public boolean iniciar(InputHandler inputHandler, ContextoHeroi ctx) {
         ArrayList<String> opcoes = new ArrayList<>();
         opcoes.add(Cor.formataCor(Cor.AMARELO, "Apostar Dinheiro"));
-        opcoes.add(Cor.formataCor(Cor.AMARELO, "Apostar Cartas"));
         opcoes.add(Cor.formataCor(Cor.AMARELO, "Apostar Vida"));
 
         while (true) {
@@ -77,7 +76,7 @@ public class Cassino extends Escolha {
                 }
             }
 
-            else if (opcao == 2) {
+            else if (opcao == 1) {
                 int nVida = inputHandler.getInt("Voce escolheu apostar " + Cor.formataCor(Cor.VERMELHO, "vida") + ". Escolha um numero de vidas para apostar. " + Cor.formataCor(Cor.VERMELHO, " Vidas: " + ctx.heroi.getVida()), 0.5);
                 InputHandler.imprimirBonito(Cor.formataCor(Cor.AMARELO, "-------------------------------------------------"), 0.2);
                 System.out.println();

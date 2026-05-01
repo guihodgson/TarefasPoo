@@ -1,12 +1,11 @@
 package ProjetoPoo.Eventos;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import ProjetoPoo.Entidades.Heroi;
@@ -21,7 +20,7 @@ class CassinoTest {
 
         ContextoHeroi ctx = new ContextoHeroi(heroi, new ArrayList<>());
         Cassino cassino = new Cassino();
-        InputHandlerAutomático input = new InputHandlerAutomático(3);
+        InputHandlerAutomático input = new InputHandlerAutomático(2);
 
         boolean resultado = cassino.iniciar(input, ctx);
 
@@ -36,7 +35,7 @@ class CassinoTest {
 
         ContextoHeroi ctx = new ContextoHeroi(heroi, new ArrayList<>());
         Cassino cassino = new Cassino();
-        InputHandlerAutomático input = new InputHandlerAutomático(-1, 3);
+        InputHandlerAutomático input = new InputHandlerAutomático(-1, 2);
 
         boolean resultado = cassino.iniciar(input, ctx);
 
