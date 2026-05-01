@@ -36,16 +36,43 @@ class EscolhaTest {
         ContextoHeroi ctx = new ContextoHeroi(heroi, new ArrayList<>());
 
         Escolha escolha = new Escolha();
-        InputHandlerAutomatico input = new InputHandlerAutomatico(1);
+        InputHandlerAutomatico input = new InputHandlerAutomatico(2);
 
         boolean resultado = escolha.iniciar(input, ctx);
 
         assertTrue(resultado);
         ArrayList<String> baralho = heroi.mostrarBaralho();
         assertEquals(1, baralho.size());
-        assertTrue(baralho.get(0).contains("Skidoosh"));
-        assertTrue(baralho.get(0).toLowerCase().contains("área") || baralho.get(0).toLowerCase().contains("area"));
+        String carta = baralho.get(0);
+        assertTrue(
+            carta.contains("Skidoosh")
+                || carta.contains("Golpe do Mestre")
+                || carta.contains("Guarda do Mestre")
+                || carta.contains("Chi Intenso")
+                || carta.contains("Macarrão Ultra Envenenado")
+                || carta.contains("Ponto Fraco Revelado")
+                || carta.contains("Intimidação do Dragão"));
     }
+
+        @Test
+        void curaGastaMoedasECuraVida() {
+        Heroi heroi = new Heroi("Po", 20, 0, 3, 1);
+        heroi.receberDano(15);
+        heroi.setMoedas(100);
+
+        ContextoHeroi ctx = new ContextoHeroi(heroi, new ArrayList<>());
+        Escolha escolha = new Escolha();
+        InputHandlerAutomatico input = new InputHandlerAutomatico(
+            1, // Curar Vida
+            0 // 10 de vida por 50 moedas
+        );
+
+        boolean resultado = escolha.iniciar(input, ctx);
+
+        assertTrue(resultado);
+        assertEquals(15, heroi.getVida());
+        assertEquals(50, heroi.getMoedas());
+        }
 
     @Test
     void sairNaoAlteraHeroi() {
@@ -54,7 +81,7 @@ class EscolhaTest {
 
         ContextoHeroi ctx = new ContextoHeroi(heroi, new ArrayList<>());
         Escolha escolha = new Escolha();
-        InputHandlerAutomatico input = new InputHandlerAutomatico(2);
+        InputHandlerAutomatico input = new InputHandlerAutomatico(3);
 
         boolean resultado = escolha.iniciar(input, ctx);
 
