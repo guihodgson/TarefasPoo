@@ -51,6 +51,9 @@ public class GeradorArvore {
         else if (pick <= 96) {
             return TipoEvento.ALEATORIO;
         }
+        else if (pick <= 98) {
+            return TipoEvento.ESCOLHA;
+        }
         else {
             return TipoEvento.FOGUEIRA;
         }

@@ -23,6 +23,9 @@ public class GerenciadorEventos {
             case BOSS -> {
                 return criarBatalha(ctx, TipoEvento.BOSS, 1);
             }
+            case ESCOLHA -> {
+                return criarEscolha(ctx, TipoEvento.ESCOLHA);
+            }
             case ALEATORIO -> {
                 return criarCassino(ctx, TipoEvento.ALEATORIO);
             }
@@ -55,6 +58,11 @@ public class GerenciadorEventos {
     public Evento criarCassino(ContextoHeroi ctx, TipoEvento tipoEvento) {
         ctx.setTipoEvento(tipoEvento);
         return new Cassino();
+    }
+
+    public Evento criarEscolha(ContextoHeroi ctx, TipoEvento tipoEvento) {
+        ctx.setTipoEvento(tipoEvento);
+        return new Escolha();
     }
 
     public Evento criarFogueira(ContextoHeroi ctx, TipoEvento tipoEvento) {

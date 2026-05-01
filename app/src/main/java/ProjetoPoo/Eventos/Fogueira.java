@@ -11,7 +11,7 @@ public class Fogueira extends Evento {
     public boolean iniciar(InputHandler inputHandler, ContextoHeroi ctx) {
         ArrayList<String> opcoes = new ArrayList<>();
         opcoes.add(Cor.formataCor(Cor.AMARELO, "Curar Vida"));
-        opcoes.add(Cor.formataCor(Cor.AMARELO, "Melhorar Cartas"));
+        opcoes.add(Cor.formataCor(Cor.AMARELO, "Ganhar 50 Moedas"));
 
         Artes.imprimir(Artes.FOGUEIRA);
         System.out.println();
@@ -42,8 +42,8 @@ public class Fogueira extends Evento {
         } 
 
         else if (opcao == 1) {
-            InputHandler.imprimirBonito("Manutencao em andamento", 0.2);
-            InputHandler.imprimirBonito("Em breve voce podera melhorar suas cartas aqui!", 0.5);
+            ctx.heroi.setMoedas(ctx.heroi.getMoedas() + 50);
+            InputHandler.imprimirBonito("Voce ganhou 50 moedas! Voce possui " + Cor.formataCor(Cor.AZUL, String.valueOf(ctx.heroi.getMoedas())) + " moedas.", 0.2);
             inputHandler.pressEnter(true, "Pressione Enter para continuar.");
             inputHandler.clear();
             return iniciar(inputHandler, ctx);

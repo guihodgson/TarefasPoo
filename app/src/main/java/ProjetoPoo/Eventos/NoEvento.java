@@ -20,14 +20,14 @@ public class NoEvento {
         else if (tipo == TipoEvento.ALEATORIO) {
             nomeTipo = "Evento Aleatório";
         }
+        else if (tipo == TipoEvento.ESCOLHA) {
+            nomeTipo = "Escolha";
+        }
         else if (tipo == TipoEvento.BOSS) {
             nomeTipo = "Boss";
         }
         else if (tipo == TipoEvento.FOGUEIRA) {
             nomeTipo = "Fogueira";
-        }
-        else if (tipo == TipoEvento.LOJA) {
-            nomeTipo = "Loja";
         }
         else {
             nomeTipo = "Raiz";
@@ -50,8 +50,14 @@ public class NoEvento {
         else if (tipo == TipoEvento.ALEATORIO) {
             nomeTipo = "Evento Aleatório";
         }
+        else if (tipo == TipoEvento.ESCOLHA) {
+            nomeTipo = "Escolha";
+        }
         else if (tipo == TipoEvento.BOSS) {
             nomeTipo = "Boss";
+        }
+        else if (tipo == TipoEvento.FOGUEIRA) {
+            nomeTipo = "Fogueira";
         }
         else {
             nomeTipo = "Raiz";
